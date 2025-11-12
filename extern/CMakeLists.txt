@@ -1,0 +1,12 @@
+set(EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/extern)
+set(lib_folder "Extern")
+# imgui
+if(NOT TARGET imgui)
+    set(imgui_SOURCE_DIR_ ${EXTERNAL_DIR}/imgui)
+    file(GLOB_RECURSE imgui_src CONFIGURE_DEPENDS "${imgui_SOURCE_DIR_}/*.cpp")
+    file(GLOB_RECURSE imgui_header CONFIGURE_DEPENDS "${imgui_SOURCE_DIR_}/*.h")
+    source_group(TREE "${imgui_SOURCE_DIR_}" FILES ${imgui_src} ${imgui_header})
+    add_library(imgui STATIC ${imgui_src} ${imgui_header})
+    target_include_directories(imgui PUBLIC $<BUILD_INTERFACE:${imgui_SOURCE_DIR_}>)
+    set_target_properties(imgui PROPERTIES FOLDER ${lib_folder}/imgui)
+endif()
