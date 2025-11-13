@@ -25,4 +25,4 @@ endforeach()
 add_subdirectory(extern)
 add_subdirectory(client)
 add_subdirectory(server)
-
+add_subdirectory(tools)
