@@ -1,4 +1,7 @@
-﻿#include "Render.h"
+﻿#include "Socket.h"
+#include "Render.h"
+#include "XorString.h"
+
 
 int main() {
   std::string IP = "0";

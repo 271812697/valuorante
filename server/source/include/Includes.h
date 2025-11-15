@@ -1,26 +1,27 @@
+ï»¿#include "Socket.h"
 #include <thread>
 #include <string.h>   
-#include "Socket.h"
+
 #include "Drive.h"
 #include "Offsets.h"	
-#include "Math.h"
+#include "MathUtil.h"
 
 struct PlayerEntity
 {
-	ULONG64 Entity;//ÊµÌå
-	ULONG64 MapPtr;//ÊµÌå
-	INT TeamId;//¶ÓÎéID
-	std::string ClassName;//ÀàÃû
-	std::string Detective;//Ì½Ô±
-	std::string PlayerName;//Íæ¼ÒÃû³Æ
-	std::string BotName;//ÈË»úÃû×Ö
+	ULONG64 Entity;//å®ä½“
+	ULONG64 MapPtr;//å®ä½“
+	INT TeamId;//é˜Ÿä¼ID
+	std::string ClassName;//ç±»å
+	std::string Detective;//æ¢å‘˜
+	std::string PlayerName;//ç©å®¶åç§°
+	std::string BotName;//äººæœºåå­—
 };
 
 struct ItemEntity
 {
-	ULONG64 Entity;//ÊµÌå
-	INT Type;//ÎïÆ·ÀàĞÍ
-	std::string ProjectName;//ÈİÆ÷Ãû³Æ
+	ULONG64 Entity;//å®ä½“
+	INT Type;//ç‰©å“ç±»å‹
+	std::string ProjectName;//å®¹å™¨åç§°
 };
 
 struct Mapinfo
@@ -193,14 +194,14 @@ FLOAT GetWeaponSpeed(ULONG64 Entity)
 	return 0.f;
 }
 
-Vector3 ×ø±ê»»Ëã(Vector3 ¼Ù×ø±ê, Vector3 »»Ëã×ø±ê) {
-	Vector3 Õæ×ø±ê;
-	Õæ×ø±ê.x = ¼Ù×ø±ê.x - »»Ëã×ø±ê.x;  // ĞŞÕıÈ«½ÇµÈºÅÎª°ë½Ç=£¬²¢Ìí¼Ó·ÖºÅ
-	Õæ×ø±ê.y = ¼Ù×ø±ê.y - »»Ëã×ø±ê.y;  // Í³Ò»³ÉÔ±±äÁ¿´óĞ¡Ğ´ÎªĞ¡Ğ´y£¨·ûºÏ³£¹æÃüÃû£©
-	Õæ×ø±ê.z = ¼Ù×ø±ê.z - »»Ëã×ø±ê.z;  // Í³Ò»³ÉÔ±±äÁ¿´óĞ¡Ğ´ÎªĞ¡Ğ´z
-	return Õæ×ø±ê;
+Vector3 åæ ‡æ¢ç®—(Vector3 å‡åæ ‡, Vector3 æ¢ç®—åæ ‡) {
+	Vector3 çœŸåæ ‡;
+	çœŸåæ ‡.x = å‡åæ ‡.x - æ¢ç®—åæ ‡.x;  // ä¿®æ­£å…¨è§’ç­‰å·ä¸ºåŠè§’=ï¼Œå¹¶æ·»åŠ åˆ†å·
+	çœŸåæ ‡.y = å‡åæ ‡.y - æ¢ç®—åæ ‡.y;  // ç»Ÿä¸€æˆå‘˜å˜é‡å¤§å°å†™ä¸ºå°å†™yï¼ˆç¬¦åˆå¸¸è§„å‘½åï¼‰
+	çœŸåæ ‡.z = å‡åæ ‡.z - æ¢ç®—åæ ‡.z;  // ç»Ÿä¸€æˆå‘˜å˜é‡å¤§å°å†™ä¸ºå°å†™z
+	return çœŸåæ ‡;
 }
-Vector3 »ñÈ¡×ø±ê»»Ëã() {
+Vector3 è·å–åæ ‡æ¢ç®—() {
 
 	Vector3 v1;
 	v1.x = Read<int>(Read<uint64_t>(Offsets::Uworld) + 0x640);
@@ -211,22 +212,22 @@ Vector3 »ñÈ¡×ø±ê»»Ëã() {
 
 Vector3 GetPosition(ULONG64 Entity, INT Type)
 {
-	if (Type == 3)//Íæ¼Ò
+	if (Type == 3)//ç©å®¶
 	{
 		ULONG64 RootComponent = Read<ULONG64>(Entity + 0x3e0);
 
 		return Read<Vector3>(Read<ULONG64>(Read<ULONG64>(RootComponent + 0x418) + 0x80) + 0x70);
 	}
-	else if (Type == 4)//ÈË»ú
+	else if (Type == 4)//äººæœº
 	{
 		ULONG64 RootComponent = Read<ULONG64>(Entity + 0x3e0);
 
 		return Read<Vector3>(RootComponent + 0x148);
 	}
-	else if (Type == 2)//Îï×Ê
+	else if (Type == 2)//ç‰©èµ„
 	{
 		Vector3 RootComponent = Read<Vector3>(Entity + 0x384);
-		Vector3 pos = ×ø±ê»»Ëã(RootComponent, »ñÈ¡×ø±ê»»Ëã());
+		Vector3 pos = åæ ‡æ¢ç®—(RootComponent, è·å–åæ ‡æ¢ç®—());
 		return  pos;
 	}
 	return Vector3(0, 0, 0);
@@ -439,29 +440,29 @@ std::string GetIteamName(ULONG64 Entity)
 
 std::string GetProjectName(ULONG64 Entity, std::string Gname)
 {
-	if (Gname.find(("BP_Interact_Nest_C")) != std::string::npos) return ("ÄñÎÑ");
+	if (Gname.find(("BP_Interact_Nest_C")) != std::string::npos) return ("é¸Ÿçª");
 
-	else if ((Gname.find(("BP_Interact_Computer_")) != std::string::npos || Gname.find(("BP_Interact_PC_FireMissile")) != std::string::npos || Gname.find(("BP_Interact_PC_OpenDoor")) != std::string::npos))return ("µçÄÔ");
+	else if ((Gname.find(("BP_Interact_Computer_")) != std::string::npos || Gname.find(("BP_Interact_PC_FireMissile")) != std::string::npos || Gname.find(("BP_Interact_PC_OpenDoor")) != std::string::npos))return ("ç”µè„‘");
 
-	else if (Gname.find(("BP_Interact_ShoppingBag_C")) != std::string::npos) return ("ÂÃĞĞ°ü");
+	else if (Gname.find(("BP_Interact_ShoppingBag_C")) != std::string::npos) return ("æ—…è¡ŒåŒ…");
 
-	else if (Gname.find(("BP_InteractorContainer_Server_C")) != std::string::npos) return ("·şÎñÆ÷");
+	else if (Gname.find(("BP_InteractorContainer_Server_C")) != std::string::npos) return ("æœåŠ¡å™¨");
 
-	else if (Gname.find(("BP_Interact_SmallSafebox_C")) != std::string::npos) return ("Ğ¡±£ÏÕÏä");
+	else if (Gname.find(("BP_Interact_SmallSafebox_C")) != std::string::npos) return ("å°ä¿é™©ç®±");
 
-	else if (Gname.find(("BP_Interactor_Container_SafeBox_C")) != std::string::npos) return ("±£ÏÕÏä");
+	else if (Gname.find(("BP_Interactor_Container_SafeBox_C")) != std::string::npos) return ("ä¿é™©ç®±");
 
-	else if (Gname.find(("BP_InteractorContainer_Cloth_")) != std::string::npos) return ("Ò»¼şÒÂ·ş");
+	else if (Gname.find(("BP_InteractorContainer_Cloth_")) != std::string::npos) return ("ä¸€ä»¶è¡£æœ");
 
-	else if (Gname.find(("BP_InteractorContainer_Lxrysuitcase_C")) != std::string::npos) return ("¸ß¼¶ÂÃĞĞÏä");
+	else if (Gname.find(("BP_InteractorContainer_Lxrysuitcase_C")) != std::string::npos) return ("é«˜çº§æ—…è¡Œç®±");
 
-	else if (Gname.find(("BP_InteractorContainer_MedSupplyPile_C")) != std::string::npos) return ("Ò½ÁÆÎï×Ê¶Ñ");
+	else if (Gname.find(("BP_InteractorContainer_MedSupplyPile_C")) != std::string::npos) return ("åŒ»ç–—ç‰©èµ„å †");
 
-	else if ((Gname.find(("BP_InteractorContainer_Militarybox7_C")) != std::string::npos || Gname.find(("BP_InteractorContainer_Militarybox8_C")) != std::string::npos)) return ("Ò°ÍâÎï×ÊÏä");
+	else if ((Gname.find(("BP_InteractorContainer_Militarybox7_C")) != std::string::npos || Gname.find(("BP_InteractorContainer_Militarybox8_C")) != std::string::npos)) return ("é‡å¤–ç‰©èµ„ç®±");
 
-	else if ((Gname.find(("BP_InteractorContainer_flightcase_C")) != std::string::npos || Gname.find(("BP_InteractorContainer_OfficeBox2_C")) != std::string::npos)) return ("¸ß¼¶´¢ÎïÏä");
+	else if ((Gname.find(("BP_InteractorContainer_flightcase_C")) != std::string::npos || Gname.find(("BP_InteractorContainer_OfficeBox2_C")) != std::string::npos)) return ("é«˜çº§å‚¨ç‰©ç®±");
 
-	else if ((Gname.find(("BP_InteractorContainer_Rocket_C")) != std::string::npos || Gname.find(("BP_InteractorContainer_AirCargoContainer_C")) != std::string::npos)) return ("º½¿Õ´æ´¢Ïä");
+	else if ((Gname.find(("BP_InteractorContainer_Rocket_C")) != std::string::npos || Gname.find(("BP_InteractorContainer_AirCargoContainer_C")) != std::string::npos)) return ("èˆªç©ºå­˜å‚¨ç®±");
 
 	return ("");
 }
