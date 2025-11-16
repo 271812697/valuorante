@@ -1,5 +1,4 @@
-﻿
-#include "TmpUtils.h"
+﻿#include "TmpUtils.h"
 #include "PlatformWindows.h"
 #include "Arch_x86.h"
 #include <bit>
@@ -127,7 +126,7 @@ namespace
 	{
 		const PEB* Peb = GetPEB();
 		const PEB_LDR_DATA* Ldr = Peb->Ldr;
-
+		
 		int NumEntriesLeft = Ldr->Length;
 
 		const std::string LowercaseSearchModuleName = Utils::StrToLower(SearchModuleName);
@@ -138,7 +137,7 @@ namespace
 
 			const std::wstring WideModuleName(Entry->BaseDllName.Buffer, Entry->BaseDllName.Length >> 1);
 			const std::string ModuleName = std::string(WideModuleName.begin(), WideModuleName.end());
-
+			std::cout << "Load Module: " << ModuleName << std::endl;
 			if (Utils::StrToLower(ModuleName) == LowercaseSearchModuleName)
 				return Entry;
 		}
@@ -451,7 +450,7 @@ uintptr_t PlatformWindows::GetModuleBase(const char* const ModuleName)
 {
 	if (ModuleName == nullptr)
 		return reinterpret_cast<uintptr_t>(GetPEB()->ImageBaseAddress);
-
+	
 	return reinterpret_cast<uintptr_t>(GetModuleLdrTableEntry(ModuleName)->DllBase);
 }
 
@@ -717,6 +716,54 @@ void* PlatformWindows::FindPattern(const char* Signature, const uint32_t Offset,
 
 	return Result;
 }
+std::vector<uintptr_t> getAllModuleBase() {
+	const PEB* Peb = GetPEB();
+	const PEB_LDR_DATA* Ldr = Peb->Ldr;
+
+	int NumEntriesLeft = Ldr->Length;
+
+	std::vector<uintptr_t>res;
+
+	for (const LIST_ENTRY* P = Ldr->InMemoryOrderModuleList.Flink; P && NumEntriesLeft-- > 0; P = P->Flink)
+	{
+		const LDR_DATA_TABLE_ENTRY* Entry = reinterpret_cast<const LDR_DATA_TABLE_ENTRY*>(P);
+
+		const std::wstring WideModuleName(Entry->BaseDllName.Buffer, Entry->BaseDllName.Length >> 1);
+		const std::string ModuleName = std::string(WideModuleName.begin(), WideModuleName.end());
+	
+		res.push_back(reinterpret_cast<uintptr_t>(Entry->DllBase));
+	}
+
+	return res;
+}
+void* PlatformWindows::FindPatternInAllModule(const char* Signature, const uint32_t Offset, const bool bSearchAllSections, const uintptr_t StartAddress)
+{
+
+	for (auto base : getAllModuleBase()) {
+		void* Result = nullptr;
+		auto FindPatternInRangeLambda = [&Result, base, Signature, Offset, StartAddress](const IMAGE_SECTION_HEADER* SectionHeader) -> bool
+			{
+				const auto [SearchStartAddress, SearchRange] = GetSearchStartAndRangeBasedOnOverrides(base, SectionHeader, StartAddress, 0x0);
+
+				if (SearchStartAddress == NULL || SearchRange == 0x0)
+					return false;
+
+				Result = FindPatternInRange(Signature, reinterpret_cast<const uint8_t*>(SearchStartAddress), SearchRange, Offset != 0x0, Offset);
+
+				return Result != nullptr;
+			};
+
+		//if (bSearchAllSections)
+		{
+			IterateAllSectionObjects(base, FindPatternInRangeLambda);
+		}
+
+		if (Result) {
+			return Result;
+		}
+	}
+	return nullptr;
+}
 
 void* PlatformWindows::FindPatternInRange(const char* Signature, const void* Start, const uintptr_t Range, const bool bRelative, const uint32_t Offset)
 {
@@ -759,38 +806,40 @@ void* PlatformWindows::FindPatternInRange(std::vector<int>&& Signature, const vo
 {
 	const auto PatternLength = Signature.size();
 	const auto PatternBytes = Signature.data();
-
-	for (int i = 0; i < (Range - PatternLength); i++)
-	{
-		bool bFound = true;
-		int CurrentSkips = 0;
-
-		for (auto j = 0ul; j < PatternLength; ++j)
+	if (Range>= PatternLength) {
+		for (int i = 0; i < (Range - PatternLength); i++)
 		{
-			if (static_cast<const uint8_t*>(Start)[i + j] != PatternBytes[j] && PatternBytes[j] != -1)
+			bool bFound = true;
+			int CurrentSkips = 0;
+
+			for (auto j = 0ul; j < PatternLength; ++j)
 			{
-				bFound = false;
-				break;
+				if (static_cast<const uint8_t*>(Start)[i + j] != PatternBytes[j] && PatternBytes[j] != -1)
+				{
+					bFound = false;
+					break;
+				}
+			}
+			if (bFound)
+			{
+				if (CurrentSkips != SkipCount)
+				{
+					CurrentSkips++;
+					continue;
+				}
+
+				uintptr_t Address = reinterpret_cast<uintptr_t>(Start) + i;
+				if (bRelative)
+				{
+					if (Offset == -1)
+						Offset = PatternLength;
+
+					Address = ((Address + Offset + 4) + *reinterpret_cast<int32_t*>(Address + Offset));
+				}
+				return reinterpret_cast<void*>(Address);
 			}
 		}
-		if (bFound)
-		{
-			if (CurrentSkips != SkipCount)
-			{
-				CurrentSkips++;
-				continue;
-			}
 
-			uintptr_t Address = reinterpret_cast<uintptr_t>(Start) + i;
-			if (bRelative)
-			{
-				if (Offset == -1)
-					Offset = PatternLength;
-
-				Address = ((Address + Offset + 4) + *reinterpret_cast<int32_t*>(Address + Offset));
-			}
-			return reinterpret_cast<void*>(Address);
-		}
 	}
 
 	return nullptr;

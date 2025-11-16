@@ -1,21 +1,26 @@
 ﻿#include "hook/hook.h"
 #include "Platform/Public/Platform.h"
 #include "hook/utils.h"
+#include "kiero.h"
 #include "imgui/imgui.h"
 #include "ImGui/imgui_impl_win32.h"
 #include "ImGui/imgui_impl_dx12.h"
+#include <Windows.h>
+#include <fstream>
 IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 namespace MOON {
 
-	VTableHook vtcommandQueue;
-	VTableHook vtSwapChain;
+	//VTableHook vtcommandQueue;
+	//VTableHook vtSwapChain;
 	void* commandQueueCtx = nullptr;
 	void* swapchainCtx = nullptr;
 
 	typedef HRESULT(__stdcall* Present)(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags);
 	typedef void(APIENTRY* ExecuteCommandLists)(ID3D12CommandQueue* queue, UINT NumCommandLists, ID3D12CommandList* ppCommandLists);
 	typedef HRESULT(WINAPI* Resize)(IDXGISwapChain* This, UINT BufferCount, UINT Width, UINT Height, DXGI_FORMAT NewFormat, UINT SwapChainFlags);
-
+	ExecuteCommandLists oldExecuteCommandLists;
+	Resize oldResize;
+	Present oldPresent;
 	LRESULT WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
 		switch (msg)
@@ -48,11 +53,13 @@ namespace MOON {
 	HRESULT APIENTRY HookPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags)
 	{
 		if(!Hook::instance()->isInit()){
-			if(!Hook::instance()->getDevice(pSwapChain))
-			return vtSwapChain.GetOriginal<Present>(8)(pSwapChain, SyncInterval, Flags);
+			if (!Hook::instance()->getDevice(pSwapChain))
+				return oldPresent(pSwapChain, SyncInterval, Flags);
+			//return vtSwapChain.GetOriginal<Present>(8)(pSwapChain, SyncInterval, Flags);
 		}
 		if (Hook::instance()->getCommandQueue()==nullptr){
-			return vtSwapChain.GetOriginal<Present>(8)(pSwapChain, SyncInterval, Flags);
+			return oldPresent(pSwapChain, SyncInterval, Flags);
+			///return vtSwapChain.GetOriginal<Present>(8)(pSwapChain, SyncInterval, Flags);
 		}
 
 		ImGui_ImplDX12_NewFrame();
@@ -62,6 +69,7 @@ namespace MOON {
 
 		//to draw menu
 		ImGui::Text("Hello hook");
+		std::cout << "Hello hook" << std::endl;
 
 		ImGui::EndFrame();
         auto commandList = Hook::instance()->getCommandList();
@@ -99,8 +107,8 @@ namespace MOON {
 		commandList->ResourceBarrier(1, &barrier);
 		commandList->Close();
 		commandQueue->ExecuteCommandLists(1, (ID3D12CommandList* const*)&commandList);
-
-		return vtSwapChain.GetOriginal<Present>(8)(pSwapChain, SyncInterval, Flags);
+		return oldPresent(pSwapChain, SyncInterval, Flags);
+		//return vtSwapChain.GetOriginal<Present>(8)(pSwapChain, SyncInterval, Flags);
 
 	}
 	void HookExecuteCommandLists(ID3D12CommandQueue* queue, UINT NumCommandLists, ID3D12CommandList* ppCommandLists)
@@ -108,172 +116,272 @@ namespace MOON {
 		if (Hook::instance()->getCommandQueue() == nullptr) {
 			Hook::instance()->setCommandQueue(queue);
 		}
-		vtcommandQueue.GetOriginal<ExecuteCommandLists>(10)(queue, NumCommandLists, ppCommandLists);
+		oldExecuteCommandLists(queue, NumCommandLists, ppCommandLists);
+		//vtcommandQueue.GetOriginal<ExecuteCommandLists>(10)(queue, NumCommandLists, ppCommandLists);
 	}
 	HRESULT APIENTRY HookResize(IDXGISwapChain* _this, UINT BufferCount, UINT Width, UINT Height, DXGI_FORMAT NewFormat, UINT SwapChainFlags)
 	{
 		Hook::instance()->resetRenderState();
-		return vtSwapChain.GetOriginal<Resize>(13)(_this, BufferCount, Width, Height, NewFormat, SwapChainFlags);
+		return oldResize(_this, BufferCount, Width, Height, NewFormat, SwapChainFlags);
+		//return vtSwapChain.GetOriginal<Resize>(13)(_this, BufferCount, Width, Height, NewFormat, SwapChainFlags);
+	}
+	 uintptr_t FindPattern(const char* pattern)
+	{
+		uintptr_t moduleAdressmm = 0;
+		moduleAdressmm = *(uintptr_t*)(__readgsqword(0x60) + 0x10);
+
+		static auto patternToByteZmm = [](const char* pattern)
+			{
+				auto       bytesmm = std::vector<int>{};
+				const auto startmm = const_cast<char*>(pattern);
+				const auto endmm = const_cast<char*>(pattern) + strlen(pattern);
+
+				for (auto currentmm = startmm; currentmm < endmm; ++currentmm)
+				{
+					if (*currentmm == '?')
+					{
+						++currentmm;
+						if (*currentmm == '?')
+							++currentmm;
+						bytesmm.push_back(-1);
+					}
+					else { bytesmm.push_back(strtoul(currentmm, &currentmm, 16)); }
+				}
+				return bytesmm;
+			};
+
+		const auto dosHeadermm = (PIMAGE_DOS_HEADER)moduleAdressmm;
+		const auto ntHeadersmm = (PIMAGE_NT_HEADERS)((std::uint8_t*)moduleAdressmm + dosHeadermm->e_lfanew);
+
+		const auto sizeOfImage = ntHeadersmm->OptionalHeader.SizeOfImage;
+		auto       patternBytesmm = patternToByteZmm(pattern);
+		const auto scanBytesmm = reinterpret_cast<std::uint8_t*>(moduleAdressmm);
+
+		const auto smm = patternBytesmm.size();
+		const auto dmm = patternBytesmm.data();
+
+		for (auto imm = 0ul; imm < sizeOfImage - smm; ++imm)
+		{
+			bool foundmm = true;
+			for (auto jmm = 0ul; jmm < smm; ++jmm)
+			{
+				if (scanBytesmm[imm + jmm] != dmm[jmm] && dmm[jmm] != -1)
+				{
+					foundmm = false;
+					break;
+				}
+			}
+			if (foundmm) { return reinterpret_cast<uintptr_t>(&scanBytesmm[imm]); }
+		}
+		return NULL;
 	}
 	class Hook::HookInternal {
 	public:
 		HookInternal(Hook* hook):mSelf(hook) {
 		
 		}
-		void start(const char* pClassName, const char* pWindowName)
-		{
+		void start(const char* pClassName, const char* pWindowName) {
+			AllocConsole();
+			FILE* fp;
+			freopen_s(&fp, "CONOUT$", "w", stdout);
+			freopen_s(&fp, "CONOUT$", "w", stderr);
+			freopen_s(&fp, "CONIN$", "r", stdin);  		
 			mHwnd = FindWindowA(pClassName, pWindowName);
-			while (!mHwnd)
+   			while (!mHwnd)
+   			{
+   				this->mHwnd = FindWindowA(pClassName, pWindowName);
+   				Sleep(100);
+   			}
+   			Sleep(5000);
+			std::cout << "Find Window Success" << std::endl;
+   	
+			//g_methodsTable = (uint150_t*)::calloc(150, sizeof(uint150_t));
+			//::memcpy(g_methodsTable, *(uint150_t**)device, 44 * sizeof(uint150_t));
+			//::memcpy(g_methodsTable + 44, *(uint150_t**)commandQueue, 19 * sizeof(uint150_t));
+			//::memcpy(g_methodsTable + 44 + 19, *(uint150_t**)commandAllocator, 9 * sizeof(uint150_t));
+			//::memcpy(g_methodsTable + 44 + 19 + 9, *(uint150_t**)commandList, 60 * sizeof(uint150_t));
+			//::memcpy(g_methodsTable + 44 + 19 + 9 + 60, *(uint150_t**)swapChain, 18 * sizeof(uint150_t));
+
+			bool init_hook = false;
+			do
 			{
-				this->mHwnd = FindWindowA(pClassName, pWindowName);
-				Sleep(100);
-			}
-			Sleep(5000);
-			//4D 8B 0C 24 49 8B CC 4C 8B 44 24
-			//commandQueueCtx = PlatformWindows::FindPattern("4D 8B 0C 24 49 8B CC 4C 8B 44 24");
-			commandQueueCtx = PlatformWindows::FindPattern("FF 95 A8 04 00 00 90 48 8B 05 2C FC 0C 00");
-			swapchainCtx = PlatformWindows::FindPattern("FF 95 A8 04 00 00 89 85 B4 02 00 00");
-			uintptr_t nextAddr = (uintptr_t)commandQueueCtx + 14;  //
-			uintptr_t pptr=nextAddr + 0x000CFC2C;
-			
-			if (!commandQueueCtx || !swapchainCtx)
-			{
-				MessageBoxA(0, "无法找到交换链或命令队列", "错误", MB_ICONINFORMATION);
-				return;
-			}
-			std::cout << "已经找到交换链和命令队列" << std::endl;
-		
-			LPVOID JMPAddr = VirtualAlloc(0, 0x1000, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
-
-			if (!JMPAddr)
-			{
-				return;
-			}
-
-			UCHAR JmpComCode[] =
-			{
-				0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
-				0xFF, 0xE0 // jmp rax
-			};
-			UCHAR JmpSwapCode[] =
-			{
-				0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
-				0xFF, 0xE0, // jmp rax 
-			};
-
-			UCHAR OriComCode[] =
-			{
-				0xFF, 0x95 ,0xA8, 0x04 ,0x00, 0x00,
-                0x90, 0x48, 0x8B, 0x05, 0x2C, 0xFC,0x0C,0x00//rcx,qword ptr [g_pd3dCommandQueue (07FF781FC3348h)]
-			};
-			//FF 95 A8 04 00 00    call        qword ptr[rbp + 4A8h]
-			//89 85 B4 02 00 00    mov         dword ptr[rbp + 2B4h], eax
-			// ！！！根据你找到的新地址更新原始指令
-			UCHAR OriSwapCode[] =
-			{
-				0xFF, 0x95, 0xA8,       // mov r8d, esi    (修正)
-				0x04, 0x00, 0x00,       // mov edx, r12d   (修正)
-				0x89, 0x85, 0xB4,       // mov rax, [rcx]
-				0x02, 0x00, 0x00        // call qword ptr [rax+40]
-			};
-
-			// 定义 Shellcode 的机器码
-			UCHAR ShellCode[] = {
-				// ------------------- commandQueueCtx 的 Hook 处理代码 (37 字节) -------------------
-				// 保存 RCX 到 JMPAddr + 0x500
-				0x48, 0xB8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // mov rax, <JMPAddr + 0x500> (10 字节)
-				0x48, 0x89, 0x08,                           // mov [rax], rcx
-				// 执行原始指令 
-				0xFF, 0x95 ,0xA8, 0x04 ,0x00, 0x00,
-				 0x90, 0x48, 0x8B, 0x05, 0x2C, 0xFC,0x0C,0x00,//rcx,qword ptr [g_pd3dCommandQueue (07FF781FC3348h)]
-				// 跳转回 commandQueueCtx + 12 
-				0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
-				0xFF, 0xE0, // jmp rax
-
-				// ------------------- swapchainCtx 的 Hook 处理代码 (42 字节) -------------------
-				// 保存 [RCX] 到 JMPAddr + 0x600 (RCX是swapchain的this指针)
-				0x48, 0xB8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,   // mov rax, <JMPAddr + 0x600> (10 字节)
-				0x48, 0x89, 0x08,                           // mov [rax], rcx
-				// ！！！执行原始指令 (根据新地址更新)
-				0xFF, 0x95, 0xA8,                           // mov r8d, esi     (修正)
-				0x04, 0x00, 0x00,                        // mov edx, r12d    (修正)
-				0x89, 0x85, 0xB4,                           // mov rax, [rcx]
-				0x02, 0x00, 0x00,                           // call qword ptr [rax+40]
-				// 跳转回 swapchainCtx + 12 
-				0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
-				0xFF, 0xE0, // jmp rax
-			};
-			//先填充 JmpAddr +500  和  JmpAddr +600
-			uintptr_t jmpAddr500 = (uintptr_t)JMPAddr + 0x500;
-			uintptr_t jmpAddr600 = (uintptr_t)JMPAddr + 0x600;
-			memcpy(&ShellCode[2], &jmpAddr500, 8);   // 填充commandQueue的存储地址
-			memcpy(&ShellCode[41], &jmpAddr600, 8);  // 填充swapchain的存储地址
-
-			// 计算 Shellcode 各部分偏移
-			uint64_t shellcodeBase = (uint64_t)JMPAddr;
-			uint64_t commandHandler = shellcodeBase;          // commandQueueCtx 处理代码入口
-			uint64_t swapchainHandler = shellcodeBase + 39;   // swapchainCtx 处理代码入口
-
-			//拷贝ShellCode到JMPAddr
-			memcpy(JMPAddr, &ShellCode, sizeof(ShellCode));
-
-			// 设置commandQueue shellcode中的跳回地址
-			uint64_t jmpBackCommandAddr = commandHandler + 27; // 跳转指令的起始地址
-			uintptr_t Addr = (uintptr_t)commandQueueCtx + 14;  // 覆盖了12字节，跳回到下一条指令
-			memcpy((void*)(jmpBackCommandAddr + 2), &Addr, 8); // 填充到 0x48, 0xB8 后
-
-			// 设置swapchain shellcode中的跳回地址
-			Addr = (uintptr_t)swapchainCtx + 12; // 覆盖了12字节，跳回到下一条指令
-			uint64_t jmpBackSwapchainAddr = swapchainHandler + 25; // 跳转指令的起始地址
-			memcpy((void*)(jmpBackSwapchainAddr + 2), &Addr, 8); // 填充到 0x48, 0xB8 后
-
-			//Hook点的跳转指令：设置JmpCode跳转到我们的Shellcode
-			memcpy(JmpComCode + 2, &commandHandler, 8);
-			memcpy(JmpSwapCode + 2, &swapchainHandler, 8);
-
-			//拷贝到Hook点
-			DWORD commandQueueoldProtect = 0;
-			DWORD swapchainoldProtect = 0;
-			//VirtualProtect(commandQueueCtx, sizeof(JmpComCode), PAGE_EXECUTE_READWRITE, &commandQueueoldProtect);
-			VirtualProtect(swapchainCtx, sizeof(JmpSwapCode), PAGE_EXECUTE_READWRITE, &swapchainoldProtect);
-			std::cout << "替换目标函数指令" << std::endl;
-			//memcpy(commandQueueCtx, JmpComCode, sizeof(JmpComCode));
-			memcpy(swapchainCtx, JmpSwapCode, sizeof(JmpSwapCode));
-			// 等待Hook捕获到目标指针
-			while (true)
-			{
-				Sleep(100);
-				//uintptr_t jmp500 = *(uintptr_t*)jmpAddr500;
-				uintptr_t jmp600 = *(uintptr_t*)jmpAddr600;
-
-				if (jmp600)
-					break;
-			}
-			std::cout << "找到目标地址" << std::endl;
-
-			//恢复原始指令
-			//memcpy(commandQueueCtx, OriComCode, sizeof(OriComCode));
-			memcpy(swapchainCtx, OriSwapCode, sizeof(OriSwapCode));
-
-			//VirtualProtect(commandQueueCtx, sizeof(JmpComCode), commandQueueoldProtect, &commandQueueoldProtect);
-			VirtualProtect(swapchainCtx, sizeof(JmpSwapCode), swapchainoldProtect, &swapchainoldProtect);
-			// 初始化VTable Hook
-			vtcommandQueue.Initialize(*(uintptr_t**)pptr);
-			vtSwapChain.Initialize(*(uintptr_t**)jmpAddr600);
-
-
-			while (!vtcommandQueue.GetTarget() && !vtSwapChain.GetTarget())
-			{
-				Sleep(100);
-			}
-
-			std::cout << "成功hook到虚函数" << std::endl;
-			VirtualFree(JMPAddr, 0, MEM_RELEASE);
-			// 安装VTable Hook
-			vtcommandQueue.Bind(10, HookExecuteCommandLists);
-			vtSwapChain.Bind(8, HookPresent);
-			vtSwapChain.Bind(13, HookResize);
+				if (kiero::init(kiero::RenderType::D3D12) == kiero::Status::Success)
+				{
+					kiero::bind(54, (void**)&oldExecuteCommandLists, HookExecuteCommandLists);
+					kiero::bind(140, (void**)&oldPresent, HookPresent);
+					kiero::bind(145, (void**)&oldResize, HookResize);
+					init_hook = true;
+				}
+			} while (!init_hook);
+			std::cout << "Bind Function Success" << std::endl;
+			//vtcommandQueue.Bind(10, HookExecuteCommandLists);
+            //vtSwapChain.Bind(8, HookPresent);
+            //vtSwapChain.Bind(13, HookResize);
 		}
+		//void startS(const char* pClassName, const char* pWindowName)
+		//{
+		//	AllocConsole();
+		//	FILE* fp;
+		//	freopen_s(&fp, "CONOUT$", "w", stdout);
+		//	freopen_s(&fp, "CONOUT$", "w", stderr);
+		//	freopen_s(&fp, "CONIN$", "r", stdin);
+	 //       /*		
+	 //       mHwnd = FindWindowA(pClassName, pWindowName);
+		//	while (!mHwnd)
+		//	{
+		//		this->mHwnd = FindWindowA(pClassName, pWindowName);
+		//		Sleep(100);
+		//	}
+		//	Sleep(5000);
+		//	*/
+		//	//4D 8B 0C 24 49 8B CC 4C 8B 44 24
+		//    //commandQueueCtx = PlatformWindows::FindPatternInAllModule("48 8B D9 0F 29 70 E8",0,true,0);
+	 //       commandQueueCtx = PlatformWindows::FindPatternInAllModule("49 8B 07 4C 8B 44 24 48 8B D5 49 8B CF",0,true,0);
+		//	//swapchainCtx = PlatformWindows::FindPattern("FF 95 A8 04 00 00 89 85 B4 02 00 00");
+		//	//uintptr_t nextAddr = (uintptr_t)commandQueueCtx + 14;  //
+		//	//uintptr_t pptr=nextAddr + 0x000CFC2C;
+		//	
+		//	//if (!commandQueueCtx || !swapchainCtx)
+		//	if (!commandQueueCtx )
+		//	{
+		//		MessageBoxA(0, "无法找到交换链或命令队列", "错误", MB_ICONINFORMATION);
+		//		return;
+		//	}
+		//	std::cout << "已经找到交换链和命令队列" << std::endl;
+		//	std::ofstream file("successHook.txt");
+		//	file << "DllMain" << std::endl; file << "bengin" << std::endl; file << "start begin" << std::endl;
+
+		//
+		//	LPVOID JMPAddr = VirtualAlloc(0, 0x1000, MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+
+		//	if (!JMPAddr)
+		//	{
+		//		return;
+		//	}
+
+		//	UCHAR JmpComCode[] =
+		//	{
+		//		0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
+		//		0xFF, 0xE0 // jmp rax
+		//	};
+		//	UCHAR JmpSwapCode[] =
+		//	{
+		//		0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
+		//		0xFF, 0xE0, // jmp rax 
+		//	};
+
+		//	UCHAR OriComCode[] =
+		//	{
+		//		0x49, 0x8B, 0x07, 0x4C, 0x8B ,0x44, 0x24 ,0x48 ,0x8B, 0xD5, 0x49, 0x8B ,0xCF
+		//	};
+		//	//FF 95 A8 04 00 00    call        qword ptr[rbp + 4A8h]
+		//	//89 85 B4 02 00 00    mov         dword ptr[rbp + 2B4h], eax
+		//	// ！！！根据你找到的新地址更新原始指令
+		//	UCHAR OriSwapCode[] =
+		//	{
+		//		0xFF, 0x95, 0xA8,       // mov r8d, esi    (修正)
+		//		0x04, 0x00, 0x00,       // mov edx, r12d   (修正)
+		//		0x89, 0x85, 0xB4,       // mov rax, [rcx]
+		//		0x02, 0x00, 0x00        // call qword ptr [rax+40]
+		//	};
+
+		//	// 定义 Shellcode 的机器码
+		//	UCHAR ShellCode[] = {
+		//		// ------------------- commandQueueCtx 的 Hook 处理代码 (37 字节) -------------------
+		//		// 保存 RCX 到 JMPAddr + 0x500
+		//		0x48, 0xB8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, // mov rax, <JMPAddr + 0x500> (10 字节)
+		//		0x48, 0x89, 0x38,                           // mov [rax], r15
+		//		// 执行原始指令 
+		//		0x49, 0x8B, 0x07, 0x4C, 0x8B ,0x44,
+		//		0x24 ,0x48 ,0x8B, 0xD5, 0x49, 0x8B ,0xCF,//rcx,qword ptr [g_pd3dCommandQueue (07FF781FC3348h)]
+		//		// 跳转回 commandQueueCtx + 13 
+		//		0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
+		//		0xFF, 0xE0, // jmp rax
+
+		//		// ------------------- swapchainCtx 的 Hook 处理代码 (42 字节) -------------------
+		//		// 保存 [RCX] 到 JMPAddr + 0x600 (RCX是swapchain的this指针)
+		//		0x48, 0xB8, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,   // mov rax, <JMPAddr + 0x600> (10 字节)
+		//		0x48, 0x89, 0x08,                           // mov [rax], rcx
+		//		// ！！！执行原始指令 (根据新地址更新)
+		//		0xFF, 0x95, 0xA8,                           // mov r8d, esi     (修正)
+		//		0x04, 0x00, 0x00,                        // mov edx, r12d    (修正)
+		//		0x89, 0x85, 0xB4,                           // mov rax, [rcx]
+		//		0x02, 0x00, 0x00,                           // call qword ptr [rax+40]
+		//		// 跳转回 swapchainCtx + 12 
+		//		0x48, 0xB8,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, // mov rax, <JMP> (10 字节)
+		//		0xFF, 0xE0, // jmp rax
+		//	};
+		//	//先填充 JmpAddr +500  和  JmpAddr +600
+		//	uintptr_t jmpAddr500 = (uintptr_t)JMPAddr + 0x500;
+		//	uintptr_t jmpAddr600 = (uintptr_t)JMPAddr + 0x600;
+		//	memcpy(&ShellCode[2], &jmpAddr500, 8);   // 填充commandQueue的存储地址
+		//	//memcpy(&ShellCode[41], &jmpAddr600, 8);  // 填充swapchain的存储地址
+
+		//	// 计算 Shellcode 各部分偏移
+		//	uint64_t shellcodeBase = (uint64_t)JMPAddr;
+		//	uint64_t commandHandler = shellcodeBase;          // commandQueueCtx 处理代码入口
+		//	//uint64_t swapchainHandler = shellcodeBase + 39;   // swapchainCtx 处理代码入口
+
+		//	//拷贝ShellCode到JMPAddr
+		//	memcpy(JMPAddr, &ShellCode, sizeof(ShellCode));
+
+		//	// 设置commandQueue shellcode中的跳回地址
+		//	uint64_t jmpBackCommandAddr = commandHandler + 26; // 跳转指令的起始地址
+		//	uintptr_t Addr = (uintptr_t)commandQueueCtx + 13;  // 覆盖了12字节，跳回到下一条指令
+		//	memcpy((void*)(jmpBackCommandAddr + 2), &Addr, 8); // 填充到 0x48, 0xB8 后
+
+		//	// 设置swapchain shellcode中的跳回地址
+		//	//Addr = (uintptr_t)swapchainCtx + 12; // 覆盖了12字节，跳回到下一条指令
+		//	//uint64_t jmpBackSwapchainAddr = swapchainHandler + 25; // 跳转指令的起始地址
+		//	//memcpy((void*)(jmpBackSwapchainAddr + 2), &Addr, 8); // 填充到 0x48, 0xB8 后
+
+		//	//Hook点的跳转指令：设置JmpCode跳转到我们的Shellcode
+		//	memcpy(JmpComCode + 2, &commandHandler, 8);
+		//	//memcpy(JmpSwapCode + 2, &swapchainHandler, 8);
+
+		//	//拷贝到Hook点
+		//	DWORD commandQueueoldProtect = 0;
+		//	DWORD swapchainoldProtect = 0;
+		//	VirtualProtect(commandQueueCtx, sizeof(JmpComCode)+1, PAGE_EXECUTE_READWRITE, &commandQueueoldProtect);
+		//	//VirtualProtect(swapchainCtx, sizeof(JmpSwapCode), PAGE_EXECUTE_READWRITE, &swapchainoldProtect);
+		//	std::cout << "替换目标函数指令" << std::endl;
+		//    memcpy(commandQueueCtx, JmpComCode, sizeof(JmpComCode));
+		//	//memcpy(swapchainCtx, JmpSwapCode, sizeof(JmpSwapCode));
+		//	// 等待Hook捕获到目标指针
+		//	while (true)
+		//	{
+		//		Sleep(100);
+		//		uintptr_t jmp500 = *(uintptr_t*)jmpAddr500;
+		//		//uintptr_t jmp600 = *(uintptr_t*)jmpAddr600;
+
+		//		if (jmp500)
+		//			break;
+		//	}
+		//	std::cout << "找到目标地址" << std::endl;
+
+		//	//恢复原始指令
+		//	memcpy(commandQueueCtx, OriComCode, sizeof(OriComCode));
+		//	//memcpy(swapchainCtx, OriSwapCode, sizeof(OriSwapCode));
+
+		//	VirtualProtect(commandQueueCtx, sizeof(JmpComCode), commandQueueoldProtect, &commandQueueoldProtect);
+		//	//VirtualProtect(swapchainCtx, sizeof(JmpSwapCode), swapchainoldProtect, &swapchainoldProtect);
+		//	// 初始化VTable Hook
+		//	vtcommandQueue.Initialize(*(uintptr_t**)jmpAddr500);
+		//	//vtSwapChain.Initialize(*(uintptr_t**)jmpAddr600);
+
+
+		//	while (!vtcommandQueue.GetTarget() )//&& !vtSwapChain.GetTarget())
+		//	{
+		//		Sleep(100);
+		//	}
+
+		//	std::cout << "成功hook到虚函数" << std::endl;
+		//	VirtualFree(JMPAddr, 0, MEM_RELEASE);
+		//	// 安装VTable Hook
+		//	//vtcommandQueue.Bind(10, HookExecuteCommandLists);
+		//	//vtSwapChain.Bind(8, HookPresent);
+		//	//vtSwapChain.Bind(13, HookResize);
+		//}
 
 		bool getDevice(IDXGISwapChain* pSwapChain)
 		{
