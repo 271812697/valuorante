@@ -6,7 +6,7 @@
 
 void Start()
 {
-	MOON::Hook::instance()->start(("UnrealWindow"), nullptr);
+	MOON::Hook::instance()->start(("Dx12Hook"), nullptr);
 }
 
 HANDLE g_hTimerQueue = NULL;
