@@ -13,10 +13,24 @@ namespace MOON {
 		ID3D12Resource* Resource;
 		D3D12_CPU_DESCRIPTOR_HANDLE DescriptorHandle;
 	};
+	struct ProcessData {
+		DWORD ID;
+		HANDLE Handle;
+		HWND Hwnd;
+		HMODULE Module;
+		WNDPROC WndProc;
+		int WindowWidth;
+		int WindowHeight;
+		LPCSTR Title;
+		LPCSTR ClassName;
+		LPCSTR Path;
+	};
 	class Hook {
 	public:
 		static Hook* instance();
+		ProcessData& getProcessData();
 		void start(const char* pClassName = NULL, const char* pWindowName = NULL);
+		void shutdown();
 		bool getDevice(IDXGISwapChain* pSwapChain);
 		void initializeImGui(ID3D12Device* pDevice);
 		void resetRenderState();
@@ -28,7 +42,7 @@ namespace MOON {
 		void setInit(bool flag);
 		_FrameContext& getFrameContext(int index);
 		ID3D12DescriptorHeap* getDescriptorHeap();
-		uint64_t getWndProc();
+		WNDPROC getWndProc();
 	private:
 		Hook();
 	private:

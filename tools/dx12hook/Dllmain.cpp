@@ -3,18 +3,18 @@
 #include <iostream>
 #include <fstream>
 #include "hook/hook.h"
+// 全局变量定义
+char dlldir[320];
 
 void Start()
 {
 	MOON::Hook::instance()->start(("Dx12Hook"), nullptr);
 }
 
-HANDLE g_hTimerQueue = NULL;
-HANDLE g_hTimer = NULL;
 
-VOID CALLBACK TimerProc(PVOID lpParameter, BOOLEAN TimerOrWaitFired)
-{
-	std::thread([]() {	Start();	}).detach();
+DWORD WINAPI MainThread(LPVOID lpParameter) {
+	Start();
+	return 0;
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
@@ -25,27 +25,17 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
+		DisableThreadLibraryCalls(hModule);
+		MOON::Hook::instance()->getProcessData().Module = hModule;
+		GetModuleFileNameA(hModule, dlldir, 512);
+		for (size_t i = strlen(dlldir); i > 0; i--) { if (dlldir[i] == '\\') { dlldir[i + 1] = 0; break; } }
+		CreateThread(0, 0, MainThread, 0, 0, 0);
 
-		g_hTimerQueue = CreateTimerQueue();
-		
-		if (g_hTimerQueue)
-		{
-			
-			CreateTimerQueueTimer(&g_hTimer, g_hTimerQueue, TimerProc, NULL, 5000, 0, WT_EXECUTEINTIMERTHREAD);
-		}
-		
 		break;
 
 	case DLL_PROCESS_DETACH:
-
-		if (g_hTimer)
-			DeleteTimerQueueTimer(g_hTimerQueue, g_hTimer, NULL);
-
-		if (g_hTimerQueue)
-			DeleteTimerQueueEx(g_hTimerQueue, NULL);
-
-		Sleep(500);
-
+		MOON::Hook::instance()->shutdown();
+		FreeLibraryAndExitThread(hModule, TRUE);
 		break;
 	}
 	return TRUE;

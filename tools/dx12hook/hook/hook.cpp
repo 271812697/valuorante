@@ -10,6 +10,7 @@
 IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 namespace MOON {
 
+
 	//VTableHook vtcommandQueue;
 	//VTableHook vtSwapChain;
 	void* commandQueueCtx = nullptr;
@@ -23,31 +24,7 @@ namespace MOON {
 	Present oldPresent;
 	LRESULT WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
-		switch (msg)
-		{
-		case WM_KEYUP:
-
-			break;
-		case WM_LBUTTONDOWN:
-
-			break;
-		case WM_RBUTTONDOWN:
-
-			break;
-		case WM_MBUTTONDOWN:
-
-			break;
-
-		case WM_XBUTTONDOWN:
-
-			break;
-		}
-
-
-
-		if ( ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam))
-			return TRUE;
-
+		ImGui_ImplWin32_WndProcHandler(hWnd, msg, wParam, lParam);
 		return CallWindowProcA((WNDPROC)Hook::instance()->getWndProc(), hWnd, msg, wParam, lParam);
 	}
 	HRESULT APIENTRY HookPresent(IDXGISwapChain* pSwapChain, UINT SyncInterval, UINT Flags)
@@ -125,7 +102,7 @@ namespace MOON {
 		return oldResize(_this, BufferCount, Width, Height, NewFormat, SwapChainFlags);
 		//return vtSwapChain.GetOriginal<Resize>(13)(_this, BufferCount, Width, Height, NewFormat, SwapChainFlags);
 	}
-	 uintptr_t FindPattern(const char* pattern)
+	uintptr_t FindPattern(const char* pattern)
 	{
 		uintptr_t moduleAdressmm = 0;
 		moduleAdressmm = *(uintptr_t*)(__readgsqword(0x60) + 0x10);
@@ -180,20 +157,48 @@ namespace MOON {
 		HookInternal(Hook* hook):mSelf(hook) {
 		
 		}
+		void captureWindow() {
+			bool WindowFocus = false;
+			while (WindowFocus == false) {
+				DWORD ForegroundWindowProcessID;
+				GetWindowThreadProcessId(GetForegroundWindow(), &ForegroundWindowProcessID);
+				if (GetCurrentProcessId() == ForegroundWindowProcessID) {
+
+					processData.ID = GetCurrentProcessId();
+					processData.Handle = GetCurrentProcess();
+					processData.Hwnd = GetForegroundWindow();
+
+					RECT TempRect;
+					GetWindowRect(processData.Hwnd, &TempRect);
+					processData.WindowWidth = TempRect.right - TempRect.left;
+					processData.WindowHeight = TempRect.bottom - TempRect.top;
+
+					char TempTitle[MAX_PATH];
+					GetWindowTextA(processData.Hwnd, TempTitle, sizeof(TempTitle));
+					processData.Title = TempTitle;
+
+					char TempClassName[MAX_PATH];
+					GetClassNameA(processData.Hwnd, TempClassName, sizeof(TempClassName));
+					processData.ClassName = TempClassName;
+
+					char TempPath[MAX_PATH];
+					//GetModuleFileNameExA(processData.Handle, NULL, TempPath, sizeof(TempPath));
+					//processData.Path = TempPath;
+
+					WindowFocus = true;
+				}
+			}
+
+		}
 		void start(const char* pClassName, const char* pWindowName) {
+			captureWindow();
 			AllocConsole();
 			FILE* fp;
 			freopen_s(&fp, "CONOUT$", "w", stdout);
 			freopen_s(&fp, "CONOUT$", "w", stderr);
 			freopen_s(&fp, "CONIN$", "r", stdin);  		
-			mHwnd = FindWindowA(pClassName, pWindowName);
-   			while (!mHwnd)
-   			{
-   				this->mHwnd = FindWindowA(pClassName, pWindowName);
-   				Sleep(100);
-   			}
-   			Sleep(5000);
-			std::cout << "Find Window Success" << std::endl;
+			
+			std::cout<< "Find Window Success:" << processData.ClassName << std::endl;
    	
 			//g_methodsTable = (uint150_t*)::calloc(150, sizeof(uint150_t));
 			//::memcpy(g_methodsTable, *(uint150_t**)device, 44 * sizeof(uint150_t));
@@ -451,7 +456,7 @@ namespace MOON {
 			}
 
 			//	Finished
-			this->moWndProc = SetWindowLongPtrW(this->mHwnd, GWLP_WNDPROC, (LONG_PTR)WndProc);
+			processData.WndProc = (WNDPROC)SetWindowLongPtr(processData.Hwnd, GWLP_WNDPROC, (__int3264)(LONG_PTR)WndProc);
 			this->mInitFlag = TRUE;
 			this->initializeImGui(this->mDevice);
 			return TRUE;
@@ -530,7 +535,7 @@ namespace MOON {
 			// 加载中文字体
 			io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\simhei.ttf", 16.0f, nullptr, io.Fonts->GetGlyphRangesChineseFull());
 
-			ImGui_ImplWin32_Init(mHwnd);
+			ImGui_ImplWin32_Init(processData.Hwnd);
 			ImGui_ImplDX12_Init(pDevice, this->mBuffersCounts, DXGI_FORMAT_R8G8B8A8_UNORM, nullptr,
 				this->mDescriptorHeap->GetCPUDescriptorHandleForHeapStart(),
 				this->mDescriptorHeap->GetGPUDescriptorHandleForHeapStart());
@@ -557,7 +562,7 @@ namespace MOON {
 			ImGui_ImplDX12_Shutdown();
 			ImGui_ImplWin32_Shutdown();
 			ImGui::DestroyContext();
-			SetWindowLongPtr(this->mHwnd, GWLP_WNDPROC, (LONG_PTR)this->moWndProc);
+			SetWindowLongPtr(processData.Hwnd, GWLP_WNDPROC, (LONG_PTR)processData.WndProc);
 			this->mInitFlag = false;
 		}
 		ID3D12CommandQueue* getCommandQueue()
@@ -584,15 +589,17 @@ namespace MOON {
 		ID3D12DescriptorHeap* getDescriptorHeap() {
 			return mDescriptorHeap;
 		}
-		uint64_t getWndProc() {
-			return moWndProc;
+		WNDPROC getWndProc() {
+			return processData.WndProc;
 		}
 	private:
+		friend class Hook;
+		ProcessData processData;
 		friend Hook;
 		Hook* mSelf = nullptr;
 		bool mInitFlag = false;
-		HWND mHwnd = nullptr;
-		uint64_t moWndProc = 0;
+		
+		//uint64_t moWndProc = 0;
 		IDXGISwapChain3* mSwapchain3 = nullptr;
 		std::vector<_FrameContext> mFrameContext;
 
@@ -611,10 +618,18 @@ namespace MOON {
 		static Hook hook;
 		return &hook;
 	}
+	ProcessData& Hook::getProcessData()
+	{
+		return mInternal->processData;
+	}
 	void Hook::start(const char* pClassName, const char* pWindowName)
 	{
 		mInternal->start(pClassName,pWindowName);
     }
+	void Hook::shutdown()
+	{
+		kiero::shutdown();
+	}
 	bool Hook::getDevice(IDXGISwapChain* pSwapChain)
 	{
 		return mInternal->getDevice(pSwapChain);
@@ -656,7 +671,7 @@ namespace MOON {
 	{
 		return mInternal->getFrameContext(index);
 	}
-	uint64_t Hook::getWndProc() {
+	WNDPROC Hook::getWndProc() {
 		return mInternal->getWndProc();
 	}
 	Hook::Hook():mInternal(new HookInternal(this))
