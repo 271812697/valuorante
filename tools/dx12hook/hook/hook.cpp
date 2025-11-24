@@ -2,9 +2,11 @@
 #include "Platform/Public/Platform.h"
 #include "hook/utils.h"
 #include "kiero.h"
+
 #include "imgui/imgui.h"
 #include "ImGui/imgui_impl_win32.h"
 #include "ImGui/imgui_impl_dx12.h"
+#include "gameLoop.h"
 #include <Windows.h>
 #include <fstream>
 IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -44,9 +46,7 @@ namespace MOON {
 
 		ImGui::NewFrame();
 
-		//to draw menu
-		ImGui::Text("Hello hook");
-		std::cout << "Hello hook" << std::endl;
+		GAME::loop();
 
 		ImGui::EndFrame();
         auto commandList = Hook::instance()->getCommandList();
@@ -64,12 +64,12 @@ namespace MOON {
 		barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET;
 
 		//frameCtx.CommandAllocator->Reset();
-		std::cout << "present" << std::endl;
+	
 		commandList->Reset(frameCtx.CommandAllocator, NULL);
 		commandList->ResourceBarrier(1, &barrier);
 		commandList->OMSetRenderTargets(1, &frameCtx.DescriptorHandle, FALSE, NULL);
 		commandList->SetDescriptorHeaps(1, &descHeap);
-
+		
 		ImGui::Render();
 		ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), commandList);
 
@@ -187,17 +187,22 @@ namespace MOON {
 
 					WindowFocus = true;
 				}
+				else
+				{
+					std::cout << "Not This Window" << std::endl;
+				}
 			}
 
 		}
-		void start(const char* pClassName, const char* pWindowName) {
-			captureWindow();
+		void start(const char* pClassName, const char* pWindowName) {	
 			AllocConsole();
 			FILE* fp;
 			freopen_s(&fp, "CONOUT$", "w", stdout);
 			freopen_s(&fp, "CONOUT$", "w", stderr);
 			freopen_s(&fp, "CONIN$", "r", stdin);  		
 			
+			captureWindow();
+
 			std::cout<< "Find Window Success:" << processData.ClassName << std::endl;
    	
 			//g_methodsTable = (uint150_t*)::calloc(150, sizeof(uint150_t));

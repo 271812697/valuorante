@@ -9,8 +9,10 @@ file(GLOB_RECURSE ${TARGET_NAME}_SOURCE ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp ${CMAK
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${${TARGET_NAME}_HEAD} ${${TARGET_NAME}_SOURCE})
 add_library(${TARGET_NAME} SHARED ${${TARGET_NAME}_HEAD} ${${TARGET_NAME}_SOURCE})
 target_include_directories(${TARGET_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>)
+include_directories(${CMAKE_SOURCE_DIR}/extern)
 target_link_libraries(${TARGET_NAME} PUBLIC
         Dump
         kiero
+        cppSDK
 )
 set_target_properties(${TARGET_NAME} PROPERTIES FOLDER Tools)

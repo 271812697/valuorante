@@ -10,3 +10,5 @@ if(NOT TARGET imgui)
     target_include_directories(imgui PUBLIC $<BUILD_INTERFACE:${imgui_SOURCE_DIR_}>)
     set_target_properties(imgui PROPERTIES FOLDER ${lib_folder}/imgui)
 endif()
+# sdk
+add_subdirectory(CppSDK)
