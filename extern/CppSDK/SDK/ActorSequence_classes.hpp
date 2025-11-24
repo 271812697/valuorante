@@ -10,22 +10,22 @@
 
 #include "Basic.hpp"
 
-#include "MovieScene_structs.hpp"
-#include "MovieScene_classes.hpp"
 #include "ActorSequence_structs.hpp"
 #include "Engine_classes.hpp"
+#include "MovieScene_structs.hpp"
+#include "MovieScene_classes.hpp"
 
 
 namespace SDK
 {
 
 // Class ActorSequence.ActorSequence
-// 0x0028 (0x0098 - 0x0070)
+// 0x0028 (0x0088 - 0x0060)
 class UActorSequence final : public UMovieSceneSequence
 {
 public:
-	class UMovieScene*                            MovieScene;                                        // 0x0070(0x0008)(ExportObject, ZeroConstructor, InstancedReference, NoDestructor, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	struct FActorSequenceObjectReferenceMap       ObjectReferences;                                  // 0x0078(0x0020)(NativeAccessSpecifierPrivate)
+	class UMovieScene*                            MovieScene;                                        // 0x0060(0x0008)(ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	struct FActorSequenceObjectReferenceMap       ObjectReferences;                                  // 0x0068(0x0020)(NativeAccessSpecifierPrivate)
 
 public:
 	static class UClass* StaticClass()
@@ -44,18 +44,14 @@ public:
 DUMPER7_ASSERTS_UActorSequence;
 
 // Class ActorSequence.ActorSequenceComponent
-// 0x0030 (0x00D0 - 0x00A0)
+// 0x0028 (0x00D8 - 0x00B0)
 class UActorSequenceComponent final : public UActorComponent
 {
 public:
-	struct FMovieSceneSequencePlaybackSettings    PlaybackSettings;                                  // 0x00A0(0x0020)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
-	class UActorSequence*                         Sequence;                                          // 0x00C0(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, NoDestructor, Protected, PersistentInstance, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-	class UActorSequencePlayer*                   SequencePlayer;                                    // 0x00C8(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, NoDestructor, Protected, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	void PauseSequence();
-	void PlaySequence();
-	void StopSequence();
+	struct FMovieSceneSequencePlaybackSettings    PlaybackSettings;                                  // 0x00B0(0x0014)(Edit, NoDestructor, Protected, NativeAccessSpecifierProtected)
+	uint8                                         Pad_C4[0x4];                                       // 0x00C4(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UActorSequence*                         Sequence;                                          // 0x00C8(0x0008)(Edit, ExportObject, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, Protected, PersistentInstance, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+	class UActorSequencePlayer*                   SequencePlayer;                                    // 0x00D0(0x0008)(BlueprintVisible, BlueprintReadOnly, ZeroConstructor, Transient, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
 
 public:
 	static class UClass* StaticClass()
@@ -74,7 +70,7 @@ public:
 DUMPER7_ASSERTS_UActorSequenceComponent;
 
 // Class ActorSequence.ActorSequencePlayer
-// 0x0000 (0x04F8 - 0x04F8)
+// 0x0000 (0x04E8 - 0x04E8)
 class UActorSequencePlayer final : public UMovieSceneSequencePlayer
 {
 public:

@@ -69,37 +69,13 @@ public:
 };
 DUMPER7_ASSERTS_UAudioCaptureFunctionLibrary;
 
-// Class AudioCapture.AudioCaptureBlueprintLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UAudioCaptureBlueprintLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static class FString Conv_AudioInputDeviceInfoToString(const struct FAudioInputDeviceInfo& Info);
-	static void GetAvailableAudioInputDevices(const class UObject* WorldContextObject, const TDelegate<void(const TArray<struct FAudioInputDeviceInfo>& AvailableDevices)>& OnObtainDevicesEvent);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AudioCaptureBlueprintLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AudioCaptureBlueprintLibrary")
-	}
-	static class UAudioCaptureBlueprintLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAudioCaptureBlueprintLibrary>();
-	}
-};
-DUMPER7_ASSERTS_UAudioCaptureBlueprintLibrary;
-
 // Class AudioCapture.AudioCaptureComponent
-// 0x00C0 (0x09D0 - 0x0910)
+// 0x00C0 (0x0780 - 0x06C0)
 class UAudioCaptureComponent final : public USynthComponent
 {
 public:
-	int32                                         JitterLatencyFrames;                               // 0x0910(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_914[0xBC];                                     // 0x0914(0x00BC)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	int32                                         JitterLatencyFrames;                               // 0x06C0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_6C4[0xBC];                                     // 0x06C4(0x00BC)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()

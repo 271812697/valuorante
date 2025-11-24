@@ -100,12 +100,12 @@ public:
 DUMPER7_ASSERTS_MobilePendingContent_GetTotalDownloadedSize;
 
 // Function MobilePatchingUtils.MobilePendingContent.StartInstall
-// 0x0030 (0x0030 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct MobilePendingContent_StartInstall final
 {
 public:
-	TDelegate<void()>                             OnSucceeded;                                       // 0x0000(0x0018)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TDelegate<void(class FText ErrorText, int32 ErrorCode)> OnFailed;                                // 0x0018(0x0018)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TDelegate<void()>                             OnSucceeded;                                       // 0x0000(0x0010)(Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+	TDelegate<void(class FText ErrorText, int32 ErrorCode)> OnFailed;                                // 0x0010(0x0010)(Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_MobilePendingContent_StartInstall;
 
@@ -124,7 +124,7 @@ struct MobilePatchingLibrary_GetInstalledContent final
 {
 public:
 	class FString                                 InstallDirectory;                                  // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class UMobileInstalledContent*                ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UMobileInstalledContent*                ReturnValue;                                       // 0x0010(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_MobilePatchingLibrary_GetInstalledContent;
 
@@ -147,15 +147,15 @@ public:
 DUMPER7_ASSERTS_MobilePatchingLibrary_HasActiveWiFiConnection;
 
 // Function MobilePatchingUtils.MobilePatchingLibrary.RequestContent
-// 0x0060 (0x0060 - 0x0000)
+// 0x0050 (0x0050 - 0x0000)
 struct MobilePatchingLibrary_RequestContent final
 {
 public:
 	class FString                                 RemoteManifestURL;                                 // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class FString                                 CloudURL;                                          // 0x0010(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class FString                                 InstallDirectory;                                  // 0x0020(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TDelegate<void(class UMobilePendingContent* MobilePendingContent)> OnSucceeded;                  // 0x0030(0x0018)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TDelegate<void(class FText ErrorText, int32 ErrorCode)> OnFailed;                                // 0x0048(0x0018)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TDelegate<void(class UMobilePendingContent* MobilePendingContent)> OnSucceeded;                  // 0x0030(0x0010)(Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
+	TDelegate<void(class FText ErrorText, int32 ErrorCode)> OnFailed;                                // 0x0040(0x0010)(Parm, ZeroConstructor, NoDestructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_MobilePatchingLibrary_RequestContent;
 

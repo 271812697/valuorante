@@ -16,117 +16,83 @@
 namespace SDK
 {
 
-// Enum Chaos.ChaosDeformableSimSpace
-// NumValues: 0x0004
-enum class EChaosDeformableSimSpace : uint8
+// Enum Chaos.EClusterUnionMethod
+// NumValues: 0x0006
+enum class EClusterUnionMethod : uint8
 {
-	World                                    = 0,
-	ComponentXf                              = 1,
-	bone                                     = 2,
-	ChaosDeformableSimSpace_MAX              = 3,
+	PointImplicit                            = 0,
+	DelaunayTriangulation                    = 1,
+	MinimalSpanningSubsetDelaunayTriangulation = 2,
+	PointImplicitAugmentedWithMinimalDelaunay = 3,
+	None                                     = 4,
+	EClusterUnionMethod_MAX                  = 5,
 };
 
-// Enum Chaos.ESetMaskConditionType
-// NumValues: 0x0005
-enum class ESetMaskConditionType : uint8
-{
-	Field_Set_Always                         = 0,
-	Field_Set_IFF_NOT_Interior               = 1,
-	Field_Set_IFF_NOT_Exterior               = 2,
-	Field_MaskCondition_Max                  = 3,
-	Field_MAX                                = 4,
-};
-
-// Enum Chaos.EWaveFunctionType
-// NumValues: 0x0005
-enum class EWaveFunctionType : uint8
-{
-	Field_Wave_Cosine                        = 0,
-	Field_Wave_Gaussian                      = 1,
-	Field_Wave_Falloff                       = 2,
-	Field_Wave_Decay                         = 3,
-	Field_Wave_Max                           = 4,
-};
-
-// Enum Chaos.EFieldOperationType
-// NumValues: 0x0005
-enum class EFieldOperationType : uint8
-{
-	Field_Multiply                           = 0,
-	Field_Divide                             = 1,
-	Field_Add                                = 2,
-	Field_Substract                          = 3,
-	Field_Operation_Max                      = 4,
-};
-
-// Enum Chaos.EFieldCullingOperationType
-// NumValues: 0x0004
-enum class EFieldCullingOperationType : uint8
-{
-	Field_Culling_Inside                     = 0,
-	Field_Culling_Outside                    = 1,
-	Field_Culling_Operation_Max              = 2,
-	Field_Culling_MAX                        = 3,
-};
-
-// Enum Chaos.EFieldResolutionType
-// NumValues: 0x0004
-enum class EFieldResolutionType : uint8
-{
-	Field_Resolution_Minimal                 = 0,
-	Field_Resolution_DisabledParents         = 1,
-	Field_Resolution_Maximum                 = 2,
-	Field_Resolution_Max                     = 3,
-};
-
-// Enum Chaos.EFieldFilterType
+// Enum Chaos.EFieldPhysicsDefaultFields
 // NumValues: 0x0007
-enum class EFieldFilterType : uint8
+enum class EFieldPhysicsDefaultFields : uint8
 {
-	Field_Filter_Dynamic                     = 0,
-	Field_Filter_Kinematic                   = 1,
-	Field_Filter_Static                      = 2,
-	Field_Filter_All                         = 3,
-	Field_Filter_Sleeping                    = 4,
-	Field_Filter_Disabled                    = 5,
-	Field_Filter_Max                         = 6,
+	Field_RadialIntMask                      = 0,
+	Field_RadialFalloff                      = 1,
+	Field_UniformVector                      = 2,
+	Field_RadialVector                       = 3,
+	Field_RadialVectorFalloff                = 4,
+	Field_EFieldPhysicsDefaultFields_Max     = 5,
+	Field_MAX                                = 6,
 };
 
-// Enum Chaos.EFieldObjectType
-// NumValues: 0x0006
-enum class EFieldObjectType : uint8
+// Enum Chaos.EFieldOutputType
+// NumValues: 0x0004
+enum class EFieldOutputType : uint8
 {
-	Field_Object_Rigid                       = 0,
-	Field_Object_Cloth                       = 1,
-	Field_Object_Destruction                 = 2,
-	Field_Object_Character                   = 3,
-	Field_Object_All                         = 4,
-	Field_Object_Max                         = 5,
+	Field_Output_Vector                      = 0,
+	Field_Output_Scalar                      = 1,
+	Field_Output_Integer                     = 2,
+	Field_Output_Max                         = 3,
 };
 
-// Enum Chaos.EFieldPositionType
-// NumValues: 0x0003
-enum class EFieldPositionType : uint8
+// Enum Chaos.EFieldIntegerType
+// NumValues: 0x0007
+enum class EFieldIntegerType : uint8
 {
-	Field_Position_CenterOfMass              = 0,
-	Field_Position_PivotPoint                = 1,
-	Field_Position_Max                       = 2,
+	Integer_DynamicState                     = 0,
+	Integer_ActivateDisabled                 = 1,
+	Integer_CollisionGroup                   = 2,
+	Integer_PositionAnimated                 = 3,
+	Integer_PositionStatic                   = 4,
+	Integer_TargetMax                        = 5,
+	Integer_MAX                              = 6,
 };
 
-// Enum Chaos.EFieldFalloffType
-// NumValues: 0x0006
-enum class EFieldFalloffType : uint8
+// Enum Chaos.EFieldScalarType
+// NumValues: 0x0008
+enum class EFieldScalarType : uint8
 {
-	Field_FallOff_None                       = 0,
-	Field_Falloff_Linear                     = 1,
-	Field_Falloff_Inverse                    = 2,
-	Field_Falloff_Squared                    = 3,
-	Field_Falloff_Logarithmic                = 4,
-	Field_Falloff_Max                        = 5,
+	Scalar_ExternalClusterStrain             = 0,
+	Scalar_Kill                              = 1,
+	Scalar_DisableThreshold                  = 2,
+	Scalar_SleepingThreshold                 = 3,
+	Scalar_InternalClusterStrain             = 4,
+	Scalar_DynamicConstraint                 = 5,
+	Scalar_TargetMax                         = 6,
+	Scalar_MAX                               = 7,
+};
+
+// Enum Chaos.EFieldVectorType
+// NumValues: 0x0007
+enum class EFieldVectorType : uint8
+{
+	Vector_LinearForce                       = 0,
+	Vector_LinearVelocity                    = 1,
+	Vector_AngularVelocity                   = 2,
+	Vector_AngularTorque                     = 3,
+	Vector_PositionTarget                    = 4,
+	Vector_TargetMax                         = 5,
+	Vector_MAX                               = 6,
 };
 
 // Enum Chaos.EFieldPhysicsType
-// NumValues: 0x0015
+// NumValues: 0x0012
 enum class EFieldPhysicsType : uint8
 {
 	Field_None                               = 0,
@@ -146,155 +112,115 @@ enum class EFieldPhysicsType : uint8
 	Field_DynamicConstraint                  = 14,
 	Field_CollisionGroup                     = 15,
 	Field_ActivateDisabled                   = 16,
-	Field_InitialLinearVelocity              = 17,
-	Field_InitialAngularVelocity             = 18,
-	Field_LinearImpulse                      = 19,
-	Field_PhysicsType_Max                    = 20,
+	Field_PhysicsType_Max                    = 17,
 };
 
-// Enum Chaos.EFieldVectorType
-// NumValues: 0x000A
-enum class EFieldVectorType : uint8
-{
-	Vector_LinearForce                       = 0,
-	Vector_LinearVelocity                    = 1,
-	Vector_AngularVelocity                   = 2,
-	Vector_AngularTorque                     = 3,
-	Vector_PositionTarget                    = 4,
-	Vector_InitialLinearVelocity             = 5,
-	Vector_InitialAngularVelocity            = 6,
-	Vector_LinearImpulse                     = 7,
-	Vector_TargetMax                         = 8,
-	Vector_MAX                               = 9,
-};
-
-// Enum Chaos.EFieldScalarType
-// NumValues: 0x0008
-enum class EFieldScalarType : uint8
-{
-	Scalar_ExternalClusterStrain             = 0,
-	Scalar_Kill                              = 1,
-	Scalar_DisableThreshold                  = 2,
-	Scalar_SleepingThreshold                 = 3,
-	Scalar_InternalClusterStrain             = 4,
-	Scalar_DynamicConstraint                 = 5,
-	Scalar_TargetMax                         = 6,
-	Scalar_MAX                               = 7,
-};
-
-// Enum Chaos.EFieldIntegerType
-// NumValues: 0x0007
-enum class EFieldIntegerType : uint8
-{
-	Integer_DynamicState                     = 0,
-	Integer_ActivateDisabled                 = 1,
-	Integer_CollisionGroup                   = 2,
-	Integer_PositionAnimated                 = 3,
-	Integer_PositionStatic                   = 4,
-	Integer_TargetMax                        = 5,
-	Integer_MAX                              = 6,
-};
-
-// Enum Chaos.EFieldOutputType
-// NumValues: 0x0004
-enum class EFieldOutputType : uint8
-{
-	Field_Output_Vector                      = 0,
-	Field_Output_Scalar                      = 1,
-	Field_Output_Integer                     = 2,
-	Field_Output_Max                         = 3,
-};
-
-// Enum Chaos.EFieldPhysicsDefaultFields
+// Enum Chaos.EFieldFalloffType
 // NumValues: 0x0006
-enum class EFieldPhysicsDefaultFields : uint8
+enum class EFieldFalloffType : uint8
 {
-	Field_RadialIntMask                      = 0,
-	Field_RadialFalloff                      = 1,
-	Field_UniformVector                      = 2,
-	Field_RadialVector                       = 3,
-	Field_RadialVectorFalloff                = 4,
-	Field_EFieldPhysicsDefaultFields_Max     = 5,
+	Field_FallOff_None                       = 0,
+	Field_Falloff_Linear                     = 1,
+	Field_Falloff_Inverse                    = 2,
+	Field_Falloff_Squared                    = 3,
+	Field_Falloff_Logarithmic                = 4,
+	Field_Falloff_Max                        = 5,
 };
 
-// Enum Chaos.EConvexOverlapRemoval
+// Enum Chaos.EFieldFilterType
 // NumValues: 0x0005
-enum class EConvexOverlapRemoval : uint8
+enum class EFieldFilterType : uint8
 {
-	None                                     = 0,
-	All                                      = 1,
-	OnlyClusters                             = 2,
-	OnlyClustersVsClusters                   = 3,
-	EConvexOverlapRemoval_MAX                = 4,
+	Field_Filter_Dynamic                     = 0,
+	Field_Filter_Kinematic                   = 1,
+	Field_Filter_Static                      = 2,
+	Field_Filter_All                         = 3,
+	Field_Filter_Max                         = 4,
 };
 
-// Enum Chaos.EGenerateConvexMethod
+// Enum Chaos.EFieldResolutionType
 // NumValues: 0x0004
-enum class EGenerateConvexMethod : uint8
+enum class EFieldResolutionType : uint8
 {
-	ExternalCollision                        = 0,
-	ComputedFromGeometry                     = 1,
-	IntersectExternalWithComputed            = 2,
-	EGenerateConvexMethod_MAX                = 3,
+	Field_Resolution_Minimal                 = 0,
+	Field_Resolution_DisabledParents         = 1,
+	Field_Resolution_Maximum                 = 2,
+	Field_Resolution_Max                     = 3,
 };
 
-// Enum Chaos.EAllowConvexMergeMethod
-// NumValues: 0x0003
-enum class EAllowConvexMergeMethod : uint8
-{
-	ByProximity                              = 0,
-	Any                                      = 1,
-	EAllowConvexMergeMethod_MAX              = 2,
-};
-
-// Enum Chaos.EProximityMethod
-// NumValues: 0x0003
-enum class EProximityMethod : uint8
-{
-	Precise                                  = 0,
-	ConvexHull                               = 1,
-	EProximityMethod_MAX                     = 2,
-};
-
-// Enum Chaos.EProximityContactMethod
+// Enum Chaos.EFieldCullingOperationType
 // NumValues: 0x0004
-enum class EProximityContactMethod : uint8
+enum class EFieldCullingOperationType : uint8
 {
-	MinOverlapInProjectionToMajorAxes        = 0,
-	ConvexHullSharpContact                   = 1,
-	ConvexHullAreaContact                    = 2,
-	EProximityContactMethod_MAX              = 3,
+	Field_Culling_Inside                     = 0,
+	Field_Culling_Outside                    = 1,
+	Field_Culling_Operation_Max              = 2,
+	Field_Culling_MAX                        = 3,
 };
 
-// Enum Chaos.EConnectionContactMethod
-// NumValues: 0x0003
-enum class EConnectionContactMethod : uint8
+// Enum Chaos.EFieldOperationType
+// NumValues: 0x0005
+enum class EFieldOperationType : uint8
 {
-	None                                     = 0,
-	ConvexHullContactArea                    = 1,
-	EConnectionContactMethod_MAX             = 2,
+	Field_Multiply                           = 0,
+	Field_Divide                             = 1,
+	Field_Add                                = 2,
+	Field_Substract                          = 3,
+	Field_Operation_Max                      = 4,
 };
 
-// Enum Chaos.ECollisionTypeEnum
-// NumValues: 0x0003
-enum class ECollisionTypeEnum : uint8
+// Enum Chaos.EWaveFunctionType
+// NumValues: 0x0005
+enum class EWaveFunctionType : uint8
 {
-	Chaos_Volumetric                         = 0,
-	Chaos_Surface_Volumetric                 = 1,
+	Field_Wave_Cosine                        = 0,
+	Field_Wave_Gaussian                      = 1,
+	Field_Wave_Falloff                       = 2,
+	Field_Wave_Decay                         = 3,
+	Field_Wave_Max                           = 4,
+};
+
+// Enum Chaos.ESetMaskConditionType
+// NumValues: 0x0004
+enum class ESetMaskConditionType : uint8
+{
+	Field_Set_Always                         = 0,
+	Field_Set_IFF_NOT_Interior               = 1,
+	Field_Set_IFF_NOT_Exterior               = 2,
+	Field_MaskCondition_Max                  = 3,
+};
+
+// Enum Chaos.EEmissionPatternTypeEnum
+// NumValues: 0x0003
+enum class EEmissionPatternTypeEnum : uint8
+{
+	Chaos_Emission_Pattern_First_Frame       = 0,
+	Chaos_Emission_Pattern_On_Demand         = 1,
 	Chaos_Max                                = 2,
 };
 
-// Enum Chaos.EImplicitTypeEnum
-// NumValues: 0x0007
-enum class EImplicitTypeEnum : uint8
+// Enum Chaos.EInitialVelocityTypeEnum
+// NumValues: 0x0003
+enum class EInitialVelocityTypeEnum : uint8
 {
-	Chaos_Implicit_Box                       = 0,
-	Chaos_Implicit_Sphere                    = 1,
-	Chaos_Implicit_Capsule                   = 2,
-	Chaos_Implicit_LevelSet                  = 3,
-	Chaos_Implicit_None                      = 4,
-	Chaos_Implicit_Convex                    = 5,
-	Chaos_Max                                = 6,
+	Chaos_Initial_Velocity_User_Defined      = 0,
+	Chaos_Initial_Velocity_None              = 1,
+	Chaos_Max                                = 2,
+};
+
+// Enum Chaos.EGeometryCollectionPhysicsTypeEnum
+// NumValues: 0x0009
+enum class EGeometryCollectionPhysicsTypeEnum : uint8
+{
+	Chaos_AngularVelocity                    = 0,
+	Chaos_DynamicState                       = 1,
+	Chaos_LinearVelocity                     = 2,
+	Chaos_InitialAngularVelocity             = 3,
+	Chaos_InitialLinearVelocity              = 4,
+	Chaos_CollisionGroup                     = 5,
+	Chaos_LinearForce                        = 6,
+	Chaos_AngularTorque                      = 7,
+	Chaos_Max                                = 8,
 };
 
 // Enum Chaos.EObjectStateTypeEnum
@@ -310,62 +236,36 @@ enum class EObjectStateTypeEnum : uint8
 	Chaos_Max                                = 101,
 };
 
-// Enum Chaos.EGeometryCollectionPhysicsTypeEnum
-// NumValues: 0x000E
-enum class EGeometryCollectionPhysicsTypeEnum : uint8
+// Enum Chaos.EImplicitTypeEnum
+// NumValues: 0x0006
+enum class EImplicitTypeEnum : uint8
 {
-	Chaos_AngularVelocity                    = 0,
-	Chaos_DynamicState                       = 1,
-	Chaos_LinearVelocity                     = 2,
-	Chaos_InitialAngularVelocity             = 3,
-	Chaos_InitialLinearVelocity              = 4,
-	Chaos_CollisionGroup                     = 5,
-	Chaos_LinearForce                        = 6,
-	Chaos_AngularTorque                      = 7,
-	Chaos_DisableThreshold                   = 8,
-	Chaos_SleepingThreshold                  = 9,
-	Chaos_ExternalClusterStrain              = 10,
-	Chaos_InternalClusterStrain              = 11,
-	Chaos_LinearImpulse                      = 12,
-	Chaos_Max                                = 13,
+	Chaos_Implicit_Box                       = 0,
+	Chaos_Implicit_Sphere                    = 1,
+	Chaos_Implicit_Capsule                   = 2,
+	Chaos_Implicit_LevelSet                  = 3,
+	Chaos_Implicit_None                      = 4,
+	Chaos_Max                                = 5,
 };
 
-// Enum Chaos.EInitialVelocityTypeEnum
+// Enum Chaos.ECollisionTypeEnum
 // NumValues: 0x0003
-enum class EInitialVelocityTypeEnum : uint8
+enum class ECollisionTypeEnum : uint8
 {
-	Chaos_Initial_Velocity_User_Defined      = 0,
-	Chaos_Initial_Velocity_None              = 1,
+	Chaos_Volumetric                         = 0,
+	Chaos_Surface_Volumetric                 = 1,
 	Chaos_Max                                = 2,
 };
 
-// Enum Chaos.EEmissionPatternTypeEnum
-// NumValues: 0x0003
-enum class EEmissionPatternTypeEnum : uint8
-{
-	Chaos_Emission_Pattern_First_Frame       = 0,
-	Chaos_Emission_Pattern_On_Demand         = 1,
-	Chaos_Max                                = 2,
-};
-
-// Enum Chaos.EDamageModelTypeEnum
-// NumValues: 0x0003
-enum class EDamageModelTypeEnum : uint8
-{
-	Chaos_Damage_Model_UserDefined_Damage_Threshold = 0,
-	Chaos_Damage_Model_Material_Strength_And_Connectivity_DamageThreshold = 1,
-	Chaos_Max                                = 2,
-};
-
-// Enum Chaos.EChaosSolverTickMode
+// Enum Chaos.EChaosBufferMode
 // NumValues: 0x0005
-enum class EChaosSolverTickMode : uint8
+enum class EChaosBufferMode : uint8
 {
-	Fixed                                    = 0,
-	Variable                                 = 1,
-	VariableCapped                           = 2,
-	VariableCappedWithTarget                 = 3,
-	EChaosSolverTickMode_MAX                 = 4,
+	Double                                   = 0,
+	Triple                                   = 1,
+	Num                                      = 2,
+	Invalid                                  = 3,
+	EChaosBufferMode_MAX                     = 4,
 };
 
 // Enum Chaos.EChaosThreadingMode
@@ -380,28 +280,15 @@ enum class EChaosThreadingMode : uint8
 	EChaosThreadingMode_MAX                  = 5,
 };
 
-// Enum Chaos.EChaosBufferMode
+// Enum Chaos.EChaosSolverTickMode
 // NumValues: 0x0005
-enum class EChaosBufferMode : uint8
+enum class EChaosSolverTickMode : uint8
 {
-	Double                                   = 0,
-	Triple                                   = 1,
-	Num                                      = 2,
-	Invalid                                  = 3,
-	EChaosBufferMode_MAX                     = 4,
-};
-
-// Enum Chaos.EClusterUnionMethod
-// NumValues: 0x0007
-enum class EClusterUnionMethod : uint8
-{
-	PointImplicit                            = 0,
-	DelaunayTriangulation                    = 1,
-	MinimalSpanningSubsetDelaunayTriangulation = 2,
-	PointImplicitAugmentedWithMinimalDelaunay = 3,
-	BoundsOverlapFilteredDelaunayTriangulation = 4,
-	None                                     = 5,
-	EClusterUnionMethod_MAX                  = 6,
+	Fixed                                    = 0,
+	Variable                                 = 1,
+	VariableCapped                           = 2,
+	VariableCappedWithTarget                 = 3,
+	EChaosSolverTickMode_MAX                 = 4,
 };
 
 // Enum Chaos.EGeometryCollectionCacheType
@@ -414,15 +301,6 @@ enum class EGeometryCollectionCacheType : uint8
 	RecordAndPlay                            = 3,
 	EGeometryCollectionCacheType_MAX         = 4,
 };
-
-// ScriptStruct Chaos.ClosestPhysicsObjectResult
-// 0x0028 (0x0028 - 0x0000)
-struct alignas(0x08) FClosestPhysicsObjectResult final
-{
-public:
-	uint8                                         Pad_0[0x28];                                       // 0x0000(0x0028)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FClosestPhysicsObjectResult;
 
 // ScriptStruct Chaos.SolverCollisionFilterSettings
 // 0x0010 (0x0010 - 0x0000)
@@ -468,88 +346,77 @@ DUMPER7_ASSERTS_FSolverTrailingFilterSettings;
 struct FChaosSolverConfiguration final
 {
 public:
-	int32                                         PositionIterations;                                // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         VelocityIterations;                                // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ProjectionIterations;                              // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CollisionMarginFraction;                           // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CollisionMarginMax;                                // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CollisionCullDistance;                             // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         CollisionMaxPushOutVelocity;                       // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         ClusterConnectionFactor;                           // 0x001C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	EClusterUnionMethod                           ClusterUnionConnectionType;                        // 0x0020(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bGenerateCollisionData;                            // 0x0021(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_22[0x2];                                       // 0x0022(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSolverCollisionFilterSettings         CollisionFilterSettings;                           // 0x0024(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          bGenerateBreakData;                                // 0x0034(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_35[0x3];                                       // 0x0035(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSolverBreakingFilterSettings          BreakingFilterSettings;                            // 0x0038(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	bool                                          bGenerateTrailingData;                             // 0x0048(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_49[0x3];                                       // 0x0049(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSolverTrailingFilterSettings          TrailingFilterSettings;                            // 0x004C(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
-	int32                                         Iterations;                                        // 0x005C(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	int32                                         PushOutIterations;                                 // 0x0060(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
-	bool                                          bGenerateContactGraph;                             // 0x0064(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	int32                                         Iterations;                                        // 0x0000(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         CollisionPairIterations;                           // 0x0004(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         PushOutIterations;                                 // 0x0008(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         CollisionPushOutPairIterations;                    // 0x000C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CollisionMarginFraction;                           // 0x0010(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CollisionMarginMax;                                // 0x0014(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         CollisionCullDistance;                             // 0x0018(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         JointPairIterations;                               // 0x001C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         JointPushOutPairIterations;                        // 0x0020(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         ClusterConnectionFactor;                           // 0x0024(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	EClusterUnionMethod                           ClusterUnionConnectionType;                        // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bGenerateCollisionData;                            // 0x0029(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2A[0x2];                                       // 0x002A(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSolverCollisionFilterSettings         CollisionFilterSettings;                           // 0x002C(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          bGenerateBreakData;                                // 0x003C(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_3D[0x3];                                       // 0x003D(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSolverBreakingFilterSettings          BreakingFilterSettings;                            // 0x0040(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          bGenerateTrailingData;                             // 0x0050(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_51[0x3];                                       // 0x0051(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSolverTrailingFilterSettings          TrailingFilterSettings;                            // 0x0054(0x0010)(Edit, NoDestructor, NativeAccessSpecifierPublic)
+	bool                                          bGenerateContactGraph;                             // 0x0064(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_65[0x3];                                       // 0x0065(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FChaosSolverConfiguration;
 
-// ScriptStruct Chaos.ManagedArrayCollection
-// 0x00B0 (0x00B0 - 0x0000)
-struct alignas(0x08) FManagedArrayCollection final
-{
-public:
-	uint8                                         Pad_0[0xB0];                                       // 0x0000(0x00B0)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FManagedArrayCollection;
-
 // ScriptStruct Chaos.SolverCollisionData
-// 0x00C0 (0x00C0 - 0x0000)
+// 0x006C (0x006C - 0x0000)
 struct FSolverCollisionData final
 {
 public:
-	struct FVector                                Location;                                          // 0x0000(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                AccumulatedImpulse;                                // 0x0018(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Normal;                                            // 0x0030(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Velocity1;                                         // 0x0048(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Velocity2;                                         // 0x0060(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                AngularVelocity1;                                  // 0x0078(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                AngularVelocity2;                                  // 0x0090(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Mass1;                                             // 0x00A8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Mass2;                                             // 0x00AC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParticleIndex;                                     // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         LevelsetIndex;                                     // 0x00B4(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParticleIndexMesh;                                 // 0x00B8(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         LevelsetIndexMesh;                                 // 0x00BC(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Location;                                          // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                AccumulatedImpulse;                                // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Normal;                                            // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Velocity1;                                         // 0x0024(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Velocity2;                                         // 0x0030(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                AngularVelocity1;                                  // 0x003C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                AngularVelocity2;                                  // 0x0048(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Mass1;                                             // 0x0054(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Mass2;                                             // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParticleIndex;                                     // 0x005C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         LevelsetIndex;                                     // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParticleIndexMesh;                                 // 0x0064(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         LevelsetIndexMesh;                                 // 0x0068(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSolverCollisionData;
 
 // ScriptStruct Chaos.SolverBreakingData
-// 0x0058 (0x0058 - 0x0000)
+// 0x0030 (0x0030 - 0x0000)
 struct FSolverBreakingData final
 {
 public:
-	struct FVector                                Location;                                          // 0x0000(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Velocity;                                          // 0x0018(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                AngularVelocity;                                   // 0x0030(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Mass;                                              // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParticleIndex;                                     // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParticleIndexMesh;                                 // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Location;                                          // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Velocity;                                          // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                AngularVelocity;                                   // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Mass;                                              // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParticleIndex;                                     // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParticleIndexMesh;                                 // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSolverBreakingData;
 
 // ScriptStruct Chaos.SolverTrailingData
-// 0x0058 (0x0058 - 0x0000)
+// 0x0030 (0x0030 - 0x0000)
 struct FSolverTrailingData final
 {
 public:
-	struct FVector                                Location;                                          // 0x0000(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                Velocity;                                          // 0x0018(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                AngularVelocity;                                   // 0x0030(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Mass;                                              // 0x0048(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParticleIndex;                                     // 0x004C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         ParticleIndexMesh;                                 // 0x0050(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_54[0x4];                                       // 0x0054(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                Location;                                          // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                Velocity;                                          // 0x000C(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                AngularVelocity;                                   // 0x0018(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Mass;                                              // 0x0024(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParticleIndex;                                     // 0x0028(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ParticleIndexMesh;                                 // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSolverTrailingData;
 
@@ -565,7 +432,7 @@ public:
 	TArray<struct FSolverCollisionData>           Collisions;                                        // 0x0040(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FSolverBreakingData>            Breakings;                                         // 0x0050(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 	TSet<struct FSolverTrailingData>              Trailings;                                         // 0x0060(0x0050)(NativeAccessSpecifierPublic)
-	float                                         Timestamp;                                         // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         timestamp;                                         // 0x00B0(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_B4[0x4];                                       // 0x00B4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FRecordedFrame;
@@ -578,18 +445,6 @@ public:
 	TArray<struct FRecordedFrame>                 Records;                                           // 0x0000(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FRecordedTransformTrack;
-
-// ScriptStruct Chaos.SolverRemovalFilterSettings
-// 0x000C (0x000C - 0x0000)
-struct FSolverRemovalFilterSettings final
-{
-public:
-	bool                                          FilterEnabled;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         MinMass;                                           // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MinVolume;                                         // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSolverRemovalFilterSettings;
 
 }
 

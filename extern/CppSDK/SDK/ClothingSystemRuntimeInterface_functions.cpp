@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.ClothConfigUpdated
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 
 void UClothingSimulationInteractor::ClothConfigUpdated()
 {
@@ -37,7 +37,7 @@ void UClothingSimulationInteractor::ClothConfigUpdated()
 
 
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.DisableGravityOverride
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 
 void UClothingSimulationInteractor::DisableGravityOverride()
 {
@@ -56,7 +56,7 @@ void UClothingSimulationInteractor::DisableGravityOverride()
 
 
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.EnableGravityOverride
-// (RequiredAPI, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// (Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
 // Parameters:
 // const struct FVector&                   InVector                                               (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -81,7 +81,7 @@ void UClothingSimulationInteractor::EnableGravityOverride(const struct FVector& 
 
 
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.PhysicsAssetUpdated
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 
 void UClothingSimulationInteractor::PhysicsAssetUpdated()
 {
@@ -100,7 +100,7 @@ void UClothingSimulationInteractor::PhysicsAssetUpdated()
 
 
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.SetAnimDriveSpringStiffness
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 // Parameters:
 // float                                   InStiffness                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -124,33 +124,8 @@ void UClothingSimulationInteractor::SetAnimDriveSpringStiffness(float InStiffnes
 }
 
 
-// Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.SetMaxNumIterations
-// (RequiredAPI, Native, Public, BlueprintCallable)
-// Parameters:
-// int32                                   MaxNumIterations                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UClothingSimulationInteractor::SetMaxNumIterations(int32 MaxNumIterations)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ClothingSimulationInteractor", "SetMaxNumIterations");
-
-	Params::ClothingSimulationInteractor_SetMaxNumIterations Parms{};
-
-	Parms.MaxNumIterations = MaxNumIterations;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.SetNumIterations
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 // Parameters:
 // int32                                   NumIterations                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -175,7 +150,7 @@ void UClothingSimulationInteractor::SetNumIterations(int32 NumIterations)
 
 
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.SetNumSubsteps
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 // Parameters:
 // int32                                   NumSubsteps                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -200,10 +175,10 @@ void UClothingSimulationInteractor::SetNumSubsteps(int32 NumSubsteps)
 
 
 // Function ClothingSystemRuntimeInterface.ClothingSimulationInteractor.GetClothingInteractor
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const class FString&                    ClothingAssetName                                      (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// class UClothingInteractor*              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UClothingInteractor*              ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class UClothingInteractor* UClothingSimulationInteractor::GetClothingInteractor(const class FString& ClothingAssetName) const
 {

@@ -16,13 +16,23 @@
 namespace SDK
 {
 
-// Enum EngineSettings.ETwoPlayerSplitScreenType
+// Enum EngineSettings.ESubLevelStripMode
 // NumValues: 0x0003
-enum class ETwoPlayerSplitScreenType : uint8
+enum class ESubLevelStripMode : uint8
 {
-	Horizontal                               = 0,
+	ExactClass                               = 0,
+	IsChildOf                                = 1,
+	ESubLevelStripMode_MAX                   = 2,
+};
+
+// Enum EngineSettings.EFourPlayerSplitScreenType
+// NumValues: 0x0004
+enum class EFourPlayerSplitScreenType : uint8
+{
+	Grid                                     = 0,
 	Vertical                                 = 1,
-	ETwoPlayerSplitScreenType_MAX            = 2,
+	Horizontal                               = 2,
+	EFourPlayerSplitScreenType_MAX           = 3,
 };
 
 // Enum EngineSettings.EThreePlayerSplitScreenType
@@ -36,23 +46,13 @@ enum class EThreePlayerSplitScreenType : uint8
 	EThreePlayerSplitScreenType_MAX          = 4,
 };
 
-// Enum EngineSettings.EFourPlayerSplitScreenType
-// NumValues: 0x0004
-enum class EFourPlayerSplitScreenType : uint8
-{
-	Grid                                     = 0,
-	Vertical                                 = 1,
-	Horizontal                               = 2,
-	EFourPlayerSplitScreenType_MAX           = 3,
-};
-
-// Enum EngineSettings.ESubLevelStripMode
+// Enum EngineSettings.ETwoPlayerSplitScreenType
 // NumValues: 0x0003
-enum class ESubLevelStripMode : uint8
+enum class ETwoPlayerSplitScreenType : uint8
 {
-	ExactClass                               = 0,
-	IsChildOf                                = 1,
-	ESubLevelStripMode_MAX                   = 2,
+	Horizontal                               = 0,
+	Vertical                                 = 1,
+	ETwoPlayerSplitScreenType_MAX            = 2,
 };
 
 // ScriptStruct EngineSettings.AutoCompleteCommand
@@ -67,25 +67,14 @@ public:
 DUMPER7_ASSERTS_FAutoCompleteCommand;
 
 // ScriptStruct EngineSettings.GameModeName
-// 0x0030 (0x0030 - 0x0000)
+// 0x0028 (0x0028 - 0x0000)
 struct FGameModeName final
 {
 public:
 	class FString                                 Name;                                              // 0x0000(0x0010)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSoftClassPath                         GameMode;                                          // 0x0010(0x0020)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FSoftClassPath                         GameMode;                                          // 0x0010(0x0018)(Edit, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FGameModeName;
-
-// ScriptStruct EngineSettings.TemplateMapInfoOverride
-// 0x0058 (0x0058 - 0x0000)
-struct FTemplateMapInfoOverride final
-{
-public:
-	struct FSoftObjectPath                        Thumbnail;                                         // 0x0000(0x0020)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSoftObjectPath                        Map;                                               // 0x0020(0x0020)(Edit, ZeroConstructor, Config, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class FText                                   DisplayName;                                       // 0x0040(0x0018)(Edit, Config, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FTemplateMapInfoOverride;
 
 }
 

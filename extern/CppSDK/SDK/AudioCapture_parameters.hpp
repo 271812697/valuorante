@@ -41,29 +41,9 @@ DUMPER7_ASSERTS_AudioCapture_IsCapturingAudio;
 struct AudioCaptureFunctionLibrary_CreateAudioCapture final
 {
 public:
-	class UAudioCapture*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UAudioCapture*                          ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_AudioCaptureFunctionLibrary_CreateAudioCapture;
-
-// Function AudioCapture.AudioCaptureBlueprintLibrary.Conv_AudioInputDeviceInfoToString
-// 0x0040 (0x0040 - 0x0000)
-struct AudioCaptureBlueprintLibrary_Conv_AudioInputDeviceInfoToString final
-{
-public:
-	struct FAudioInputDeviceInfo                  Info;                                              // 0x0000(0x0030)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	class FString                                 ReturnValue;                                       // 0x0030(0x0010)(Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_AudioCaptureBlueprintLibrary_Conv_AudioInputDeviceInfoToString;
-
-// Function AudioCapture.AudioCaptureBlueprintLibrary.GetAvailableAudioInputDevices
-// 0x0020 (0x0020 - 0x0000)
-struct AudioCaptureBlueprintLibrary_GetAvailableAudioInputDevices final
-{
-public:
-	const class UObject*                          WorldContextObject;                                // 0x0000(0x0008)(ConstParm, Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TDelegate<void(const TArray<struct FAudioInputDeviceInfo>& AvailableDevices)> OnObtainDevicesEvent; // 0x0008(0x0018)(ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_AudioCaptureBlueprintLibrary_GetAvailableAudioInputDevices;
 
 }
 

@@ -10,21 +10,21 @@
 
 #include "Basic.hpp"
 
-#include "OnlineSubsystem_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "OnlineSubsystem_structs.hpp"
 
 
 namespace SDK
 {
 
 // Class OnlineSubsystem.NamedInterfaces
-// 0x0040 (0x0068 - 0x0028)
+// 0x0038 (0x0060 - 0x0028)
 class UNamedInterfaces final : public UObject
 {
 public:
 	TArray<struct FNamedInterface>                NamedInterfaces;                                   // 0x0028(0x0010)(ZeroConstructor, NativeAccessSpecifierPrivate)
 	TArray<struct FNamedInterfaceDef>             NamedInterfaceDefs;                                // 0x0038(0x0010)(ZeroConstructor, Config, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_48[0x20];                                      // 0x0048(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_48[0x18];                                      // 0x0048(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()

@@ -70,7 +70,7 @@ struct FLocationServicesData ULocationServices::GetLastKnownLocation()
 // Function LocationServicesBPLibrary.LocationServices.GetLocationServicesImpl
 // (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
-// class ULocationServicesImpl*            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class ULocationServicesImpl*            ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class ULocationServicesImpl* ULocationServices::GetLocationServicesImpl()
 {

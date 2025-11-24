@@ -18,12 +18,12 @@ namespace SDK
 {
 
 // Class SignificanceManager.SignificanceManager
-// 0x0118 (0x0140 - 0x0028)
+// 0x00F8 (0x0120 - 0x0028)
 class USignificanceManager final : public UObject
 {
 public:
-	uint8                                         Pad_28[0xF8];                                      // 0x0028(0x00F8)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSoftClassPath                         SignificanceManagerClassName;                      // 0x0120(0x0020)(Edit, ZeroConstructor, Config, GlobalConfig, NoClear, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	uint8                                         Pad_28[0xE0];                                      // 0x0028(0x00E0)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSoftClassPath                         SignificanceManagerClassName;                      // 0x0108(0x0018)(Edit, ZeroConstructor, Config, GlobalConfig, NoClear, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 
 public:
 	static class UClass* StaticClass()

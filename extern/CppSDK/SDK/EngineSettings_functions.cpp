@@ -18,9 +18,9 @@ namespace SDK
 {
 
 // Function EngineSettings.GameMapsSettings.GetGameMapsSettings
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
-// class UGameMapsSettings*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UGameMapsSettings*                ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class UGameMapsSettings* UGameMapsSettings::GetGameMapsSettings()
 {
@@ -43,7 +43,7 @@ class UGameMapsSettings* UGameMapsSettings::GetGameMapsSettings()
 
 
 // Function EngineSettings.GameMapsSettings.SetSkipAssigningGamepadToPlayer1
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // bool                                    bSkipFirstPlayer                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -68,7 +68,7 @@ void UGameMapsSettings::SetSkipAssigningGamepadToPlayer1(bool bSkipFirstPlayer)
 
 
 // Function EngineSettings.GameMapsSettings.GetSkipAssigningGamepadToPlayer1
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 

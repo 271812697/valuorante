@@ -18,30 +18,6 @@
 namespace SDK
 {
 
-// Class ClothingSystemRuntimeInterface.ClothingAssetBase
-// 0x0020 (0x0048 - 0x0028)
-class UClothingAssetBase : public UObject
-{
-public:
-	class FString                                 ImportedFilePath;                                  // 0x0028(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FGuid                                  AssetGuid;                                         // 0x0038(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ClothingAssetBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ClothingAssetBase")
-	}
-	static class UClothingAssetBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UClothingAssetBase>();
-	}
-};
-DUMPER7_ASSERTS_UClothingAssetBase;
-
 // Class ClothingSystemRuntimeInterface.ClothConfigBase
 // 0x0000 (0x0028 - 0x0028)
 class UClothConfigBase : public UObject
@@ -61,26 +37,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UClothConfigBase;
-
-// Class ClothingSystemRuntimeInterface.ClothSharedSimConfigBase
-// 0x0000 (0x0028 - 0x0028)
-class UClothSharedSimConfigBase final : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("ClothSharedSimConfigBase")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"ClothSharedSimConfigBase")
-	}
-	static class UClothSharedSimConfigBase* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UClothSharedSimConfigBase>();
-	}
-};
-DUMPER7_ASSERTS_UClothSharedSimConfigBase;
 
 // Class ClothingSystemRuntimeInterface.ClothingSimulationFactory
 // 0x0000 (0x0028 - 0x0028)
@@ -130,7 +86,7 @@ DUMPER7_ASSERTS_UClothingInteractor;
 class UClothingSimulationInteractor : public UObject
 {
 public:
-	TMap<class FName, class UClothingInteractor*> ClothingInteractors;                               // 0x0028(0x0050)(UObjectWrapper, NativeAccessSpecifierPublic)
+	TMap<class FName, class UClothingInteractor*> ClothingInteractors;                               // 0x0028(0x0050)(NativeAccessSpecifierPublic)
 	uint8                                         Pad_78[0x18];                                      // 0x0078(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
@@ -139,7 +95,6 @@ public:
 	void EnableGravityOverride(const struct FVector& InVector);
 	void PhysicsAssetUpdated();
 	void SetAnimDriveSpringStiffness(float InStiffness);
-	void SetMaxNumIterations(int32 MaxNumIterations);
 	void SetNumIterations(int32 NumIterations);
 	void SetNumSubsteps(int32 NumSubsteps);
 
@@ -167,13 +122,57 @@ public:
 };
 DUMPER7_ASSERTS_UClothingSimulationInteractor;
 
+// Class ClothingSystemRuntimeInterface.ClothSharedSimConfigBase
+// 0x0000 (0x0028 - 0x0028)
+class UClothSharedSimConfigBase final : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ClothSharedSimConfigBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ClothSharedSimConfigBase")
+	}
+	static class UClothSharedSimConfigBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UClothSharedSimConfigBase>();
+	}
+};
+DUMPER7_ASSERTS_UClothSharedSimConfigBase;
+
+// Class ClothingSystemRuntimeInterface.ClothingAssetBase
+// 0x0020 (0x0048 - 0x0028)
+class UClothingAssetBase : public UObject
+{
+public:
+	class FString                                 ImportedFilePath;                                  // 0x0028(0x0010)(Edit, ZeroConstructor, EditConst, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FGuid                                  AssetGuid;                                         // 0x0038(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, Protected, HasGetValueTypeHash, NativeAccessSpecifierProtected)
+
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("ClothingAssetBase")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"ClothingAssetBase")
+	}
+	static class UClothingAssetBase* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UClothingAssetBase>();
+	}
+};
+DUMPER7_ASSERTS_UClothingAssetBase;
+
 // Class ClothingSystemRuntimeInterface.ClothPhysicalMeshDataBase_Legacy
 // 0x00B8 (0x00E0 - 0x0028)
 class UClothPhysicalMeshDataBase_Legacy : public UObject
 {
 public:
-	TArray<struct FVector3f>                      Vertices;                                          // 0x0028(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
-	TArray<struct FVector3f>                      Normals;                                           // 0x0038(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FVector>                        Vertices;                                          // 0x0028(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	TArray<struct FVector>                        Normals;                                           // 0x0038(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<uint32>                                Indices;                                           // 0x0048(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<float>                                 InverseMasses;                                     // 0x0058(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 	TArray<struct FClothVertBoneData>             BoneData;                                          // 0x0068(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)

@@ -15,14 +15,12 @@ namespace SDK
 {
 
 // Enum GameplayTasks.ETaskResourceOverlapPolicy
-// NumValues: 0x0005
+// NumValues: 0x0003
 enum class ETaskResourceOverlapPolicy : uint8
 {
 	StartOnTop                               = 0,
 	StartAtEnd                               = 1,
-	RequestCancelAndStartOnTop               = 2,
-	RequestCancelAndStartAtEnd               = 3,
-	ETaskResourceOverlapPolicy_MAX           = 4,
+	ETaskResourceOverlapPolicy_MAX           = 2,
 };
 
 // Enum GameplayTasks.EGameplayTaskState

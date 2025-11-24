@@ -21,7 +21,7 @@ namespace SDK
 class UAutomationUtilsBlueprintLibrary final : public UBlueprintFunctionLibrary
 {
 public:
-	static void TakeGameplayAutomationScreenshot(const class FString& ScreenShotName, float MaxGlobalError, float MaxLocalError, const class FString& MapNameOverride);
+	static void TakeGameplayAutomationScreenshot(const class FString& ScreenshotName, float MaxGlobalError, float MaxLocalError, const class FString& MapNameOverride);
 
 public:
 	static class UClass* StaticClass()

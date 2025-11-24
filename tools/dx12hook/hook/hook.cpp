@@ -63,8 +63,7 @@ namespace MOON {
 		barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_PRESENT;
 		barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_RENDER_TARGET;
 
-		//frameCtx.CommandAllocator->Reset();
-	
+		frameCtx.CommandAllocator->Reset();
 		commandList->Reset(frameCtx.CommandAllocator, NULL);
 		commandList->ResourceBarrier(1, &barrier);
 		commandList->OMSetRenderTargets(1, &frameCtx.DescriptorHandle, FALSE, NULL);

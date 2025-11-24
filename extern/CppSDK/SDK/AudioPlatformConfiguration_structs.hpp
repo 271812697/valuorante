@@ -23,7 +23,7 @@ enum class ESoundwaveSampleRateSettings : uint8
 	Medium                                   = 2,
 	Low                                      = 3,
 	Min                                      = 4,
-	MatchDevice_DEPRECATED                   = 5,
+	MatchDevice                              = 5,
 };
 
 // ScriptStruct AudioPlatformConfiguration.PlatformRuntimeAudioCompressionOverrides

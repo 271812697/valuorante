@@ -27,7 +27,6 @@ public:
 	TArray<class FName> GetCollectionsContainingAsset(const class FName AssetPathName);
 	TArray<class FName> GetCollectionsContainingAssetData(const struct FAssetData& AssetData);
 	TArray<class FName> GetCollectionsContainingAssetPtr(const class UObject* AssetPtr);
-	TArray<class FName> K2_GetCollectionsContainingAsset(const struct FSoftObjectPath& AssetPath);
 
 public:
 	static class UClass* StaticClass()

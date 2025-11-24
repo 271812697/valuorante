@@ -20,7 +20,7 @@ namespace SDK
 // Function GeometryCache.GeometryCacheActor.GetGeometryCacheComponent
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
-// class UGeometryCacheComponent*          ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UGeometryCacheComponent*          ReturnValue                                            (ExportObject, Parm, OutParm, ZeroConstructor, ReturnParm, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class UGeometryCacheComponent* AGeometryCacheActor::GetGeometryCacheComponent() const
 {
@@ -165,7 +165,7 @@ void UGeometryCacheComponent::SetExtrapolateFrames(const bool bNewExtrapolating)
 // Function GeometryCache.GeometryCacheComponent.SetGeometryCache
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class UGeometryCache*                   NewGeomCache                                           (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UGeometryCache*                   NewGeomCache                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 bool UGeometryCacheComponent::SetGeometryCache(class UGeometryCache* NewGeomCache)
@@ -240,31 +240,6 @@ void UGeometryCacheComponent::SetMotionVectorScale(const float NewMotionVectorSc
 }
 
 
-// Function GeometryCache.GeometryCacheComponent.SetOverrideWireframeColor
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bOverride                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGeometryCacheComponent::SetOverrideWireframeColor(bool bOverride)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GeometryCacheComponent", "SetOverrideWireframeColor");
-
-	Params::GeometryCacheComponent_SetOverrideWireframeColor Parms{};
-
-	Parms.bOverride = bOverride;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function GeometryCache.GeometryCacheComponent.SetPlaybackSpeed
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
@@ -305,31 +280,6 @@ void UGeometryCacheComponent::SetStartTimeOffset(const float NewStartTimeOffset)
 	Params::GeometryCacheComponent_SetStartTimeOffset Parms{};
 
 	Parms.NewStartTimeOffset = NewStartTimeOffset;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function GeometryCache.GeometryCacheComponent.SetWireframeOverrideColor
-// (Final, Native, Public, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FLinearColor&              Color                                                  (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UGeometryCacheComponent::SetWireframeOverrideColor(const struct FLinearColor& Color)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GeometryCacheComponent", "SetWireframeOverrideColor");
-
-	Params::GeometryCacheComponent_SetWireframeOverrideColor Parms{};
-
-	Parms.Color = std::move(Color);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -490,31 +440,6 @@ int32 UGeometryCacheComponent::GetNumberOfFrames() const
 }
 
 
-// Function GeometryCache.GeometryCacheComponent.GetOverrideWireframeColor
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UGeometryCacheComponent::GetOverrideWireframeColor() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GeometryCacheComponent", "GetOverrideWireframeColor");
-
-	Params::GeometryCacheComponent_GetOverrideWireframeColor Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function GeometryCache.GeometryCacheComponent.GetPlaybackDirection
 // (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
@@ -578,31 +503,6 @@ float UGeometryCacheComponent::GetStartTimeOffset() const
 		Func = Class->GetFunction("GeometryCacheComponent", "GetStartTimeOffset");
 
 	Params::GeometryCacheComponent_GetStartTimeOffset Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function GeometryCache.GeometryCacheComponent.GetWireframeOverrideColor
-// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// struct FLinearColor                     ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-struct FLinearColor UGeometryCacheComponent::GetWireframeOverrideColor() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("GeometryCacheComponent", "GetWireframeOverrideColor");
-
-	Params::GeometryCacheComponent_GetWireframeOverrideColor Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

@@ -17,10 +17,161 @@
 namespace SDK
 {
 
-// Function MRMesh.MockDataMeshTrackerComponent.ConnectMRMesh
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// Function MRMesh.MeshReconstructorBase.ConnectMRMesh
+// (Native, Public)
 // Parameters:
-// class UMRMeshComponent*                 InMRMeshPtr                                            (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UMRMeshComponent*                 Mesh                                                   (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+void UMeshReconstructorBase::ConnectMRMesh(class UMRMeshComponent* Mesh)
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MeshReconstructorBase", "ConnectMRMesh");
+
+	Params::MeshReconstructorBase_ConnectMRMesh Parms{};
+
+	Parms.Mesh = Mesh;
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MRMesh.MeshReconstructorBase.DisconnectMRMesh
+// (Native, Public)
+
+void UMeshReconstructorBase::DisconnectMRMesh()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MeshReconstructorBase", "DisconnectMRMesh");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MRMesh.MeshReconstructorBase.PauseReconstruction
+// (Native, Public, BlueprintCallable)
+
+void UMeshReconstructorBase::PauseReconstruction()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MeshReconstructorBase", "PauseReconstruction");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MRMesh.MeshReconstructorBase.StartReconstruction
+// (Native, Public, BlueprintCallable)
+
+void UMeshReconstructorBase::StartReconstruction()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MeshReconstructorBase", "StartReconstruction");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MRMesh.MeshReconstructorBase.StopReconstruction
+// (Native, Public, BlueprintCallable)
+
+void UMeshReconstructorBase::StopReconstruction()
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MeshReconstructorBase", "StopReconstruction");
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, nullptr);
+
+	Func->FunctionFlags = Flgs;
+}
+
+
+// Function MRMesh.MeshReconstructorBase.IsReconstructionPaused
+// (Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UMeshReconstructorBase::IsReconstructionPaused() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MeshReconstructorBase", "IsReconstructionPaused");
+
+	Params::MeshReconstructorBase_IsReconstructionPaused Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function MRMesh.MeshReconstructorBase.IsReconstructionStarted
+// (Native, Public, BlueprintCallable, BlueprintPure, Const)
+// Parameters:
+// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+
+bool UMeshReconstructorBase::IsReconstructionStarted() const
+{
+	static class UFunction* Func = nullptr;
+
+	if (Func == nullptr)
+		Func = Class->GetFunction("MeshReconstructorBase", "IsReconstructionStarted");
+
+	Params::MeshReconstructorBase_IsReconstructionStarted Parms{};
+
+	auto Flgs = Func->FunctionFlags;
+	Func->FunctionFlags |= 0x400;
+
+	UObject::ProcessEvent(Func, &Parms);
+
+	Func->FunctionFlags = Flgs;
+
+	return Parms.ReturnValue;
+}
+
+
+// Function MRMesh.MockDataMeshTrackerComponent.ConnectMRMesh
+// (Final, Native, Public, BlueprintCallable)
+// Parameters:
+// class UMRMeshComponent*                 InMRMeshPtr                                            (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UMockDataMeshTrackerComponent::ConnectMRMesh(class UMRMeshComponent* InMRMeshPtr)
 {
@@ -43,9 +194,9 @@ void UMockDataMeshTrackerComponent::ConnectMRMesh(class UMRMeshComponent* InMRMe
 
 
 // Function MRMesh.MockDataMeshTrackerComponent.DisconnectMRMesh
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class UMRMeshComponent*                 InMRMeshPtr                                            (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UMRMeshComponent*                 InMRMeshPtr                                            (Parm, ZeroConstructor, InstancedReference, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UMockDataMeshTrackerComponent::DisconnectMRMesh(class UMRMeshComponent* InMRMeshPtr)
 {
@@ -68,7 +219,7 @@ void UMockDataMeshTrackerComponent::DisconnectMRMesh(class UMRMeshComponent* InM
 
 
 // Function MRMesh.MRMeshComponent.Clear
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 
 void UMRMeshComponent::Clear()
 {
@@ -87,7 +238,7 @@ void UMRMeshComponent::Clear()
 
 
 // Function MRMesh.MRMeshComponent.ForceNavMeshUpdate
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 
 void UMRMeshComponent::ForceNavMeshUpdate()
 {
@@ -105,27 +256,8 @@ void UMRMeshComponent::ForceNavMeshUpdate()
 }
 
 
-// Function MRMesh.MRMeshComponent.RequestNavMeshUpdate
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
-
-void UMRMeshComponent::RequestNavMeshUpdate()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MRMeshComponent", "RequestNavMeshUpdate");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function MRMesh.MRMeshComponent.SetEnableMeshOcclusion
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // bool                                    bEnable                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -150,7 +282,7 @@ void UMRMeshComponent::SetEnableMeshOcclusion(bool bEnable)
 
 
 // Function MRMesh.MRMeshComponent.SetUseWireframe
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // bool                                    bUseWireframe                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -175,7 +307,7 @@ void UMRMeshComponent::SetUseWireframe(bool bUseWireframe)
 
 
 // Function MRMesh.MRMeshComponent.SetWireframeColor
-// (Final, RequiredAPI, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
 // Parameters:
 // const struct FLinearColor&              InColor                                                (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -200,9 +332,9 @@ void UMRMeshComponent::SetWireframeColor(const struct FLinearColor& InColor)
 
 
 // Function MRMesh.MRMeshComponent.SetWireframeMaterial
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 // Parameters:
-// class UMaterialInterface*               InMaterial                                             (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UMaterialInterface*               InMaterial                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UMRMeshComponent::SetWireframeMaterial(class UMaterialInterface* InMaterial)
 {
@@ -312,157 +444,6 @@ bool UMRMeshComponent::IsConnected() const
 		Func = Class->GetFunction("MRMeshComponent", "IsConnected");
 
 	Params::MRMeshComponent_IsConnected Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function MRMesh.MeshReconstructorBase.ConnectMRMesh
-// (RequiredAPI, Native, Public)
-// Parameters:
-// class UMRMeshComponent*                 Mesh                                                   (Parm, ZeroConstructor, InstancedReference, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UMeshReconstructorBase::ConnectMRMesh(class UMRMeshComponent* Mesh)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshReconstructorBase", "ConnectMRMesh");
-
-	Params::MeshReconstructorBase_ConnectMRMesh Parms{};
-
-	Parms.Mesh = Mesh;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MRMesh.MeshReconstructorBase.DisconnectMRMesh
-// (RequiredAPI, Native, Public)
-
-void UMeshReconstructorBase::DisconnectMRMesh()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshReconstructorBase", "DisconnectMRMesh");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MRMesh.MeshReconstructorBase.PauseReconstruction
-// (RequiredAPI, Native, Public, BlueprintCallable)
-
-void UMeshReconstructorBase::PauseReconstruction()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshReconstructorBase", "PauseReconstruction");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MRMesh.MeshReconstructorBase.StartReconstruction
-// (RequiredAPI, Native, Public, BlueprintCallable)
-
-void UMeshReconstructorBase::StartReconstruction()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshReconstructorBase", "StartReconstruction");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MRMesh.MeshReconstructorBase.StopReconstruction
-// (RequiredAPI, Native, Public, BlueprintCallable)
-
-void UMeshReconstructorBase::StopReconstruction()
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshReconstructorBase", "StopReconstruction");
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, nullptr);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function MRMesh.MeshReconstructorBase.IsReconstructionPaused
-// (RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UMeshReconstructorBase::IsReconstructionPaused() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshReconstructorBase", "IsReconstructionPaused");
-
-	Params::MeshReconstructorBase_IsReconstructionPaused Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function MRMesh.MeshReconstructorBase.IsReconstructionStarted
-// (RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-bool UMeshReconstructorBase::IsReconstructionStarted() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshReconstructorBase", "IsReconstructionStarted");
-
-	Params::MeshReconstructorBase_IsReconstructionStarted Parms{};
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

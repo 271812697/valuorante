@@ -63,7 +63,7 @@ DUMPER7_ASSERTS_BlueprintGameplayTagLibrary_DoesContainerMatchTagQuery;
 struct BlueprintGameplayTagLibrary_DoesTagAssetInterfaceHaveTag final
 {
 public:
-	TScriptInterface<class IGameplayTagAssetInterface> TagContainerInterface;                        // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TScriptInterface<class IGameplayTagAssetInterface> TagContainerInterface;                        // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, NativeAccessSpecifierPublic)
 	struct FGameplayTag                           Tag;                                               // 0x0010(0x0008)(Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	bool                                          ReturnValue;                                       // 0x0018(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_19[0x7];                                       // 0x0019(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
@@ -99,8 +99,8 @@ DUMPER7_ASSERTS_BlueprintGameplayTagLibrary_EqualEqual_GameplayTagContainer;
 struct BlueprintGameplayTagLibrary_GetAllActorsOfClassMatchingTagQuery final
 {
 public:
-	class UObject*                                WorldContextObject;                                // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TSubclassOf<class AActor>                     ActorClass;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UObject*                                WorldContextObject;                                // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TSubclassOf<class AActor>                     ActorClass;                                        // 0x0008(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	struct FGameplayTagQuery                      GameplayTagQuery;                                  // 0x0010(0x0048)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 	TArray<class AActor*>                         OutActors;                                         // 0x0058(0x0010)(Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
 };
@@ -152,7 +152,7 @@ DUMPER7_ASSERTS_BlueprintGameplayTagLibrary_GetTagName;
 struct BlueprintGameplayTagLibrary_HasAllMatchingGameplayTags final
 {
 public:
-	TScriptInterface<class IGameplayTagAssetInterface> TagContainerInterface;                        // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TScriptInterface<class IGameplayTagAssetInterface> TagContainerInterface;                        // 0x0000(0x0010)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, NativeAccessSpecifierPublic)
 	struct FGameplayTagContainer                  OtherContainer;                                    // 0x0010(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 	bool                                          ReturnValue;                                       // 0x0030(0x0001)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_31[0x7];                                       // 0x0031(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
@@ -249,36 +249,6 @@ public:
 	struct FGameplayTagQuery                      ReturnValue;                                       // 0x0048(0x0048)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_BlueprintGameplayTagLibrary_MakeGameplayTagQuery;
-
-// Function GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery_MatchAllTags
-// 0x0068 (0x0068 - 0x0000)
-struct BlueprintGameplayTagLibrary_MakeGameplayTagQuery_MatchAllTags final
-{
-public:
-	struct FGameplayTagContainer                  InTags;                                            // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FGameplayTagQuery                      ReturnValue;                                       // 0x0020(0x0048)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BlueprintGameplayTagLibrary_MakeGameplayTagQuery_MatchAllTags;
-
-// Function GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery_MatchAnyTags
-// 0x0068 (0x0068 - 0x0000)
-struct BlueprintGameplayTagLibrary_MakeGameplayTagQuery_MatchAnyTags final
-{
-public:
-	struct FGameplayTagContainer                  InTags;                                            // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FGameplayTagQuery                      ReturnValue;                                       // 0x0020(0x0048)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BlueprintGameplayTagLibrary_MakeGameplayTagQuery_MatchAnyTags;
-
-// Function GameplayTags.BlueprintGameplayTagLibrary.MakeGameplayTagQuery_MatchNoTags
-// 0x0068 (0x0068 - 0x0000)
-struct BlueprintGameplayTagLibrary_MakeGameplayTagQuery_MatchNoTags final
-{
-public:
-	struct FGameplayTagContainer                  InTags;                                            // 0x0000(0x0020)(ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
-	struct FGameplayTagQuery                      ReturnValue;                                       // 0x0020(0x0048)(Parm, OutParm, ReturnParm, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_BlueprintGameplayTagLibrary_MakeGameplayTagQuery_MatchNoTags;
 
 // Function GameplayTags.BlueprintGameplayTagLibrary.MakeLiteralGameplayTag
 // 0x0010 (0x0010 - 0x0000)

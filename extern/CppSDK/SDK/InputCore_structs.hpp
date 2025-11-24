@@ -14,32 +14,6 @@
 namespace SDK
 {
 
-// Enum InputCore.EControllerHand
-// NumValues: 0x0014
-enum class EControllerHand : uint8
-{
-	Left                                     = 0,
-	Right                                    = 1,
-	AnyHand                                  = 2,
-	Pad                                      = 3,
-	ExternalCamera                           = 4,
-	Gun                                      = 5,
-	HMD                                      = 6,
-	Chest                                    = 7,
-	LeftShoulder                             = 8,
-	RightShoulder                            = 9,
-	LeftElbow                                = 10,
-	RightElbow                               = 11,
-	Waist                                    = 12,
-	LeftKnee                                 = 13,
-	RightKnee                                = 14,
-	LeftFoot                                 = 15,
-	RightFoot                                = 16,
-	Special                                  = 17,
-	ControllerHand_Count                     = 18,
-	EControllerHand_MAX                      = 19,
-};
-
 // Enum InputCore.ETouchIndex
 // NumValues: 0x000D
 enum class ETouchIndex : uint8
@@ -59,14 +33,29 @@ enum class ETouchIndex : uint8
 	ETouchIndex_MAX                          = 12,
 };
 
-// Enum InputCore.EConsoleForGamepadLabels
-// NumValues: 0x0004
-enum class EConsoleForGamepadLabels : uint8
+// Enum InputCore.EControllerHand
+// NumValues: 0x0013
+enum class EControllerHand : uint8
 {
-	None                                     = 0,
-	XBoxOne                                  = 1,
-	PS4                                      = 2,
-	EConsoleForGamepadLabels_MAX             = 3,
+	Left                                     = 0,
+	Right                                    = 1,
+	AnyHand                                  = 2,
+	Pad                                      = 3,
+	ExternalCamera                           = 4,
+	Gun                                      = 5,
+	Special_1                                = 6,
+	Special_2                                = 7,
+	Special_3                                = 8,
+	Special_4                                = 9,
+	Special_5                                = 10,
+	Special_6                                = 11,
+	Special_7                                = 12,
+	Special_8                                = 13,
+	Special_9                                = 14,
+	Special_10                               = 15,
+	Special_11                               = 16,
+	ControllerHand_Count                     = 17,
+	EControllerHand_MAX                      = 18,
 };
 
 // Enum InputCore.ETouchType
@@ -83,12 +72,22 @@ enum class ETouchType : uint8
 	ETouchType_MAX                           = 7,
 };
 
+// Enum InputCore.EConsoleForGamepadLabels
+// NumValues: 0x0004
+enum class EConsoleForGamepadLabels : uint8
+{
+	None                                     = 0,
+	XBoxOne                                  = 1,
+	PS4                                      = 2,
+	EConsoleForGamepadLabels_MAX             = 3,
+};
+
 // ScriptStruct InputCore.Key
 // 0x0018 (0x0018 - 0x0000)
 struct alignas(0x08) FKey final
 {
 public:
-	class FName                                   KeyName;                                           // 0x0000(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
+	class FName                                   KeyName;                                           // 0x0000(0x0008)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPrivate)
 	uint8                                         Pad_8[0x10];                                       // 0x0008(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FKey;

@@ -19,16 +19,18 @@ namespace SDK::Params
 struct ImgMediaSource_AddGlobalCamera final
 {
 public:
-	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_ImgMediaSource_AddGlobalCamera;
 
 // Function ImgMedia.ImgMediaSource.AddTargetObject
-// 0x0008 (0x0008 - 0x0000)
+// 0x0010 (0x0010 - 0x0000)
 struct ImgMediaSource_AddTargetObject final
 {
 public:
-	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Width;                                             // 0x0008(0x0004)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_ImgMediaSource_AddTargetObject;
 
@@ -37,7 +39,7 @@ DUMPER7_ASSERTS_ImgMediaSource_AddTargetObject;
 struct ImgMediaSource_RemoveGlobalCamera final
 {
 public:
-	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_ImgMediaSource_RemoveGlobalCamera;
 
@@ -46,7 +48,7 @@ DUMPER7_ASSERTS_ImgMediaSource_RemoveGlobalCamera;
 struct ImgMediaSource_RemoveTargetObject final
 {
 public:
-	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class AActor*                                 InActor;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_ImgMediaSource_RemoveTargetObject;
 
@@ -67,15 +69,6 @@ public:
 	class FString                                 Path;                                              // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_ImgMediaSource_SetSequencePath;
-
-// Function ImgMedia.ImgMediaSource.SetTokenizedSequencePath
-// 0x0010 (0x0010 - 0x0000)
-struct ImgMediaSource_SetTokenizedSequencePath final
-{
-public:
-	class FString                                 Path;                                              // 0x0000(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_ImgMediaSource_SetTokenizedSequencePath;
 
 // Function ImgMedia.ImgMediaSource.GetProxies
 // 0x0010 (0x0010 - 0x0000)

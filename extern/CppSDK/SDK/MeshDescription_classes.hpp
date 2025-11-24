@@ -16,12 +16,32 @@
 namespace SDK
 {
 
+// Class MeshDescription.MeshDescription
+// 0x0000 (0x0028 - 0x0028)
+class UMeshDescription final : public UObject
+{
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("MeshDescription")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"MeshDescription")
+	}
+	static class UMeshDescription* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UMeshDescription>();
+	}
+};
+DUMPER7_ASSERTS_UMeshDescription;
+
 // Class MeshDescription.MeshDescriptionBase
-// 0x02C8 (0x02F0 - 0x0028)
+// 0x0368 (0x0390 - 0x0028)
 class UMeshDescriptionBase : public UObject
 {
 public:
-	uint8                                         Pad_28[0x2C8];                                     // 0x0028(0x02C8)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_28[0x368];                                     // 0x0028(0x0368)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	void ComputePolygonTriangulation(const struct FPolygonID& PolygonID);
@@ -52,12 +72,11 @@ public:
 	void ReserveNewVertices(int32 NumberOfNewVertices);
 	void ReversePolygonFacing(const struct FPolygonID& PolygonID);
 	void SetPolygonPolygonGroup(const struct FPolygonID& PolygonID, const struct FPolygonGroupID& PolygonGroupID);
-	void SetPolygonVertexInstances(const struct FPolygonID& PolygonID, const TArray<struct FVertexInstanceID>& VertexInstanceIDs);
+	void SetPolygonVertexInstance(const struct FPolygonID& PolygonID, int32 PerimeterIndex, const struct FVertexInstanceID& VertexInstanceID);
 	void SetVertexPosition(const struct FVertexID& VertexID, const struct FVector& Position);
 
 	void GetEdgeConnectedPolygons(const struct FEdgeID& EdgeID, TArray<struct FPolygonID>* OutConnectedPolygonIDs) const;
 	void GetEdgeConnectedTriangles(const struct FEdgeID& EdgeID, TArray<struct FTriangleID>* OutConnectedTriangleIDs) const;
-	int32 GetEdgeCount() const;
 	struct FVertexID GetEdgeVertex(const struct FEdgeID& EdgeID, int32 VertexNumber) const;
 	void GetEdgeVertices(const struct FEdgeID& EdgeID, TArray<struct FVertexID>* OutVertexIDs) const;
 	int32 GetNumEdgeConnectedPolygons(const struct FEdgeID& EdgeID) const;
@@ -73,8 +92,6 @@ public:
 	int32 GetNumVertexInstanceConnectedTriangles(const struct FVertexInstanceID& VertexInstanceID) const;
 	int32 GetNumVertexVertexInstances(const struct FVertexID& VertexID) const;
 	void GetPolygonAdjacentPolygons(const struct FPolygonID& PolygonID, TArray<struct FPolygonID>* OutPolygonIDs) const;
-	int32 GetPolygonCount() const;
-	int32 GetPolygonGroupCount() const;
 	void GetPolygonGroupPolygons(const struct FPolygonGroupID& PolygonGroupID, TArray<struct FPolygonID>* OutPolygonIDs) const;
 	void GetPolygonInternalEdges(const struct FPolygonID& PolygonID, TArray<struct FEdgeID>* OutEdgeIDs) const;
 	void GetPolygonPerimeterEdges(const struct FPolygonID& PolygonID, TArray<struct FEdgeID>* OutEdgeIDs) const;
@@ -83,21 +100,18 @@ public:
 	void GetPolygonVertexInstances(const struct FPolygonID& PolygonID, TArray<struct FVertexInstanceID>* OutVertexInstanceIDs) const;
 	void GetPolygonVertices(const struct FPolygonID& PolygonID, TArray<struct FVertexID>* OutVertexIDs) const;
 	void GetTriangleAdjacentTriangles(const struct FTriangleID& TriangleID, TArray<struct FTriangleID>* OutTriangleIDs) const;
-	int32 GetTriangleCount() const;
 	void GetTriangleEdges(const struct FTriangleID& TriangleID, TArray<struct FEdgeID>* OutEdgeIDs) const;
 	struct FPolygonID GetTrianglePolygon(const struct FTriangleID& TriangleID) const;
 	struct FPolygonGroupID GetTrianglePolygonGroup(const struct FTriangleID& TriangleID) const;
-	struct FVertexInstanceID GetTriangleVertexInstance(const struct FTriangleID& TriangleID, int32 index) const;
+	struct FVertexInstanceID GetTriangleVertexInstance(const struct FTriangleID& TriangleID, int32 Index_0) const;
 	void GetTriangleVertexInstances(const struct FTriangleID& TriangleID, TArray<struct FVertexInstanceID>* OutVertexInstanceIDs) const;
 	void GetTriangleVertices(const struct FTriangleID& TriangleID, TArray<struct FVertexID>* OutVertexIDs) const;
 	void GetVertexAdjacentVertices(const struct FVertexID& VertexID, TArray<struct FVertexID>* OutAdjacentVertexIDs) const;
 	void GetVertexConnectedEdges(const struct FVertexID& VertexID, TArray<struct FEdgeID>* OutEdgeIDs) const;
 	void GetVertexConnectedPolygons(const struct FVertexID& VertexID, TArray<struct FPolygonID>* OutConnectedPolygonIDs) const;
 	void GetVertexConnectedTriangles(const struct FVertexID& VertexID, TArray<struct FTriangleID>* OutConnectedTriangleIDs) const;
-	int32 GetVertexCount() const;
 	void GetVertexInstanceConnectedPolygons(const struct FVertexInstanceID& VertexInstanceID, TArray<struct FPolygonID>* OutConnectedPolygonIDs) const;
 	void GetVertexInstanceConnectedTriangles(const struct FVertexInstanceID& VertexInstanceID, TArray<struct FTriangleID>* OutConnectedTriangleIDs) const;
-	int32 GetVertexInstanceCount() const;
 	struct FVertexInstanceID GetVertexInstanceForPolygonVertex(const struct FPolygonID& PolygonID, const struct FVertexID& VertexID) const;
 	struct FVertexInstanceID GetVertexInstanceForTriangleVertex(const struct FTriangleID& TriangleID, const struct FVertexID& VertexID) const;
 	struct FEdgeID GetVertexInstancePairEdge(const struct FVertexInstanceID& VertexInstanceID0, const struct FVertexInstanceID& VertexInstanceID1) const;
@@ -132,26 +146,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UMeshDescriptionBase;
-
-// Class MeshDescription.MeshDescriptionBaseBulkData
-// 0x0000 (0x0028 - 0x0028)
-class UMeshDescriptionBaseBulkData : public UObject
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("MeshDescriptionBaseBulkData")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"MeshDescriptionBaseBulkData")
-	}
-	static class UMeshDescriptionBaseBulkData* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UMeshDescriptionBaseBulkData>();
-	}
-};
-DUMPER7_ASSERTS_UMeshDescriptionBaseBulkData;
 
 }
 

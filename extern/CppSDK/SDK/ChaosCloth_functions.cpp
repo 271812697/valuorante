@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // Function ChaosCloth.ChaosClothingInteractor.ResetAndTeleport
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // bool                                    bReset                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    bTeleport                                              (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -45,7 +45,7 @@ void UChaosClothingInteractor::ResetAndTeleport(bool bReset, bool bTeleport)
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetAerodynamics
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
+// (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
 // float                                   DragCoefficient                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   LiftCoefficient                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -74,7 +74,7 @@ void UChaosClothingInteractor::SetAerodynamics(float DragCoefficient, float Lift
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetAnimDrive
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
+// (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
 // const struct FVector2D&                 AnimDriveStiffness                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVector2D&                 AnimDriveDamping                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -101,7 +101,7 @@ void UChaosClothingInteractor::SetAnimDrive(const struct FVector2D& AnimDriveSti
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetAnimDriveLinear
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // float                                   AnimDriveStiffness                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -125,33 +125,8 @@ void UChaosClothingInteractor::SetAnimDriveLinear(float AnimDriveStiffness)
 }
 
 
-// Function ChaosCloth.ChaosClothingInteractor.SetBackstop
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
-// Parameters:
-// bool                                    bEnabled                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UChaosClothingInteractor::SetBackstop(bool bEnabled)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ChaosClothingInteractor", "SetBackstop");
-
-	Params::ChaosClothingInteractor_SetBackstop Parms{};
-
-	Parms.bEnabled = bEnabled;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function ChaosCloth.ChaosClothingInteractor.SetCollision
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // float                                   CollisionThickness                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   FrictionCoefficient                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -182,12 +157,11 @@ void UChaosClothingInteractor::SetCollision(float CollisionThickness, float Fric
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetDamping
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // float                                   DampingCoefficient                                     (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   LocalDampingCoefficient                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UChaosClothingInteractor::SetDamping(float DampingCoefficient, float LocalDampingCoefficient)
+void UChaosClothingInteractor::SetDamping(float DampingCoefficient)
 {
 	static class UFunction* Func = nullptr;
 
@@ -197,7 +171,6 @@ void UChaosClothingInteractor::SetDamping(float DampingCoefficient, float LocalD
 	Params::ChaosClothingInteractor_SetDamping Parms{};
 
 	Parms.DampingCoefficient = DampingCoefficient;
-	Parms.LocalDampingCoefficient = LocalDampingCoefficient;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -209,7 +182,7 @@ void UChaosClothingInteractor::SetDamping(float DampingCoefficient, float LocalD
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetGravity
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
+// (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
 // float                                   GravityScale                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    bIsGravityOverridden                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -238,12 +211,11 @@ void UChaosClothingInteractor::SetGravity(float GravityScale, bool bIsGravityOve
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetLongRangeAttachment
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
+// (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
 // const struct FVector2D&                 TetherStiffness                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector2D&                 TetherScale                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UChaosClothingInteractor::SetLongRangeAttachment(const struct FVector2D& TetherStiffness, const struct FVector2D& TetherScale)
+void UChaosClothingInteractor::SetLongRangeAttachment(const struct FVector2D& TetherStiffness)
 {
 	static class UFunction* Func = nullptr;
 
@@ -253,7 +225,6 @@ void UChaosClothingInteractor::SetLongRangeAttachment(const struct FVector2D& Te
 	Params::ChaosClothingInteractor_SetLongRangeAttachment Parms{};
 
 	Parms.TetherStiffness = std::move(TetherStiffness);
-	Parms.TetherScale = std::move(TetherScale);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -265,12 +236,11 @@ void UChaosClothingInteractor::SetLongRangeAttachment(const struct FVector2D& Te
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetLongRangeAttachmentLinear
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // float                                   TetherStiffness                                        (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   TetherScale                                            (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UChaosClothingInteractor::SetLongRangeAttachmentLinear(float TetherStiffness, float TetherScale)
+void UChaosClothingInteractor::SetLongRangeAttachmentLinear(float TetherStiffness)
 {
 	static class UFunction* Func = nullptr;
 
@@ -280,36 +250,6 @@ void UChaosClothingInteractor::SetLongRangeAttachmentLinear(float TetherStiffnes
 	Params::ChaosClothingInteractor_SetLongRangeAttachmentLinear Parms{};
 
 	Parms.TetherStiffness = TetherStiffness;
-	Parms.TetherScale = TetherScale;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function ChaosCloth.ChaosClothingInteractor.SetMaterial
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector2D&                 EdgeStiffness                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector2D&                 BendingStiffness                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector2D&                 AreaStiffness                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UChaosClothingInteractor::SetMaterial(const struct FVector2D& EdgeStiffness, const struct FVector2D& BendingStiffness, const struct FVector2D& AreaStiffness)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ChaosClothingInteractor", "SetMaterial");
-
-	Params::ChaosClothingInteractor_SetMaterial Parms{};
-
-	Parms.EdgeStiffness = std::move(EdgeStiffness);
-	Parms.BendingStiffness = std::move(BendingStiffness);
-	Parms.AreaStiffness = std::move(AreaStiffness);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -321,7 +261,7 @@ void UChaosClothingInteractor::SetMaterial(const struct FVector2D& EdgeStiffness
 
 
 // Function ChaosCloth.ChaosClothingInteractor.SetMaterialLinear
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // float                                   EdgeStiffness                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   BendingStiffness                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -349,33 +289,8 @@ void UChaosClothingInteractor::SetMaterialLinear(float EdgeStiffness, float Bend
 }
 
 
-// Function ChaosCloth.ChaosClothingInteractor.SetPressure
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector2D&                 Pressure                                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UChaosClothingInteractor::SetPressure(const struct FVector2D& Pressure)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ChaosClothingInteractor", "SetPressure");
-
-	Params::ChaosClothingInteractor_SetPressure Parms{};
-
-	Parms.Pressure = std::move(Pressure);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
 // Function ChaosCloth.ChaosClothingInteractor.SetVelocityScale
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
+// (Final, Native, Public, HasDefaults, BlueprintCallable)
 // Parameters:
 // const struct FVector&                   LinearVelocityScale                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   AngularVelocityScale                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -393,37 +308,6 @@ void UChaosClothingInteractor::SetVelocityScale(const struct FVector& LinearVelo
 	Parms.LinearVelocityScale = std::move(LinearVelocityScale);
 	Parms.AngularVelocityScale = AngularVelocityScale;
 	Parms.FictitiousAngularScale = FictitiousAngularScale;
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function ChaosCloth.ChaosClothingInteractor.SetWind
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable)
-// Parameters:
-// const struct FVector2D&                 Drag                                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector2D&                 Lift                                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// float                                   AirDensity                                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const struct FVector&                   WindVelocity                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UChaosClothingInteractor::SetWind(const struct FVector2D& Drag, const struct FVector2D& Lift, float AirDensity, const struct FVector& WindVelocity)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ChaosClothingInteractor", "SetWind");
-
-	Params::ChaosClothingInteractor_SetWind Parms{};
-
-	Parms.Drag = std::move(Drag);
-	Parms.Lift = std::move(Lift);
-	Parms.AirDensity = AirDensity;
-	Parms.WindVelocity = std::move(WindVelocity);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;

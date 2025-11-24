@@ -10,9 +10,9 @@
 
 #include "Basic.hpp"
 
-#include "Engine_classes.hpp"
 #include "CoreUObject_structs.hpp"
 #include "CoreUObject_classes.hpp"
+#include "Engine_classes.hpp"
 
 
 namespace SDK
@@ -38,14 +38,35 @@ public:
 };
 DUMPER7_ASSERTS_UFixedFrameRateCustomTimeStep;
 
-// Class TimeManagement.GenlockedCustomTimeStep
+// Class TimeManagement.TimeSynchronizationSource
 // 0x0008 (0x0030 - 0x0028)
-class UGenlockedCustomTimeStep : public UFixedFrameRateCustomTimeStep
+class UTimeSynchronizationSource : public UObject
 {
 public:
-	bool                                          bAutoDetectFormat;                                 // 0x0028(0x0001)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bUseForSynchronization;                            // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
+	int32                                         FrameOffset;                                       // 0x002C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
+public:
+	static class UClass* StaticClass()
+	{
+		STATIC_CLASS_IMPL("TimeSynchronizationSource")
+	}
+	static const class FName& StaticName()
+	{
+		STATIC_NAME_IMPL(L"TimeSynchronizationSource")
+	}
+	static class UTimeSynchronizationSource* GetDefaultObj()
+	{
+		return GetDefaultObjImpl<UTimeSynchronizationSource>();
+	}
+};
+DUMPER7_ASSERTS_UTimeSynchronizationSource;
+
+// Class TimeManagement.GenlockedCustomTimeStep
+// 0x0000 (0x0028 - 0x0028)
+class UGenlockedCustomTimeStep : public UFixedFrameRateCustomTimeStep
+{
 public:
 	static class UClass* StaticClass()
 	{
@@ -63,14 +84,12 @@ public:
 DUMPER7_ASSERTS_UGenlockedCustomTimeStep;
 
 // Class TimeManagement.GenlockedFixedRateCustomTimeStep
-// 0x0020 (0x0050 - 0x0030)
+// 0x0020 (0x0048 - 0x0028)
 class UGenlockedFixedRateCustomTimeStep final : public UGenlockedCustomTimeStep
 {
 public:
-	struct FFrameRate                             FrameRate;                                         // 0x0030(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bShouldBlock;                                      // 0x0038(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bForceSingleFrameDeltaTime;                        // 0x0039(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3A[0x16];                                      // 0x003A(0x0016)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FFrameRate                             FrameRate;                                         // 0x0028(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_30[0x18];                                      // 0x0030(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()
@@ -120,7 +139,6 @@ public:
 	static struct FFrameNumber Add_FrameNumberFrameNumber(const struct FFrameNumber& A, const struct FFrameNumber& B);
 	static struct FFrameNumber Add_FrameNumberInteger(const struct FFrameNumber& A, int32 B);
 	static int32 Conv_FrameNumberToInteger(const struct FFrameNumber& InFrameNumber);
-	static float Conv_FrameRateToInterval(const struct FFrameRate& InFrameRate);
 	static float Conv_FrameRateToSeconds(const struct FFrameRate& InFrameRate);
 	static float Conv_QualifiedFrameTimeToSeconds(const struct FQualifiedFrameTime& InFrameTime);
 	static class FString Conv_TimecodeToString(const struct FTimecode& InTimecode, bool bForceSignDisplay);
@@ -151,31 +169,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UTimeManagementBlueprintLibrary;
-
-// Class TimeManagement.TimeSynchronizationSource
-// 0x0008 (0x0030 - 0x0028)
-class UTimeSynchronizationSource final : public UObject
-{
-public:
-	bool                                          bUseForSynchronization;                            // 0x0028(0x0001)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x3];                                       // 0x0029(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	int32                                         FrameOffset;                                       // 0x002C(0x0004)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("TimeSynchronizationSource")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"TimeSynchronizationSource")
-	}
-	static class UTimeSynchronizationSource* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UTimeSynchronizationSource>();
-	}
-};
-DUMPER7_ASSERTS_UTimeSynchronizationSource;
 
 }
 

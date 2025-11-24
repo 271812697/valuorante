@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // Function MeshDescription.MeshDescriptionBase.ComputePolygonTriangulation
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -43,7 +43,7 @@ void UMeshDescriptionBase::ComputePolygonTriangulation(const struct FPolygonID& 
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateEdge
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FVertexID&                 VertexID0                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVertexID&                 VertexID1                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -73,7 +73,7 @@ struct FEdgeID UMeshDescriptionBase::CreateEdge(const struct FVertexID& VertexID
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateEdgeWithID
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVertexID&                 VertexID0                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -102,7 +102,7 @@ void UMeshDescriptionBase::CreateEdgeWithID(const struct FEdgeID& EdgeID, const 
 
 
 // Function MeshDescription.MeshDescriptionBase.CreatePolygon
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexInstanceID>*       VertexInstanceIDs                                      (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -138,7 +138,7 @@ struct FPolygonID UMeshDescriptionBase::CreatePolygon(const struct FPolygonGroup
 
 
 // Function MeshDescription.MeshDescriptionBase.CreatePolygonGroup
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // struct FPolygonGroupID                  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -163,7 +163,7 @@ struct FPolygonGroupID UMeshDescriptionBase::CreatePolygonGroup()
 
 
 // Function MeshDescription.MeshDescriptionBase.CreatePolygonGroupWithID
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -188,7 +188,7 @@ void UMeshDescriptionBase::CreatePolygonGroupWithID(const struct FPolygonGroupID
 
 
 // Function MeshDescription.MeshDescriptionBase.CreatePolygonWithID
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -223,7 +223,7 @@ void UMeshDescriptionBase::CreatePolygonWithID(const struct FPolygonID& PolygonI
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateTriangle
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const TArray<struct FVertexInstanceID>& VertexInstanceIDs                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
@@ -257,7 +257,7 @@ struct FTriangleID UMeshDescriptionBase::CreateTriangle(const struct FPolygonGro
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateTriangleWithID
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -290,7 +290,7 @@ void UMeshDescriptionBase::CreateTriangleWithID(const struct FTriangleID& Triang
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateVertex
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // struct FVertexID                        ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -315,7 +315,7 @@ struct FVertexID UMeshDescriptionBase::CreateVertex()
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateVertexInstance
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FVertexInstanceID                ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -343,7 +343,7 @@ struct FVertexInstanceID UMeshDescriptionBase::CreateVertexInstance(const struct
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateVertexInstanceWithID
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -370,7 +370,7 @@ void UMeshDescriptionBase::CreateVertexInstanceWithID(const struct FVertexInstan
 
 
 // Function MeshDescription.MeshDescriptionBase.CreateVertexWithID
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -395,7 +395,7 @@ void UMeshDescriptionBase::CreateVertexWithID(const struct FVertexID& VertexID)
 
 
 // Function MeshDescription.MeshDescriptionBase.DeleteEdge
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexID>*               OrphanedVertices                                       (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -424,7 +424,7 @@ void UMeshDescriptionBase::DeleteEdge(const struct FEdgeID& EdgeID, TArray<struc
 
 
 // Function MeshDescription.MeshDescriptionBase.DeletePolygon
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FEdgeID>*                 OrphanedEdges                                          (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -461,7 +461,7 @@ void UMeshDescriptionBase::DeletePolygon(const struct FPolygonID& PolygonID, TAr
 
 
 // Function MeshDescription.MeshDescriptionBase.DeletePolygonGroup
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -486,7 +486,7 @@ void UMeshDescriptionBase::DeletePolygonGroup(const struct FPolygonGroupID& Poly
 
 
 // Function MeshDescription.MeshDescriptionBase.DeleteTriangle
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FEdgeID>*                 OrphanedEdges                                          (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -523,7 +523,7 @@ void UMeshDescriptionBase::DeleteTriangle(const struct FTriangleID& TriangleID, 
 
 
 // Function MeshDescription.MeshDescriptionBase.DeleteVertex
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -548,7 +548,7 @@ void UMeshDescriptionBase::DeleteVertex(const struct FVertexID& VertexID)
 
 
 // Function MeshDescription.MeshDescriptionBase.DeleteVertexInstance
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexID>*               OrphanedVertices                                       (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -577,7 +577,7 @@ void UMeshDescriptionBase::DeleteVertexInstance(const struct FVertexInstanceID& 
 
 
 // Function MeshDescription.MeshDescriptionBase.Empty
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 
 void UMeshDescriptionBase::Empty()
 {
@@ -596,7 +596,7 @@ void UMeshDescriptionBase::Empty()
 
 
 // Function MeshDescription.MeshDescriptionBase.ReserveNewEdges
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // int32                                   NumberOfNewEdges                                       (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -621,7 +621,7 @@ void UMeshDescriptionBase::ReserveNewEdges(int32 NumberOfNewEdges)
 
 
 // Function MeshDescription.MeshDescriptionBase.ReserveNewPolygonGroups
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // int32                                   NumberOfNewPolygonGroups                               (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -646,7 +646,7 @@ void UMeshDescriptionBase::ReserveNewPolygonGroups(int32 NumberOfNewPolygonGroup
 
 
 // Function MeshDescription.MeshDescriptionBase.ReserveNewPolygons
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const int32                             NumberOfNewPolygons                                    (ConstParm, Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -671,7 +671,7 @@ void UMeshDescriptionBase::ReserveNewPolygons(const int32 NumberOfNewPolygons)
 
 
 // Function MeshDescription.MeshDescriptionBase.ReserveNewTriangles
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // int32                                   NumberOfNewTriangles                                   (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -696,7 +696,7 @@ void UMeshDescriptionBase::ReserveNewTriangles(int32 NumberOfNewTriangles)
 
 
 // Function MeshDescription.MeshDescriptionBase.ReserveNewVertexInstances
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // int32                                   NumberOfNewVertexInstances                             (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -721,7 +721,7 @@ void UMeshDescriptionBase::ReserveNewVertexInstances(int32 NumberOfNewVertexInst
 
 
 // Function MeshDescription.MeshDescriptionBase.ReserveNewVertices
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // int32                                   NumberOfNewVertices                                    (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -746,7 +746,7 @@ void UMeshDescriptionBase::ReserveNewVertices(int32 NumberOfNewVertices)
 
 
 // Function MeshDescription.MeshDescriptionBase.ReversePolygonFacing
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -771,7 +771,7 @@ void UMeshDescriptionBase::ReversePolygonFacing(const struct FPolygonID& Polygon
 
 
 // Function MeshDescription.MeshDescriptionBase.SetPolygonPolygonGroup
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -797,23 +797,25 @@ void UMeshDescriptionBase::SetPolygonPolygonGroup(const struct FPolygonID& Polyg
 }
 
 
-// Function MeshDescription.MeshDescriptionBase.SetPolygonVertexInstances
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// Function MeshDescription.MeshDescriptionBase.SetPolygonVertexInstance
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// const TArray<struct FVertexInstanceID>& VertexInstanceIDs                                      (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, NativeAccessSpecifierPublic)
+// int32                                   PerimeterIndex                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UMeshDescriptionBase::SetPolygonVertexInstances(const struct FPolygonID& PolygonID, const TArray<struct FVertexInstanceID>& VertexInstanceIDs)
+void UMeshDescriptionBase::SetPolygonVertexInstance(const struct FPolygonID& PolygonID, int32 PerimeterIndex, const struct FVertexInstanceID& VertexInstanceID)
 {
 	static class UFunction* Func = nullptr;
 
 	if (Func == nullptr)
-		Func = Class->GetFunction("MeshDescriptionBase", "SetPolygonVertexInstances");
+		Func = Class->GetFunction("MeshDescriptionBase", "SetPolygonVertexInstance");
 
-	Params::MeshDescriptionBase_SetPolygonVertexInstances Parms{};
+	Params::MeshDescriptionBase_SetPolygonVertexInstance Parms{};
 
 	Parms.PolygonID = std::move(PolygonID);
-	Parms.VertexInstanceIDs = std::move(VertexInstanceIDs);
+	Parms.PerimeterIndex = PerimeterIndex;
+	Parms.VertexInstanceID = std::move(VertexInstanceID);
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -825,7 +827,7 @@ void UMeshDescriptionBase::SetPolygonVertexInstances(const struct FPolygonID& Po
 
 
 // Function MeshDescription.MeshDescriptionBase.SetVertexPosition
-// (Final, RequiredAPI, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, HasDefaults, BlueprintCallable)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVector&                   Position                                               (ConstParm, Parm, OutParm, ZeroConstructor, ReferenceParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -852,7 +854,7 @@ void UMeshDescriptionBase::SetVertexPosition(const struct FVertexID& VertexID, c
 
 
 // Function MeshDescription.MeshDescriptionBase.GetEdgeConnectedPolygons
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FPolygonID>*              OutConnectedPolygonIDs                                 (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -881,7 +883,7 @@ void UMeshDescriptionBase::GetEdgeConnectedPolygons(const struct FEdgeID& EdgeID
 
 
 // Function MeshDescription.MeshDescriptionBase.GetEdgeConnectedTriangles
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FTriangleID>*             OutConnectedTriangleIDs                                (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -909,33 +911,8 @@ void UMeshDescriptionBase::GetEdgeConnectedTriangles(const struct FEdgeID& EdgeI
 }
 
 
-// Function MeshDescription.MeshDescriptionBase.GetEdgeCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UMeshDescriptionBase::GetEdgeCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshDescriptionBase", "GetEdgeCount");
-
-	Params::MeshDescriptionBase_GetEdgeCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function MeshDescription.MeshDescriptionBase.GetEdgeVertex
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   VertexNumber                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -965,7 +942,7 @@ struct FVertexID UMeshDescriptionBase::GetEdgeVertex(const struct FEdgeID& EdgeI
 
 
 // Function MeshDescription.MeshDescriptionBase.GetEdgeVertices
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexID>*               OutVertexIDs                                           (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -994,7 +971,7 @@ void UMeshDescriptionBase::GetEdgeVertices(const struct FEdgeID& EdgeID, TArray<
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumEdgeConnectedPolygons
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1022,7 +999,7 @@ int32 UMeshDescriptionBase::GetNumEdgeConnectedPolygons(const struct FEdgeID& Ed
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumEdgeConnectedTriangles
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1050,7 +1027,7 @@ int32 UMeshDescriptionBase::GetNumEdgeConnectedTriangles(const struct FEdgeID& E
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumPolygonGroupPolygons
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1078,7 +1055,7 @@ int32 UMeshDescriptionBase::GetNumPolygonGroupPolygons(const struct FPolygonGrou
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumPolygonInternalEdges
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1106,7 +1083,7 @@ int32 UMeshDescriptionBase::GetNumPolygonInternalEdges(const struct FPolygonID& 
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumPolygonTriangles
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1134,7 +1111,7 @@ int32 UMeshDescriptionBase::GetNumPolygonTriangles(const struct FPolygonID& Poly
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumPolygonVertices
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1162,7 +1139,7 @@ int32 UMeshDescriptionBase::GetNumPolygonVertices(const struct FPolygonID& Polyg
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumVertexConnectedEdges
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1190,7 +1167,7 @@ int32 UMeshDescriptionBase::GetNumVertexConnectedEdges(const struct FVertexID& V
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumVertexConnectedPolygons
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1218,7 +1195,7 @@ int32 UMeshDescriptionBase::GetNumVertexConnectedPolygons(const struct FVertexID
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumVertexConnectedTriangles
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1246,7 +1223,7 @@ int32 UMeshDescriptionBase::GetNumVertexConnectedTriangles(const struct FVertexI
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumVertexInstanceConnectedPolygons
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1274,7 +1251,7 @@ int32 UMeshDescriptionBase::GetNumVertexInstanceConnectedPolygons(const struct F
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumVertexInstanceConnectedTriangles
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1302,7 +1279,7 @@ int32 UMeshDescriptionBase::GetNumVertexInstanceConnectedTriangles(const struct 
 
 
 // Function MeshDescription.MeshDescriptionBase.GetNumVertexVertexInstances
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1330,7 +1307,7 @@ int32 UMeshDescriptionBase::GetNumVertexVertexInstances(const struct FVertexID& 
 
 
 // Function MeshDescription.MeshDescriptionBase.GetPolygonAdjacentPolygons
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FPolygonID>*              OutPolygonIDs                                          (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1358,58 +1335,8 @@ void UMeshDescriptionBase::GetPolygonAdjacentPolygons(const struct FPolygonID& P
 }
 
 
-// Function MeshDescription.MeshDescriptionBase.GetPolygonCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UMeshDescriptionBase::GetPolygonCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshDescriptionBase", "GetPolygonCount");
-
-	Params::MeshDescriptionBase_GetPolygonCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
-// Function MeshDescription.MeshDescriptionBase.GetPolygonGroupCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UMeshDescriptionBase::GetPolygonGroupCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshDescriptionBase", "GetPolygonGroupCount");
-
-	Params::MeshDescriptionBase_GetPolygonGroupCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function MeshDescription.MeshDescriptionBase.GetPolygonGroupPolygons
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FPolygonID>*              OutPolygonIDs                                          (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1438,7 +1365,7 @@ void UMeshDescriptionBase::GetPolygonGroupPolygons(const struct FPolygonGroupID&
 
 
 // Function MeshDescription.MeshDescriptionBase.GetPolygonInternalEdges
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FEdgeID>*                 OutEdgeIDs                                             (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1467,7 +1394,7 @@ void UMeshDescriptionBase::GetPolygonInternalEdges(const struct FPolygonID& Poly
 
 
 // Function MeshDescription.MeshDescriptionBase.GetPolygonPerimeterEdges
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FEdgeID>*                 OutEdgeIDs                                             (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1496,7 +1423,7 @@ void UMeshDescriptionBase::GetPolygonPerimeterEdges(const struct FPolygonID& Pol
 
 
 // Function MeshDescription.MeshDescriptionBase.GetPolygonPolygonGroup
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FPolygonGroupID                  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1524,7 +1451,7 @@ struct FPolygonGroupID UMeshDescriptionBase::GetPolygonPolygonGroup(const struct
 
 
 // Function MeshDescription.MeshDescriptionBase.GetPolygonTriangles
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FTriangleID>*             OutTriangleIDs                                         (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1553,7 +1480,7 @@ void UMeshDescriptionBase::GetPolygonTriangles(const struct FPolygonID& PolygonI
 
 
 // Function MeshDescription.MeshDescriptionBase.GetPolygonVertexInstances
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexInstanceID>*       OutVertexInstanceIDs                                   (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1582,7 +1509,7 @@ void UMeshDescriptionBase::GetPolygonVertexInstances(const struct FPolygonID& Po
 
 
 // Function MeshDescription.MeshDescriptionBase.GetPolygonVertices
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexID>*               OutVertexIDs                                           (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1611,7 +1538,7 @@ void UMeshDescriptionBase::GetPolygonVertices(const struct FPolygonID& PolygonID
 
 
 // Function MeshDescription.MeshDescriptionBase.GetTriangleAdjacentTriangles
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FTriangleID>*             OutTriangleIDs                                         (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1639,33 +1566,8 @@ void UMeshDescriptionBase::GetTriangleAdjacentTriangles(const struct FTriangleID
 }
 
 
-// Function MeshDescription.MeshDescriptionBase.GetTriangleCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UMeshDescriptionBase::GetTriangleCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshDescriptionBase", "GetTriangleCount");
-
-	Params::MeshDescriptionBase_GetTriangleCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function MeshDescription.MeshDescriptionBase.GetTriangleEdges
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FEdgeID>*                 OutEdgeIDs                                             (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1694,7 +1596,7 @@ void UMeshDescriptionBase::GetTriangleEdges(const struct FTriangleID& TriangleID
 
 
 // Function MeshDescription.MeshDescriptionBase.GetTrianglePolygon
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FPolygonID                       ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1722,7 +1624,7 @@ struct FPolygonID UMeshDescriptionBase::GetTrianglePolygon(const struct FTriangl
 
 
 // Function MeshDescription.MeshDescriptionBase.GetTrianglePolygonGroup
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FPolygonGroupID                  ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -1750,13 +1652,13 @@ struct FPolygonGroupID UMeshDescriptionBase::GetTrianglePolygonGroup(const struc
 
 
 // Function MeshDescription.MeshDescriptionBase.GetTriangleVertexInstance
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-// int32                                   index                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// int32                                   Index_0                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FVertexInstanceID                ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-struct FVertexInstanceID UMeshDescriptionBase::GetTriangleVertexInstance(const struct FTriangleID& TriangleID, int32 index) const
+struct FVertexInstanceID UMeshDescriptionBase::GetTriangleVertexInstance(const struct FTriangleID& TriangleID, int32 Index_0) const
 {
 	static class UFunction* Func = nullptr;
 
@@ -1766,7 +1668,7 @@ struct FVertexInstanceID UMeshDescriptionBase::GetTriangleVertexInstance(const s
 	Params::MeshDescriptionBase_GetTriangleVertexInstance Parms{};
 
 	Parms.TriangleID = std::move(TriangleID);
-	Parms.index = index;
+	Parms.Index_0 = Index_0;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -1780,7 +1682,7 @@ struct FVertexInstanceID UMeshDescriptionBase::GetTriangleVertexInstance(const s
 
 
 // Function MeshDescription.MeshDescriptionBase.GetTriangleVertexInstances
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexInstanceID>*       OutVertexInstanceIDs                                   (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1809,7 +1711,7 @@ void UMeshDescriptionBase::GetTriangleVertexInstances(const struct FTriangleID& 
 
 
 // Function MeshDescription.MeshDescriptionBase.GetTriangleVertices
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexID>*               OutVertexIDs                                           (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1838,7 +1740,7 @@ void UMeshDescriptionBase::GetTriangleVertices(const struct FTriangleID& Triangl
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexAdjacentVertices
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexID>*               OutAdjacentVertexIDs                                   (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1867,7 +1769,7 @@ void UMeshDescriptionBase::GetVertexAdjacentVertices(const struct FVertexID& Ver
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexConnectedEdges
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FEdgeID>*                 OutEdgeIDs                                             (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1896,7 +1798,7 @@ void UMeshDescriptionBase::GetVertexConnectedEdges(const struct FVertexID& Verte
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexConnectedPolygons
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FPolygonID>*              OutConnectedPolygonIDs                                 (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1925,7 +1827,7 @@ void UMeshDescriptionBase::GetVertexConnectedPolygons(const struct FVertexID& Ve
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexConnectedTriangles
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FTriangleID>*             OutConnectedTriangleIDs                                (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -1953,33 +1855,8 @@ void UMeshDescriptionBase::GetVertexConnectedTriangles(const struct FVertexID& V
 }
 
 
-// Function MeshDescription.MeshDescriptionBase.GetVertexCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UMeshDescriptionBase::GetVertexCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshDescriptionBase", "GetVertexCount");
-
-	Params::MeshDescriptionBase_GetVertexCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function MeshDescription.MeshDescriptionBase.GetVertexInstanceConnectedPolygons
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FPolygonID>*              OutConnectedPolygonIDs                                 (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -2008,7 +1885,7 @@ void UMeshDescriptionBase::GetVertexInstanceConnectedPolygons(const struct FVert
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexInstanceConnectedTriangles
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FTriangleID>*             OutConnectedTriangleIDs                                (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -2036,33 +1913,8 @@ void UMeshDescriptionBase::GetVertexInstanceConnectedTriangles(const struct FVer
 }
 
 
-// Function MeshDescription.MeshDescriptionBase.GetVertexInstanceCount
-// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
-// Parameters:
-// int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-int32 UMeshDescriptionBase::GetVertexInstanceCount() const
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("MeshDescriptionBase", "GetVertexInstanceCount");
-
-	Params::MeshDescriptionBase_GetVertexInstanceCount Parms{};
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-
-	return Parms.ReturnValue;
-}
-
-
 // Function MeshDescription.MeshDescriptionBase.GetVertexInstanceForPolygonVertex
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2092,7 +1944,7 @@ struct FVertexInstanceID UMeshDescriptionBase::GetVertexInstanceForPolygonVertex
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexInstanceForTriangleVertex
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2122,7 +1974,7 @@ struct FVertexInstanceID UMeshDescriptionBase::GetVertexInstanceForTriangleVerte
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexInstancePairEdge
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID0                                      (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVertexInstanceID&         VertexInstanceID1                                      (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2152,7 +2004,7 @@ struct FEdgeID UMeshDescriptionBase::GetVertexInstancePairEdge(const struct FVer
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexInstanceVertex
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FVertexID                        ReturnValue                                            (Parm, OutParm, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2180,7 +2032,7 @@ struct FVertexID UMeshDescriptionBase::GetVertexInstanceVertex(const struct FVer
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexPairEdge
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID0                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FVertexID&                 VertexID1                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2210,7 +2062,7 @@ struct FEdgeID UMeshDescriptionBase::GetVertexPairEdge(const struct FVertexID& V
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexPosition
-// (Final, RequiredAPI, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasDefaults, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // struct FVector                          ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2238,7 +2090,7 @@ struct FVector UMeshDescriptionBase::GetVertexPosition(const struct FVertexID& V
 
 
 // Function MeshDescription.MeshDescriptionBase.GetVertexVertexInstances
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // TArray<struct FVertexInstanceID>*       OutVertexInstanceIDs                                   (Parm, OutParm, ZeroConstructor, NativeAccessSpecifierPublic)
@@ -2267,7 +2119,7 @@ void UMeshDescriptionBase::GetVertexVertexInstances(const struct FVertexID& Vert
 
 
 // Function MeshDescription.MeshDescriptionBase.IsEdgeInternal
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2295,7 +2147,7 @@ bool UMeshDescriptionBase::IsEdgeInternal(const struct FEdgeID& EdgeID) const
 
 
 // Function MeshDescription.MeshDescriptionBase.IsEdgeInternalToPolygon
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2325,7 +2177,7 @@ bool UMeshDescriptionBase::IsEdgeInternalToPolygon(const struct FEdgeID& EdgeID,
 
 
 // Function MeshDescription.MeshDescriptionBase.IsEdgeValid
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FEdgeID&                   EdgeID                                                 (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2353,7 +2205,7 @@ bool UMeshDescriptionBase::IsEdgeValid(const struct FEdgeID& EdgeID) const
 
 
 // Function MeshDescription.MeshDescriptionBase.IsEmpty
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -2378,7 +2230,7 @@ bool UMeshDescriptionBase::IsEmpty() const
 
 
 // Function MeshDescription.MeshDescriptionBase.IsPolygonGroupValid
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonGroupID&           PolygonGroupID                                         (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2406,7 +2258,7 @@ bool UMeshDescriptionBase::IsPolygonGroupValid(const struct FPolygonGroupID& Pol
 
 
 // Function MeshDescription.MeshDescriptionBase.IsPolygonValid
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FPolygonID&                PolygonID                                              (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2434,7 +2286,7 @@ bool UMeshDescriptionBase::IsPolygonValid(const struct FPolygonID& PolygonID) co
 
 
 // Function MeshDescription.MeshDescriptionBase.IsTrianglePartOfNgon
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2462,7 +2314,7 @@ bool UMeshDescriptionBase::IsTrianglePartOfNgon(const struct FTriangleID& Triang
 
 
 // Function MeshDescription.MeshDescriptionBase.IsTriangleValid
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FTriangleID&               TriangleID                                             (ConstParm, Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2490,7 +2342,7 @@ bool UMeshDescriptionBase::IsTriangleValid(const struct FTriangleID& TriangleID)
 
 
 // Function MeshDescription.MeshDescriptionBase.IsVertexInstanceValid
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexInstanceID&         VertexInstanceID                                       (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2518,7 +2370,7 @@ bool UMeshDescriptionBase::IsVertexInstanceValid(const struct FVertexInstanceID&
 
 
 // Function MeshDescription.MeshDescriptionBase.IsVertexOrphaned
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -2546,7 +2398,7 @@ bool UMeshDescriptionBase::IsVertexOrphaned(const struct FVertexID& VertexID) co
 
 
 // Function MeshDescription.MeshDescriptionBase.IsVertexValid
-// (Final, RequiredAPI, Native, Public, BlueprintCallable, BlueprintPure, Const)
+// (Final, Native, Public, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FVertexID&                 VertexID                                               (Parm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)

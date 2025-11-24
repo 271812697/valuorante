@@ -19,151 +19,6 @@
 namespace SDK
 {
 
-// Class AnimGraphRuntime.BlendSpaceLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UBlendSpaceLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FBlendSpaceReference ConvertToBlendSpace(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToBlendSpacePure(const struct FAnimNodeReference& Node, struct FBlendSpaceReference* BlendSpace, bool* result);
-	static struct FVector GetFilteredPosition(const struct FBlendSpaceReference& BlendSpace);
-	static struct FVector GetPosition(const struct FBlendSpaceReference& BlendSpace);
-	static void SnapToPosition(const struct FBlendSpaceReference& BlendSpace, const struct FVector& NewPosition);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BlendSpaceLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BlendSpaceLibrary")
-	}
-	static class UBlendSpaceLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBlendSpaceLibrary>();
-	}
-};
-DUMPER7_ASSERTS_UBlendSpaceLibrary;
-
-// Class AnimGraphRuntime.AnimationStateMachineLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UAnimationStateMachineLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static void ConvertToAnimationStateMachine(const struct FAnimNodeReference& Node, struct FAnimationStateMachineReference* AnimationState, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToAnimationStateMachinePure(const struct FAnimNodeReference& Node, struct FAnimationStateMachineReference* AnimationState, bool* result);
-	static void ConvertToAnimationStateResult(const struct FAnimNodeReference& Node, struct FAnimationStateResultReference* AnimationState, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToAnimationStateResultPure(const struct FAnimNodeReference& Node, struct FAnimationStateResultReference* AnimationState, bool* result);
-	static float GetRelevantAnimTimeRemaining(const struct FAnimUpdateContext& UpdateContext, const struct FAnimationStateResultReference& Node);
-	static float GetRelevantAnimTimeRemainingFraction(const struct FAnimUpdateContext& UpdateContext, const struct FAnimationStateResultReference& Node);
-	static class FName GetState(const struct FAnimUpdateContext& UpdateContext, const struct FAnimationStateMachineReference& Node);
-	static bool IsStateBlendingIn(const struct FAnimUpdateContext& UpdateContext, const struct FAnimationStateResultReference& Node);
-	static bool IsStateBlendingOut(const struct FAnimUpdateContext& UpdateContext, const struct FAnimationStateResultReference& Node);
-	static void SetState(const struct FAnimUpdateContext& UpdateContext, const struct FAnimationStateMachineReference& Node, class FName TargetState, float Duration, ETransitionLogicType BlendType, class UBlendProfile* BlendProfile, EAlphaBlendOption AlphaBlendOption, class UCurveFloat* CustomBlendCurve);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AnimationStateMachineLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AnimationStateMachineLibrary")
-	}
-	static class UAnimationStateMachineLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAnimationStateMachineLibrary>();
-	}
-};
-DUMPER7_ASSERTS_UAnimationStateMachineLibrary;
-
-// Class AnimGraphRuntime.AnimSequencerInstance
-// 0x0000 (0x0380 - 0x0380)
-class UAnimSequencerInstance final : public UAnimInstance
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AnimSequencerInstance")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AnimSequencerInstance")
-	}
-	static class UAnimSequencerInstance* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAnimSequencerInstance>();
-	}
-};
-DUMPER7_ASSERTS_UAnimSequencerInstance;
-
-// Class AnimGraphRuntime.AnimExecutionContextLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UAnimExecutionContextLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FAnimComponentSpacePoseContext ConvertToComponentSpacePoseContext(const struct FAnimExecutionContext& Context, EAnimExecutionContextConversionResult* result);
-	static struct FAnimInitializationContext ConvertToInitializationContext(const struct FAnimExecutionContext& Context, EAnimExecutionContextConversionResult* result);
-	static struct FAnimPoseContext ConvertToPoseContext(const struct FAnimExecutionContext& Context, EAnimExecutionContextConversionResult* result);
-	static struct FAnimUpdateContext ConvertToUpdateContext(const struct FAnimExecutionContext& Context, EAnimExecutionContextConversionResult* result);
-	static class UAnimInstance* GetAnimInstance(const struct FAnimExecutionContext& Context);
-	static struct FAnimNodeReference GetAnimNodeReference(class UAnimInstance* Instance, int32 index);
-	static float GetCurrentWeight(const struct FAnimUpdateContext& Context);
-	static float GetDeltaTime(const struct FAnimUpdateContext& Context);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("AnimExecutionContextLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"AnimExecutionContextLibrary")
-	}
-	static class UAnimExecutionContextLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UAnimExecutionContextLibrary>();
-	}
-};
-DUMPER7_ASSERTS_UAnimExecutionContextLibrary;
-
-// Class AnimGraphRuntime.BlendSpacePlayerLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UBlendSpacePlayerLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FBlendSpacePlayerReference ConvertToBlendSpacePlayer(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToBlendSpacePlayerPure(const struct FAnimNodeReference& Node, struct FBlendSpacePlayerReference* BlendSpacePlayer, bool* result);
-	static class UBlendSpace* GetBlendSpace(const struct FBlendSpacePlayerReference& BlendSpacePlayer);
-	static bool GetLoop(const struct FBlendSpacePlayerReference& BlendSpacePlayer);
-	static float GetPlayRate(const struct FBlendSpacePlayerReference& BlendSpacePlayer);
-	static struct FVector GetPosition(const struct FBlendSpacePlayerReference& BlendSpacePlayer);
-	static float GetStartPosition(const struct FBlendSpacePlayerReference& BlendSpacePlayer);
-	static struct FBlendSpacePlayerReference SetBlendSpace(const struct FBlendSpacePlayerReference& BlendSpacePlayer, class UBlendSpace* BlendSpace);
-	static struct FBlendSpacePlayerReference SetBlendSpaceWithInertialBlending(const struct FAnimUpdateContext& UpdateContext, const struct FBlendSpacePlayerReference& BlendSpacePlayer, class UBlendSpace* BlendSpace, float BlendTime);
-	static struct FBlendSpacePlayerReference SetLoop(const struct FBlendSpacePlayerReference& BlendSpacePlayer, bool bLoop);
-	static struct FBlendSpacePlayerReference SetPlayRate(const struct FBlendSpacePlayerReference& BlendSpacePlayer, float PlayRate);
-	static struct FBlendSpacePlayerReference SetResetPlayTimeWhenBlendSpaceChanges(const struct FBlendSpacePlayerReference& BlendSpacePlayer, bool bReset);
-	static bool ShouldResetPlayTimeWhenBlendSpaceChanges(const struct FBlendSpacePlayerReference& BlendSpacePlayer);
-	static void SnapToPosition(const struct FBlendSpacePlayerReference& BlendSpacePlayer, const struct FVector& NewPosition);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("BlendSpacePlayerLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"BlendSpacePlayerLibrary")
-	}
-	static class UBlendSpacePlayerLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UBlendSpacePlayerLibrary>();
-	}
-};
-DUMPER7_ASSERTS_UBlendSpacePlayerLibrary;
-
 // Class AnimGraphRuntime.AnimNotify_PlayMontageNotify
 // 0x0008 (0x0040 - 0x0038)
 class UAnimNotify_PlayMontageNotify final : public UAnimNotify
@@ -210,36 +65,31 @@ public:
 };
 DUMPER7_ASSERTS_UAnimNotify_PlayMontageNotifyWindow;
 
-// Class AnimGraphRuntime.BlendListBaseLibrary
-// 0x0000 (0x0028 - 0x0028)
-class UBlendListBaseLibrary final : public UBlueprintFunctionLibrary
+// Class AnimGraphRuntime.AnimSequencerInstance
+// 0x0000 (0x02C0 - 0x02C0)
+class UAnimSequencerInstance final : public UAnimInstance
 {
-public:
-	static struct FBlendListBaseReference ConvertToBlendListBase(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static void ResetNode(const struct FBlendListBaseReference& BlendListBase);
-
 public:
 	static class UClass* StaticClass()
 	{
-		STATIC_CLASS_IMPL("BlendListBaseLibrary")
+		STATIC_CLASS_IMPL("AnimSequencerInstance")
 	}
 	static const class FName& StaticName()
 	{
-		STATIC_NAME_IMPL(L"BlendListBaseLibrary")
+		STATIC_NAME_IMPL(L"AnimSequencerInstance")
 	}
-	static class UBlendListBaseLibrary* GetDefaultObj()
+	static class UAnimSequencerInstance* GetDefaultObj()
 	{
-		return GetDefaultObjImpl<UBlendListBaseLibrary>();
+		return GetDefaultObjImpl<UAnimSequencerInstance>();
 	}
 };
-DUMPER7_ASSERTS_UBlendListBaseLibrary;
+DUMPER7_ASSERTS_UAnimSequencerInstance;
 
 // Class AnimGraphRuntime.KismetAnimationLibrary
 // 0x0000 (0x0028 - 0x0028)
 class UKismetAnimationLibrary final : public UBlueprintFunctionLibrary
 {
 public:
-	static float CalculateDirection(const struct FVector& Velocity, const struct FRotator& BaseRotation);
 	static float K2_CalculateVelocityFromPositionHistory(float DeltaSeconds, const struct FVector& Position, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax);
 	static float K2_CalculateVelocityFromSockets(float DeltaSeconds, class USkeletalMeshComponent* Component, const class FName SocketOrBoneName, const class FName ReferenceSocketOrBone, ERelativeTransformSpace SocketSpace, const struct FVector& OffsetInBoneSpace, struct FPositionHistory& History, int32 NumberOfSamples, float VelocityMin, float VelocityMax, EEasingFuncType EasingType, const struct FRuntimeFloatCurve& CustomCurve);
 	static struct FVector K2_DirectionBetweenSockets(const class USkeletalMeshComponent* Component, const class FName SocketOrBoneNameFrom, const class FName SocketOrBoneNameTo);
@@ -267,69 +117,17 @@ public:
 };
 DUMPER7_ASSERTS_UKismetAnimationLibrary;
 
-// Class AnimGraphRuntime.LayeredBoneBlendLibrary
-// 0x0000 (0x0028 - 0x0028)
-class ULayeredBoneBlendLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static void ConvertToLayeredBlendPerBonePure(const struct FAnimNodeReference& Node, struct FLayeredBoneBlendReference* LayeredBoneBlend, bool* result);
-	static struct FLayeredBoneBlendReference ConvertToLayeredBoneBlend(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static int32 GetNumPoses(const struct FLayeredBoneBlendReference& LayeredBoneBlend);
-	static struct FLayeredBoneBlendReference SetBlendMask(const struct FAnimUpdateContext& UpdateContext, const struct FLayeredBoneBlendReference& LayeredBoneBlend, int32 PoseIndex, class FName BlendMaskName);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LayeredBoneBlendLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LayeredBoneBlendLibrary")
-	}
-	static class ULayeredBoneBlendLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULayeredBoneBlendLibrary>();
-	}
-};
-DUMPER7_ASSERTS_ULayeredBoneBlendLibrary;
-
-// Class AnimGraphRuntime.LinkedAnimGraphLibrary
-// 0x0000 (0x0028 - 0x0028)
-class ULinkedAnimGraphLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FLinkedAnimGraphReference ConvertToLinkedAnimGraph(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToLinkedAnimGraphPure(const struct FAnimNodeReference& Node, struct FLinkedAnimGraphReference* LinkedAnimGraph, bool* result);
-	static class UAnimInstance* GetLinkedAnimInstance(const struct FLinkedAnimGraphReference& Node);
-	static bool HasLinkedAnimInstance(const struct FLinkedAnimGraphReference& Node);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("LinkedAnimGraphLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"LinkedAnimGraphLibrary")
-	}
-	static class ULinkedAnimGraphLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<ULinkedAnimGraphLibrary>();
-	}
-};
-DUMPER7_ASSERTS_ULinkedAnimGraphLibrary;
-
 // Class AnimGraphRuntime.PlayMontageCallbackProxy
-// 0x00B8 (0x00E0 - 0x0028)
+// 0x0080 (0x00A8 - 0x0028)
 class UPlayMontageCallbackProxy final : public UObject
 {
 public:
-	TMulticastInlineDelegate<void(class FName NotifyName)> OnCompleted;                              // 0x0028(0x0018)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class FName NotifyName)> OnBlendOut;                               // 0x0040(0x0018)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class FName NotifyName)> OnInterrupted;                            // 0x0058(0x0018)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class FName NotifyName)> OnNotifyBegin;                            // 0x0070(0x0018)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	TMulticastInlineDelegate<void(class FName NotifyName)> OnNotifyEnd;                              // 0x0088(0x0018)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_A0[0x40];                                      // 0x00A0(0x0040)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(class FName NotifyName)> OnCompleted;                              // 0x0028(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class FName NotifyName)> OnBlendOut;                               // 0x0038(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class FName NotifyName)> OnInterrupted;                            // 0x0048(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class FName NotifyName)> OnNotifyBegin;                            // 0x0058(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(class FName NotifyName)> OnNotifyEnd;                              // 0x0068(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_78[0x30];                                      // 0x0078(0x0030)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UPlayMontageCallbackProxy* CreateProxyObjectForPlayMontage(class USkeletalMeshComponent* InSkeletalMeshComponent, class UAnimMontage* MontageToPlay, float PlayRate, float StartingPosition, class FName StartingSection);
@@ -354,72 +152,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UPlayMontageCallbackProxy;
-
-// Class AnimGraphRuntime.SequenceEvaluatorLibrary
-// 0x0000 (0x0028 - 0x0028)
-class USequenceEvaluatorLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FSequenceEvaluatorReference AdvanceTime(const struct FAnimUpdateContext& UpdateContext, const struct FSequenceEvaluatorReference& SequenceEvaluator, float PlayRate);
-	static struct FSequenceEvaluatorReference ConvertToSequenceEvaluator(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToSequenceEvaluatorPure(const struct FAnimNodeReference& Node, struct FSequenceEvaluatorReference* SequenceEvaluator, bool* result);
-	static float GetAccumulatedTime(const struct FSequenceEvaluatorReference& SequenceEvaluator);
-	static class UAnimSequenceBase* GetSequence(const struct FSequenceEvaluatorReference& SequenceEvaluator);
-	static struct FSequenceEvaluatorReference SetExplicitTime(const struct FSequenceEvaluatorReference& SequenceEvaluator, float Time);
-	static struct FSequenceEvaluatorReference SetSequence(const struct FSequenceEvaluatorReference& SequenceEvaluator, class UAnimSequenceBase* Sequence);
-	static struct FSequenceEvaluatorReference SetSequenceWithInertialBlending(const struct FAnimUpdateContext& UpdateContext, const struct FSequenceEvaluatorReference& SequenceEvaluator, class UAnimSequenceBase* Sequence, float BlendTime);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("SequenceEvaluatorLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"SequenceEvaluatorLibrary")
-	}
-	static class USequenceEvaluatorLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<USequenceEvaluatorLibrary>();
-	}
-};
-DUMPER7_ASSERTS_USequenceEvaluatorLibrary;
-
-// Class AnimGraphRuntime.SequencePlayerLibrary
-// 0x0000 (0x0028 - 0x0028)
-class USequencePlayerLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static float ComputePlayRateFromDuration(const struct FSequencePlayerReference& SequencePlayer, float Duration);
-	static struct FSequencePlayerReference ConvertToSequencePlayer(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToSequencePlayerPure(const struct FAnimNodeReference& Node, struct FSequencePlayerReference* SequencePlayer, bool* result);
-	static float GetAccumulatedTime(const struct FSequencePlayerReference& SequencePlayer);
-	static bool GetLoopAnimation(const struct FSequencePlayerReference& SequencePlayer);
-	static float GetPlayRate(const struct FSequencePlayerReference& SequencePlayer);
-	static struct FSequencePlayerReference GetSequence(const struct FSequencePlayerReference& SequencePlayer, class UAnimSequenceBase*& SequenceBase);
-	static class UAnimSequenceBase* GetSequencePure(const struct FSequencePlayerReference& SequencePlayer);
-	static float GetStartPosition(const struct FSequencePlayerReference& SequencePlayer);
-	static struct FSequencePlayerReference SetAccumulatedTime(const struct FSequencePlayerReference& SequencePlayer, float Time);
-	static struct FSequencePlayerReference SetPlayRate(const struct FSequencePlayerReference& SequencePlayer, float PlayRate);
-	static struct FSequencePlayerReference SetSequence(const struct FSequencePlayerReference& SequencePlayer, class UAnimSequenceBase* Sequence);
-	static struct FSequencePlayerReference SetSequenceWithInertialBlending(const struct FAnimUpdateContext& UpdateContext, const struct FSequencePlayerReference& SequencePlayer, class UAnimSequenceBase* Sequence, float BlendTime);
-	static struct FSequencePlayerReference SetStartPosition(const struct FSequencePlayerReference& SequencePlayer, float StartPosition);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("SequencePlayerLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"SequencePlayerLibrary")
-	}
-	static class USequencePlayerLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<USequencePlayerLibrary>();
-	}
-};
-DUMPER7_ASSERTS_USequencePlayerLibrary;
 
 // Class AnimGraphRuntime.SequencerAnimationSupport
 // 0x0000 (0x0000 - 0x0000)
@@ -449,32 +181,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_ISequencerAnimationSupport;
-
-// Class AnimGraphRuntime.SkeletalControlLibrary
-// 0x0000 (0x0028 - 0x0028)
-class USkeletalControlLibrary final : public UBlueprintFunctionLibrary
-{
-public:
-	static struct FSkeletalControlReference ConvertToSkeletalControl(const struct FAnimNodeReference& Node, EAnimNodeReferenceConversionResult* result);
-	static void ConvertToSkeletalControlPure(const struct FAnimNodeReference& Node, struct FSkeletalControlReference* SkeletalControl, bool* result);
-	static float GetAlpha(const struct FSkeletalControlReference& SkeletalControl);
-	static struct FSkeletalControlReference SetAlpha(const struct FSkeletalControlReference& SkeletalControl, float Alpha);
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("SkeletalControlLibrary")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"SkeletalControlLibrary")
-	}
-	static class USkeletalControlLibrary* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<USkeletalControlLibrary>();
-	}
-};
-DUMPER7_ASSERTS_USkeletalControlLibrary;
 
 }
 

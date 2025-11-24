@@ -70,7 +70,7 @@ bool UMovieSceneCaptureProtocolBase::IsCapturing() const
 // Function MovieSceneCapture.MovieSceneCapture.GetAudioCaptureProtocol
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class UMovieSceneCaptureProtocolBase*   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UMovieSceneCaptureProtocolBase*   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class UMovieSceneCaptureProtocolBase* UMovieSceneCapture::GetAudioCaptureProtocol()
 {
@@ -95,7 +95,7 @@ class UMovieSceneCaptureProtocolBase* UMovieSceneCapture::GetAudioCaptureProtoco
 // Function MovieSceneCapture.MovieSceneCapture.GetImageCaptureProtocol
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class UMovieSceneCaptureProtocolBase*   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UMovieSceneCaptureProtocolBase*   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class UMovieSceneCaptureProtocolBase* UMovieSceneCapture::GetImageCaptureProtocol()
 {
@@ -118,9 +118,9 @@ class UMovieSceneCaptureProtocolBase* UMovieSceneCapture::GetImageCaptureProtoco
 
 
 // Function MovieSceneCapture.MovieSceneCapture.SetAudioCaptureProtocolType
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// TSubclassOf<class UMovieSceneCaptureProtocolBase>ProtocolType                                           (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TSubclassOf<class UMovieSceneCaptureProtocolBase>ProtocolType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UMovieSceneCapture::SetAudioCaptureProtocolType(TSubclassOf<class UMovieSceneCaptureProtocolBase> ProtocolType)
 {
@@ -143,9 +143,9 @@ void UMovieSceneCapture::SetAudioCaptureProtocolType(TSubclassOf<class UMovieSce
 
 
 // Function MovieSceneCapture.MovieSceneCapture.SetImageCaptureProtocolType
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// TSubclassOf<class UMovieSceneCaptureProtocolBase>ProtocolType                                           (Parm, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// TSubclassOf<class UMovieSceneCaptureProtocolBase>ProtocolType                                           (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UMovieSceneCapture::SetImageCaptureProtocolType(TSubclassOf<class UMovieSceneCaptureProtocolBase> ProtocolType)
 {
@@ -168,9 +168,9 @@ void UMovieSceneCapture::SetImageCaptureProtocolType(TSubclassOf<class UMovieSce
 
 
 // Function MovieSceneCapture.MovieSceneCaptureEnvironment.FindAudioCaptureProtocol
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
+// (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
-// class UMovieSceneAudioCaptureProtocolBase*ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UMovieSceneAudioCaptureProtocolBase*ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class UMovieSceneAudioCaptureProtocolBase* UMovieSceneCaptureEnvironment::FindAudioCaptureProtocol()
 {
@@ -193,9 +193,9 @@ class UMovieSceneAudioCaptureProtocolBase* UMovieSceneCaptureEnvironment::FindAu
 
 
 // Function MovieSceneCapture.MovieSceneCaptureEnvironment.FindImageCaptureProtocol
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
+// (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
-// class UMovieSceneImageCaptureProtocolBase*ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UMovieSceneImageCaptureProtocolBase*ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 class UMovieSceneImageCaptureProtocolBase* UMovieSceneCaptureEnvironment::FindImageCaptureProtocol()
 {
@@ -218,7 +218,7 @@ class UMovieSceneImageCaptureProtocolBase* UMovieSceneCaptureEnvironment::FindIm
 
 
 // Function MovieSceneCapture.MovieSceneCaptureEnvironment.GetCaptureElapsedTime
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
 // float                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -243,7 +243,7 @@ float UMovieSceneCaptureEnvironment::GetCaptureElapsedTime()
 
 
 // Function MovieSceneCapture.MovieSceneCaptureEnvironment.GetCaptureFrameNumber
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable, BlueprintPure)
+// (Final, Native, Static, Public, BlueprintCallable, BlueprintPure)
 // Parameters:
 // int32                                   ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -268,7 +268,7 @@ int32 UMovieSceneCaptureEnvironment::GetCaptureFrameNumber()
 
 
 // Function MovieSceneCapture.MovieSceneCaptureEnvironment.IsCaptureInProgress
-// (Final, RequiredAPI, Native, Static, Public, BlueprintCallable)
+// (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -293,7 +293,7 @@ bool UMovieSceneCaptureEnvironment::IsCaptureInProgress()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnBeginFinalize
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnBeginFinalize()
 {
@@ -307,7 +307,7 @@ void UUserDefinedCaptureProtocol::OnBeginFinalize()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnCaptureFrame
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnCaptureFrame()
 {
@@ -321,7 +321,7 @@ void UUserDefinedCaptureProtocol::OnCaptureFrame()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnFinalize
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnFinalize()
 {
@@ -335,7 +335,7 @@ void UUserDefinedCaptureProtocol::OnFinalize()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnPauseCapture
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnPauseCapture()
 {
@@ -349,7 +349,7 @@ void UUserDefinedCaptureProtocol::OnPauseCapture()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnPixelsReceived
-// (RequiredAPI, Event, Protected, HasOutParams, BlueprintEvent)
+// (Event, Protected, HasOutParams, BlueprintEvent)
 // Parameters:
 // const struct FCapturedPixels&           Pixels                                                 (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 // const struct FCapturedPixelsID&         ID                                                     (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
@@ -373,7 +373,7 @@ void UUserDefinedCaptureProtocol::OnPixelsReceived(const struct FCapturedPixels&
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnPreTick
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnPreTick()
 {
@@ -387,7 +387,7 @@ void UUserDefinedCaptureProtocol::OnPreTick()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnSetup
-// (RequiredAPI, Native, Event, Protected, BlueprintEvent)
+// (Native, Event, Protected, BlueprintEvent)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -412,7 +412,7 @@ bool UUserDefinedCaptureProtocol::OnSetup()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnStartCapture
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnStartCapture()
 {
@@ -426,7 +426,7 @@ void UUserDefinedCaptureProtocol::OnStartCapture()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnTick
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnTick()
 {
@@ -440,7 +440,7 @@ void UUserDefinedCaptureProtocol::OnTick()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnWarmUp
-// (RequiredAPI, Event, Protected, BlueprintEvent)
+// (Event, Protected, BlueprintEvent)
 
 void UUserDefinedCaptureProtocol::OnWarmUp()
 {
@@ -454,9 +454,9 @@ void UUserDefinedCaptureProtocol::OnWarmUp()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.ResolveBuffer
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// class UTexture*                         Buffer                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UTexture*                         Buffer                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FCapturedPixelsID&         BufferID                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 
 void UUserDefinedCaptureProtocol::ResolveBuffer(class UTexture* Buffer, const struct FCapturedPixelsID& BufferID)
@@ -481,7 +481,7 @@ void UUserDefinedCaptureProtocol::ResolveBuffer(class UTexture* Buffer, const st
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.StartCapturingFinalPixels
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FCapturedPixelsID&         StreamID                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 
@@ -506,7 +506,7 @@ void UUserDefinedCaptureProtocol::StartCapturingFinalPixels(const struct FCaptur
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.StopCapturingFinalPixels
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 
 void UUserDefinedCaptureProtocol::StopCapturingFinalPixels()
 {
@@ -525,7 +525,7 @@ void UUserDefinedCaptureProtocol::StopCapturingFinalPixels()
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.GenerateFilename
-// (RequiredAPI, Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
+// (Native, Public, HasOutParams, BlueprintCallable, BlueprintPure, Const)
 // Parameters:
 // const struct FFrameMetrics&             InFrameMetrics                                         (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, NativeAccessSpecifierPublic)
 // class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -578,7 +578,7 @@ struct FFrameMetrics UUserDefinedCaptureProtocol::GetCurrentFrameMetrics() const
 
 
 // Function MovieSceneCapture.UserDefinedCaptureProtocol.OnCanFinalize
-// (RequiredAPI, Native, Event, Protected, BlueprintEvent, Const)
+// (Native, Event, Protected, BlueprintEvent, Const)
 // Parameters:
 // bool                                    ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -603,9 +603,9 @@ bool UUserDefinedCaptureProtocol::OnCanFinalize() const
 
 
 // Function MovieSceneCapture.UserDefinedImageCaptureProtocol.GenerateFilenameForBuffer
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
-// class UTexture*                         Buffer                                                 (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class UTexture*                         Buffer                                                 (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const struct FCapturedPixelsID&         StreamID                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 // class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -633,7 +633,7 @@ class FString UUserDefinedImageCaptureProtocol::GenerateFilenameForBuffer(class 
 
 
 // Function MovieSceneCapture.UserDefinedImageCaptureProtocol.GenerateFilenameForCurrentFrame
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 // Parameters:
 // class FString                           ReturnValue                                            (Parm, OutParm, ZeroConstructor, ReturnParm, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
@@ -658,7 +658,7 @@ class FString UUserDefinedImageCaptureProtocol::GenerateFilenameForCurrentFrame(
 
 
 // Function MovieSceneCapture.UserDefinedImageCaptureProtocol.WriteImageToDisk
-// (Final, RequiredAPI, Native, Public, HasOutParams, BlueprintCallable)
+// (Final, Native, Public, HasOutParams, BlueprintCallable)
 // Parameters:
 // const struct FCapturedPixels&           PixelData                                              (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)
 // const struct FCapturedPixelsID&         StreamID                                               (ConstParm, Parm, OutParm, ReferenceParm, NativeAccessSpecifierPublic)

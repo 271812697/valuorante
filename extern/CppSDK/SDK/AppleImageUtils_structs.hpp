@@ -14,6 +14,18 @@
 namespace SDK
 {
 
+// Enum AppleImageUtils.EAppleTextureType
+// NumValues: 0x0006
+enum class EAppleTextureType : uint8
+{
+	Unknown                                  = 0,
+	Image                                    = 1,
+	PixelBuffer                              = 2,
+	Surface                                  = 3,
+	MetalTexture                             = 4,
+	EAppleTextureType_MAX                    = 5,
+};
+
 // Enum AppleImageUtils.ETextureRotationDirection
 // NumValues: 0x0009
 enum class ETextureRotationDirection : uint8
@@ -27,18 +39,6 @@ enum class ETextureRotationDirection : uint8
 	DownMirrored                             = 6,
 	UpMirrored                               = 7,
 	ETextureRotationDirection_MAX            = 8,
-};
-
-// Enum AppleImageUtils.EAppleTextureType
-// NumValues: 0x0006
-enum class EAppleTextureType : uint8
-{
-	Unknown                                  = 0,
-	Image                                    = 1,
-	PixelBuffer                              = 2,
-	Surface                                  = 3,
-	MetalTexture                             = 4,
-	EAppleTextureType_MAX                    = 5,
 };
 
 // ScriptStruct AppleImageUtils.AppleImageUtilsImageConversionResult

@@ -18,7 +18,7 @@ namespace SDK
 {
 
 // Function ChaosSolverEngine.ChaosSolverEngineBlueprintLibrary.ConvertPhysicsCollisionToHitResult
-// (Final, RequiredAPI, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
+// (Final, Native, Static, Public, HasOutParams, BlueprintCallable, BlueprintPure)
 // Parameters:
 // const struct FChaosPhysicsCollisionInfo&PhysicsCollision                                       (ConstParm, Parm, OutParm, ReferenceParm, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
 // struct FHitResult                       ReturnValue                                            (Parm, OutParm, ReturnParm, IsPlainOldData, NoDestructor, ContainsInstancedReference, NativeAccessSpecifierPublic)
@@ -46,7 +46,7 @@ struct FHitResult UChaosSolverEngineBlueprintLibrary::ConvertPhysicsCollisionToH
 
 
 // Function ChaosSolverEngine.ChaosSolverActor.SetAsCurrentWorldSolver
-// (Final, RequiredAPI, Native, Public, BlueprintCallable)
+// (Final, Native, Public, BlueprintCallable)
 
 void AChaosSolverActor::SetAsCurrentWorldSolver()
 {
@@ -65,7 +65,7 @@ void AChaosSolverActor::SetAsCurrentWorldSolver()
 
 
 // Function ChaosSolverEngine.ChaosSolverActor.SetSolverActive
-// (RequiredAPI, Native, Public, BlueprintCallable)
+// (Native, Public, BlueprintCallable)
 // Parameters:
 // bool                                    bActive                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 

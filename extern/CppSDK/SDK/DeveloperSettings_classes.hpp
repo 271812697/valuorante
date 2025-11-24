@@ -11,7 +11,6 @@
 #include "Basic.hpp"
 
 #include "CoreUObject_classes.hpp"
-#include "DeveloperSettings_structs.hpp"
 
 
 namespace SDK
@@ -39,73 +38,6 @@ public:
 	}
 };
 DUMPER7_ASSERTS_UDeveloperSettings;
-
-// Class DeveloperSettings.DeveloperSettingsBackedByCVars
-// 0x0000 (0x0038 - 0x0038)
-class UDeveloperSettingsBackedByCVars : public UDeveloperSettings
-{
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("DeveloperSettingsBackedByCVars")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"DeveloperSettingsBackedByCVars")
-	}
-	static class UDeveloperSettingsBackedByCVars* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UDeveloperSettingsBackedByCVars>();
-	}
-};
-DUMPER7_ASSERTS_UDeveloperSettingsBackedByCVars;
-
-// Class DeveloperSettings.PlatformSettings
-// 0x0018 (0x0040 - 0x0028)
-class UPlatformSettings : public UObject
-{
-public:
-	uint8                                         Pad_28[0x18];                                      // 0x0028(0x0018)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("PlatformSettings")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"PlatformSettings")
-	}
-	static class UPlatformSettings* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UPlatformSettings>();
-	}
-};
-DUMPER7_ASSERTS_UPlatformSettings;
-
-// Class DeveloperSettings.PlatformSettingsManager
-// 0x0058 (0x0080 - 0x0028)
-class UPlatformSettingsManager final : public UObject
-{
-public:
-	TMap<TSubclassOf<class UPlatformSettings>, struct FPlatformSettingsInstances> SettingsMap;       // 0x0028(0x0050)(Transient, NativeAccessSpecifierPrivate)
-	uint8                                         Pad_78[0x8];                                       // 0x0078(0x0008)(Fixing Struct Size After Last Property [ Dumper-7 ])
-
-public:
-	static class UClass* StaticClass()
-	{
-		STATIC_CLASS_IMPL("PlatformSettingsManager")
-	}
-	static const class FName& StaticName()
-	{
-		STATIC_NAME_IMPL(L"PlatformSettingsManager")
-	}
-	static class UPlatformSettingsManager* GetDefaultObj()
-	{
-		return GetDefaultObjImpl<UPlatformSettingsManager>();
-	}
-};
-DUMPER7_ASSERTS_UPlatformSettingsManager;
 
 }
 

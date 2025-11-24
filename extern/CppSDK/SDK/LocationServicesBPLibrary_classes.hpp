@@ -48,11 +48,11 @@ public:
 DUMPER7_ASSERTS_ULocationServices;
 
 // Class LocationServicesBPLibrary.LocationServicesImpl
-// 0x0018 (0x0040 - 0x0028)
+// 0x0010 (0x0038 - 0x0028)
 class ULocationServicesImpl final : public UObject
 {
 public:
-	TMulticastInlineDelegate<void(const struct FLocationServicesData& LocationData)> OnLocationChanged; // 0x0028(0x0018)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	TMulticastInlineDelegate<void(const struct FLocationServicesData& LocationData)> OnLocationChanged; // 0x0028(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()

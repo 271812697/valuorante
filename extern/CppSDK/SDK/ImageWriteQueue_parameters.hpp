@@ -17,14 +17,14 @@ namespace SDK::Params
 {
 
 // Function ImageWriteQueue.ImageWriteBlueprintLibrary.ExportToDisk
-// 0x00A0 (0x00A0 - 0x0000)
+// 0x0080 (0x0080 - 0x0000)
 struct ImageWriteBlueprintLibrary_ExportToDisk final
 {
 public:
-	class UTexture*                               Texture;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UTexture*                               Texture;                                           // 0x0000(0x0008)(Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	class FString                                 Filename;                                          // 0x0008(0x0010)(Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FImageWriteOptions                     Options;                                           // 0x0020(0x0080)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
+	struct FImageWriteOptions                     Options;                                           // 0x0020(0x0060)(ConstParm, Parm, OutParm, ReferenceParm, ContainsInstancedReference, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_ImageWriteBlueprintLibrary_ExportToDisk;
 

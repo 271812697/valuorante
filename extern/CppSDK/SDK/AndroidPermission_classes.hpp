@@ -18,12 +18,12 @@ namespace SDK
 {
 
 // Class AndroidPermission.AndroidPermissionCallbackProxy
-// 0x0038 (0x0060 - 0x0028)
+// 0x0020 (0x0048 - 0x0028)
 class UAndroidPermissionCallbackProxy final : public UObject
 {
 public:
-	TMulticastInlineDelegate<void(const TArray<class FString>& Permissions, const TArray<bool>& GrantResults)> OnPermissionsGrantedDynamicDelegate; // 0x0028(0x0018)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
-	uint8                                         Pad_40[0x20];                                      // 0x0040(0x0020)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	TMulticastInlineDelegate<void(const TArray<class FString>& Permissions, const TArray<bool>& GrantResults)> OnPermissionsGrantedDynamicDelegate; // 0x0028(0x0010)(ZeroConstructor, InstancedReference, BlueprintAssignable, NativeAccessSpecifierPublic)
+	uint8                                         Pad_38[0x10];                                      // 0x0038(0x0010)(Fixing Struct Size After Last Property [ Dumper-7 ])
 
 public:
 	static class UClass* StaticClass()

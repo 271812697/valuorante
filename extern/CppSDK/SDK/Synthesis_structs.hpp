@@ -13,145 +13,10 @@
 #include "Engine_structs.hpp"
 #include "SlateCore_structs.hpp"
 #include "AudioMixer_structs.hpp"
-#include "CoreUObject_structs.hpp"
 
 
 namespace SDK
 {
-
-// Enum Synthesis.ESynth1OscType
-// NumValues: 0x0007
-enum class ESynth1OscType : uint8
-{
-	Sine                                     = 0,
-	Saw                                      = 1,
-	Triangle                                 = 2,
-	Square                                   = 3,
-	Noise                                    = 4,
-	Count                                    = 5,
-	ESynth1OscType_MAX                       = 6,
-};
-
-// Enum Synthesis.ESynthLFOType
-// NumValues: 0x0009
-enum class ESynthLFOType : uint8
-{
-	Sine                                     = 0,
-	UpSaw                                    = 1,
-	DownSaw                                  = 2,
-	Square                                   = 3,
-	Triangle                                 = 4,
-	Exponential                              = 5,
-	RandomSampleHold                         = 6,
-	Count                                    = 7,
-	ESynthLFOType_MAX                        = 8,
-};
-
-// Enum Synthesis.ESynthLFOMode
-// NumValues: 0x0005
-enum class ESynthLFOMode : uint8
-{
-	Sync                                     = 0,
-	OneShot                                  = 1,
-	Free                                     = 2,
-	Count                                    = 3,
-	ESynthLFOMode_MAX                        = 4,
-};
-
-// Enum Synthesis.ESynthLFOPatchType
-// NumValues: 0x000B
-enum class ESynthLFOPatchType : uint8
-{
-	PatchToNone                              = 0,
-	PatchToGain                              = 1,
-	PatchToOscFreq                           = 2,
-	PatchToFilterFreq                        = 3,
-	PatchToFilterQ                           = 4,
-	PatchToOscPulseWidth                     = 5,
-	PatchToOscPan                            = 6,
-	PatchLFO1ToLFO2Frequency                 = 7,
-	PatchLFO1ToLFO2Gain                      = 8,
-	Count                                    = 9,
-	ESynthLFOPatchType_MAX                   = 10,
-};
-
-// Enum Synthesis.ESynthModEnvPatch
-// NumValues: 0x000A
-enum class ESynthModEnvPatch : uint8
-{
-	PatchToNone                              = 0,
-	PatchToOscFreq                           = 1,
-	PatchToFilterFreq                        = 2,
-	PatchToFilterQ                           = 3,
-	PatchToLFO1Gain                          = 4,
-	PatchToLFO2Gain                          = 5,
-	PatchToLFO1Freq                          = 6,
-	PatchToLFO2Freq                          = 7,
-	Count                                    = 8,
-	ESynthModEnvPatch_MAX                    = 9,
-};
-
-// Enum Synthesis.ESynthModEnvBiasPatch
-// NumValues: 0x000A
-enum class ESynthModEnvBiasPatch : uint8
-{
-	PatchToNone                              = 0,
-	PatchToOscFreq                           = 1,
-	PatchToFilterFreq                        = 2,
-	PatchToFilterQ                           = 3,
-	PatchToLFO1Gain                          = 4,
-	PatchToLFO2Gain                          = 5,
-	PatchToLFO1Freq                          = 6,
-	PatchToLFO2Freq                          = 7,
-	Count                                    = 8,
-	ESynthModEnvBiasPatch_MAX                = 9,
-};
-
-// Enum Synthesis.ESynthFilterType
-// NumValues: 0x0006
-enum class ESynthFilterType : uint8
-{
-	LowPass                                  = 0,
-	HighPass                                 = 1,
-	BandPass                                 = 2,
-	BandStop                                 = 3,
-	Count                                    = 4,
-	ESynthFilterType_MAX                     = 5,
-};
-
-// Enum Synthesis.ESynthFilterAlgorithm
-// NumValues: 0x0005
-enum class ESynthFilterAlgorithm : uint8
-{
-	OnePole                                  = 0,
-	StateVariable                            = 1,
-	Ladder                                   = 2,
-	Count                                    = 3,
-	ESynthFilterAlgorithm_MAX                = 4,
-};
-
-// Enum Synthesis.ESynthStereoDelayMode
-// NumValues: 0x0005
-enum class ESynthStereoDelayMode : uint8
-{
-	Normal                                   = 0,
-	Cross                                    = 1,
-	PingPong                                 = 2,
-	Count                                    = 3,
-	ESynthStereoDelayMode_MAX                = 4,
-};
-
-// Enum Synthesis.ESynth1PatchSource
-// NumValues: 0x0006
-enum class ESynth1PatchSource : uint8
-{
-	LFO1                                     = 0,
-	LFO2                                     = 1,
-	Envelope                                 = 2,
-	BiasEnvelope                             = 3,
-	Count                                    = 4,
-	ESynth1PatchSource_MAX                   = 5,
-};
 
 // Enum Synthesis.ESynth1PatchDestination
 // NumValues: 0x0010
@@ -175,27 +40,138 @@ enum class ESynth1PatchDestination : uint8
 	ESynth1PatchDestination_MAX              = 15,
 };
 
-// Enum Synthesis.ESubmixEffectConvolutionReverbBlockSize
-// NumValues: 0x0004
-enum class ESubmixEffectConvolutionReverbBlockSize : uint8
+// Enum Synthesis.ESynth1PatchSource
+// NumValues: 0x0006
+enum class ESynth1PatchSource : uint8
 {
-	BlockSize256                             = 0,
-	BlockSize512                             = 1,
-	BlockSize1024                            = 2,
-	ESubmixEffectConvolutionReverbBlockSize_MAX = 3,
+	LFO1                                     = 0,
+	LFO2                                     = 1,
+	Envelope                                 = 2,
+	BiasEnvelope                             = 3,
+	Count                                    = 4,
+	ESynth1PatchSource_MAX                   = 5,
 };
 
-// Enum Synthesis.ESourceEffectDynamicsProcessorType
-// NumValues: 0x0007
-enum class ESourceEffectDynamicsProcessorType : uint8
+// Enum Synthesis.ESynthStereoDelayMode
+// NumValues: 0x0005
+enum class ESynthStereoDelayMode : uint8
 {
-	Compressor                               = 0,
-	Limiter                                  = 1,
-	Expander                                 = 2,
-	Gate                                     = 3,
-	UpwardsCompressor                        = 4,
+	Normal                                   = 0,
+	Cross                                    = 1,
+	PingPong                                 = 2,
+	Count                                    = 3,
+	ESynthStereoDelayMode_MAX                = 4,
+};
+
+// Enum Synthesis.ESynthFilterAlgorithm
+// NumValues: 0x0005
+enum class ESynthFilterAlgorithm : uint8
+{
+	OnePole                                  = 0,
+	StateVariable                            = 1,
+	Ladder                                   = 2,
+	Count                                    = 3,
+	ESynthFilterAlgorithm_MAX                = 4,
+};
+
+// Enum Synthesis.ESynthFilterType
+// NumValues: 0x0006
+enum class ESynthFilterType : uint8
+{
+	LowPass                                  = 0,
+	HighPass                                 = 1,
+	BandPass                                 = 2,
+	BandStop                                 = 3,
+	Count                                    = 4,
+	ESynthFilterType_MAX                     = 5,
+};
+
+// Enum Synthesis.ESynthModEnvBiasPatch
+// NumValues: 0x000A
+enum class ESynthModEnvBiasPatch : uint8
+{
+	PatchToNone                              = 0,
+	PatchToOscFreq                           = 1,
+	PatchToFilterFreq                        = 2,
+	PatchToFilterQ                           = 3,
+	PatchToLFO1Gain                          = 4,
+	PatchToLFO2Gain                          = 5,
+	PatchToLFO1Freq                          = 6,
+	PatchToLFO2Freq                          = 7,
+	Count                                    = 8,
+	ESynthModEnvBiasPatch_MAX                = 9,
+};
+
+// Enum Synthesis.ESynthModEnvPatch
+// NumValues: 0x000A
+enum class ESynthModEnvPatch : uint8
+{
+	PatchToNone                              = 0,
+	PatchToOscFreq                           = 1,
+	PatchToFilterFreq                        = 2,
+	PatchToFilterQ                           = 3,
+	PatchToLFO1Gain                          = 4,
+	PatchToLFO2Gain                          = 5,
+	PatchToLFO1Freq                          = 6,
+	PatchToLFO2Freq                          = 7,
+	Count                                    = 8,
+	ESynthModEnvPatch_MAX                    = 9,
+};
+
+// Enum Synthesis.ESynthLFOPatchType
+// NumValues: 0x000B
+enum class ESynthLFOPatchType : uint8
+{
+	PatchToNone                              = 0,
+	PatchToGain                              = 1,
+	PatchToOscFreq                           = 2,
+	PatchToFilterFreq                        = 3,
+	PatchToFilterQ                           = 4,
+	PatchToOscPulseWidth                     = 5,
+	PatchToOscPan                            = 6,
+	PatchLFO1ToLFO2Frequency                 = 7,
+	PatchLFO1ToLFO2Gain                      = 8,
+	Count                                    = 9,
+	ESynthLFOPatchType_MAX                   = 10,
+};
+
+// Enum Synthesis.ESynthLFOMode
+// NumValues: 0x0005
+enum class ESynthLFOMode : uint8
+{
+	Sync                                     = 0,
+	OneShot                                  = 1,
+	Free                                     = 2,
+	Count                                    = 3,
+	ESynthLFOMode_MAX                        = 4,
+};
+
+// Enum Synthesis.ESynthLFOType
+// NumValues: 0x0009
+enum class ESynthLFOType : uint8
+{
+	Sine                                     = 0,
+	UpSaw                                    = 1,
+	DownSaw                                  = 2,
+	Square                                   = 3,
+	Triangle                                 = 4,
+	Exponential                              = 5,
+	RandomSampleHold                         = 6,
+	Count                                    = 7,
+	ESynthLFOType_MAX                        = 8,
+};
+
+// Enum Synthesis.ESynth1OscType
+// NumValues: 0x0007
+enum class ESynth1OscType : uint8
+{
+	Sine                                     = 0,
+	Saw                                      = 1,
+	Triangle                                 = 2,
+	Square                                   = 3,
+	Noise                                    = 4,
 	Count                                    = 5,
-	ESourceEffectDynamicsProcessorType_MAX   = 6,
+	ESynth1OscType_MAX                       = 6,
 };
 
 // Enum Synthesis.ESourceEffectDynamicsPeakMode
@@ -209,6 +185,18 @@ enum class ESourceEffectDynamicsPeakMode : uint8
 	ESourceEffectDynamicsPeakMode_MAX        = 4,
 };
 
+// Enum Synthesis.ESourceEffectDynamicsProcessorType
+// NumValues: 0x0006
+enum class ESourceEffectDynamicsProcessorType : uint8
+{
+	Compressor                               = 0,
+	Limiter                                  = 1,
+	Expander                                 = 2,
+	Gate                                     = 3,
+	Count                                    = 4,
+	ESourceEffectDynamicsProcessorType_MAX   = 5,
+};
+
 // Enum Synthesis.EEnvelopeFollowerPeakMode
 // NumValues: 0x0005
 enum class EEnvelopeFollowerPeakMode : uint8
@@ -220,15 +208,14 @@ enum class EEnvelopeFollowerPeakMode : uint8
 	EEnvelopeFollowerPeakMode_MAX            = 4,
 };
 
-// Enum Synthesis.ESourceEffectFilterCircuit
-// NumValues: 0x0005
-enum class ESourceEffectFilterCircuit : uint8
+// Enum Synthesis.ESourceEffectFilterParam
+// NumValues: 0x0004
+enum class ESourceEffectFilterParam : uint8
 {
-	OnePole                                  = 0,
-	StateVariable                            = 1,
-	Ladder                                   = 2,
-	Count                                    = 3,
-	ESourceEffectFilterCircuit_MAX           = 4,
+	FilterFrequency                          = 0,
+	FilterResonance                          = 1,
+	Count                                    = 2,
+	ESourceEffectFilterParam_MAX             = 3,
 };
 
 // Enum Synthesis.ESourceEffectFilterType
@@ -243,14 +230,15 @@ enum class ESourceEffectFilterType : uint8
 	ESourceEffectFilterType_MAX              = 5,
 };
 
-// Enum Synthesis.ESourceEffectFilterParam
-// NumValues: 0x0004
-enum class ESourceEffectFilterParam : uint8
+// Enum Synthesis.ESourceEffectFilterCircuit
+// NumValues: 0x0005
+enum class ESourceEffectFilterCircuit : uint8
 {
-	FilterFrequency                          = 0,
-	FilterResonance                          = 1,
-	Count                                    = 2,
-	ESourceEffectFilterParam_MAX             = 3,
+	OnePole                                  = 0,
+	StateVariable                            = 1,
+	Ladder                                   = 2,
+	Count                                    = 3,
+	ESourceEffectFilterCircuit_MAX           = 4,
 };
 
 // Enum Synthesis.EStereoChannelMode
@@ -261,67 +249,6 @@ enum class EStereoChannelMode : uint8
 	LeftRight                                = 1,
 	count                                    = 2,
 	EStereoChannelMode_MAX                   = 3,
-};
-
-// Enum Synthesis.ESourceEffectMotionFilterModSource
-// NumValues: 0x0007
-enum class ESourceEffectMotionFilterModSource : uint8
-{
-	DistanceFromListener                     = 0,
-	SpeedRelativeToListener                  = 1,
-	SpeedOfSourceEmitter                     = 2,
-	SpeedOfListener                          = 3,
-	SpeedOfAngleDelta                        = 4,
-	Count                                    = 5,
-	ESourceEffectMotionFilterModSource_MAX   = 6,
-};
-
-// Enum Synthesis.ESourceEffectMotionFilterModDestination
-// NumValues: 0x0009
-enum class ESourceEffectMotionFilterModDestination : uint8
-{
-	FilterACutoffFrequency                   = 0,
-	FilterAResonance                         = 1,
-	FilterAOutputVolumeDB                    = 2,
-	FilterBCutoffFrequency                   = 3,
-	FilterBResonance                         = 4,
-	FilterBOutputVolumeDB                    = 5,
-	FilterMix                                = 6,
-	Count                                    = 7,
-	ESourceEffectMotionFilterModDestination_MAX = 8,
-};
-
-// Enum Synthesis.ESourceEffectMotionFilterTopology
-// NumValues: 0x0004
-enum class ESourceEffectMotionFilterTopology : uint8
-{
-	SerialMode                               = 0,
-	ParallelMode                             = 1,
-	Count                                    = 2,
-	ESourceEffectMotionFilterTopology_MAX    = 3,
-};
-
-// Enum Synthesis.ESourceEffectMotionFilterCircuit
-// NumValues: 0x0005
-enum class ESourceEffectMotionFilterCircuit : uint8
-{
-	OnePole                                  = 0,
-	StateVariable                            = 1,
-	Ladder                                   = 2,
-	Count                                    = 3,
-	ESourceEffectMotionFilterCircuit_MAX     = 4,
-};
-
-// Enum Synthesis.ESourceEffectMotionFilterType
-// NumValues: 0x0006
-enum class ESourceEffectMotionFilterType : uint8
-{
-	LowPass                                  = 0,
-	HighPass                                 = 1,
-	BandPass                                 = 2,
-	BandStop                                 = 3,
-	Count                                    = 4,
-	ESourceEffectMotionFilterType_MAX        = 5,
 };
 
 // Enum Synthesis.EPhaserLFOType
@@ -351,6 +278,18 @@ enum class ERingModulatorTypeSourceEffect : uint8
 	ERingModulatorTypeSourceEffect_MAX       = 5,
 };
 
+// Enum Synthesis.EStereoDelayFiltertype
+// NumValues: 0x0006
+enum class EStereoDelayFiltertype : uint8
+{
+	Lowpass                                  = 0,
+	Highpass                                 = 1,
+	Bandpass                                 = 2,
+	Notch                                    = 3,
+	Count                                    = 4,
+	EStereoDelayFiltertype_MAX               = 5,
+};
+
 // Enum Synthesis.EStereoDelaySourceEffect
 // NumValues: 0x0005
 enum class EStereoDelaySourceEffect : uint8
@@ -362,16 +301,25 @@ enum class EStereoDelaySourceEffect : uint8
 	EStereoDelaySourceEffect_MAX             = 4,
 };
 
-// Enum Synthesis.EStereoDelayFiltertype
-// NumValues: 0x0006
-enum class EStereoDelayFiltertype : uint8
+// Enum Synthesis.ESubmixEffectConvolutionReverbBlockSize
+// NumValues: 0x0004
+enum class ESubmixEffectConvolutionReverbBlockSize : uint8
 {
-	Lowpass                                  = 0,
-	Highpass                                 = 1,
-	Bandpass                                 = 2,
-	Notch                                    = 3,
-	Count                                    = 4,
-	EStereoDelayFiltertype_MAX               = 5,
+	BlockSize256                             = 0,
+	BlockSize512                             = 1,
+	BlockSize1024                            = 2,
+	ESubmixEffectConvolutionReverbBlockSize_MAX = 3,
+};
+
+// Enum Synthesis.ESubmixFilterAlgorithm
+// NumValues: 0x0005
+enum class ESubmixFilterAlgorithm : uint8
+{
+	OnePole                                  = 0,
+	StateVariable                            = 1,
+	Ladder                                   = 2,
+	Count                                    = 3,
+	ESubmixFilterAlgorithm_MAX               = 4,
 };
 
 // Enum Synthesis.ESubmixFilterType
@@ -386,17 +334,6 @@ enum class ESubmixFilterType : uint8
 	ESubmixFilterType_MAX                    = 5,
 };
 
-// Enum Synthesis.ESubmixFilterAlgorithm
-// NumValues: 0x0005
-enum class ESubmixFilterAlgorithm : uint8
-{
-	OnePole                                  = 0,
-	StateVariable                            = 1,
-	Ladder                                   = 2,
-	Count                                    = 3,
-	ESubmixFilterAlgorithm_MAX               = 4,
-};
-
 // Enum Synthesis.ETapLineMode
 // NumValues: 0x0004
 enum class ETapLineMode : uint8
@@ -405,6 +342,16 @@ enum class ETapLineMode : uint8
 	Panning                                  = 1,
 	Disabled                                 = 2,
 	ETapLineMode_MAX                         = 3,
+};
+
+// Enum Synthesis.EGranularSynthSeekType
+// NumValues: 0x0004
+enum class EGranularSynthSeekType : uint8
+{
+	FromBeginning                            = 0,
+	FromCurrentPosition                      = 1,
+	Count                                    = 2,
+	EGranularSynthSeekType_MAX               = 3,
 };
 
 // Enum Synthesis.EGranularSynthEnvelopeType
@@ -427,16 +374,6 @@ enum class EGranularSynthEnvelopeType : uint8
 	BlackmanHarris                           = 13,
 	Count                                    = 14,
 	EGranularSynthEnvelopeType_MAX           = 15,
-};
-
-// Enum Synthesis.EGranularSynthSeekType
-// NumValues: 0x0004
-enum class EGranularSynthSeekType : uint8
-{
-	FromBeginning                            = 0,
-	FromCurrentPosition                      = 1,
-	Count                                    = 2,
-	EGranularSynthSeekType_MAX               = 3,
 };
 
 // Enum Synthesis.CurveInterpolationType
@@ -470,6 +407,16 @@ enum class ESynthKnobSize : uint8
 	ESynthKnobSize_MAX                       = 3,
 };
 
+// Enum Synthesis.ESynthSlateColorStyle
+// NumValues: 0x0004
+enum class ESynthSlateColorStyle : uint8
+{
+	Light                                    = 0,
+	Dark                                     = 1,
+	Count                                    = 2,
+	ESynthSlateColorStyle_MAX                = 3,
+};
+
 // Enum Synthesis.ESynthSlateSizeType
 // NumValues: 0x0005
 enum class ESynthSlateSizeType : uint8
@@ -481,15 +428,15 @@ enum class ESynthSlateSizeType : uint8
 	ESynthSlateSizeType_MAX                  = 4,
 };
 
-// Enum Synthesis.ESynthSlateColorStyle
-// NumValues: 0x0004
-enum class ESynthSlateColorStyle : uint8
+// ScriptStruct Synthesis.SourceEffectBitCrusherBaseSettings
+// 0x0008 (0x0008 - 0x0000)
+struct FSourceEffectBitCrusherBaseSettings final
 {
-	Light                                    = 0,
-	Dark                                     = 1,
-	Count                                    = 2,
-	ESynthSlateColorStyle_MAX                = 3,
+public:
+	float                                         SampleRate;                                        // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         BitDepth;                                          // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
+DUMPER7_ASSERTS_FSourceEffectBitCrusherBaseSettings;
 
 // ScriptStruct Synthesis.Synth1PatchCable
 // 0x0008 (0x0008 - 0x0000)
@@ -501,15 +448,6 @@ public:
 	uint8                                         Pad_5[0x3];                                        // 0x0005(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FSynth1PatchCable;
-
-// ScriptStruct Synthesis.PatchId
-// 0x0004 (0x0004 - 0x0000)
-struct FPatchId final
-{
-public:
-	int32                                         ID;                                                // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FPatchId;
 
 // ScriptStruct Synthesis.EpicSynth1Patch
 // 0x0018 (0x0018 - 0x0000)
@@ -613,29 +551,48 @@ public:
 };
 DUMPER7_ASSERTS_FModularSynthPresetBankEntry;
 
-// ScriptStruct Synthesis.SourceEffectBitCrusherBaseSettings
-// 0x0008 (0x0008 - 0x0000)
-struct FSourceEffectBitCrusherBaseSettings final
+// ScriptStruct Synthesis.PatchId
+// 0x0004 (0x0004 - 0x0000)
+struct FPatchId final
 {
 public:
-	float                                         SampleRate;                                        // 0x0000(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         BitDepth;                                          // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         ID;                                                // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
-DUMPER7_ASSERTS_FSourceEffectBitCrusherBaseSettings;
+DUMPER7_ASSERTS_FPatchId;
 
 // ScriptStruct Synthesis.SourceEffectBitCrusherSettings
-// 0x00C0 (0x00C0 - 0x0000)
+// 0x0030 (0x0030 - 0x0000)
 struct FSourceEffectBitCrusherSettings final
 {
 public:
 	float                                         CrushedSampleRate;                                 // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_4[0x4];                                        // 0x0004(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSoundModulationDestinationSettings    SampleRateModulation;                              // 0x0008(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	float                                         CrushedBits;                                       // 0x0060(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_64[0x4];                                       // 0x0064(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSoundModulationDestinationSettings    BitModulation;                                     // 0x0068(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSoundModulationDestinationSettings    SampleRateModulation;                              // 0x0008(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
+	float                                         CrushedBits;                                       // 0x0018(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FSoundModulationDestinationSettings    BitModulation;                                     // 0x0020(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSourceEffectBitCrusherSettings;
+
+// ScriptStruct Synthesis.SourceEffectChorusSettings
+// 0x0078 (0x0078 - 0x0000)
+struct FSourceEffectChorusSettings final
+{
+public:
+	float                                         Depth;                                             // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Frequency;                                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Feedback;                                          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         WetLevel;                                          // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         DryLevel;                                          // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         Spread;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FSoundModulationDestinationSettings    DepthModulation;                                   // 0x0018(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
+	struct FSoundModulationDestinationSettings    FrequencyModulation;                               // 0x0028(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
+	struct FSoundModulationDestinationSettings    FeedbackModulation;                                // 0x0038(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
+	struct FSoundModulationDestinationSettings    WetModulation;                                     // 0x0048(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
+	struct FSoundModulationDestinationSettings    DryModulation;                                     // 0x0058(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
+	struct FSoundModulationDestinationSettings    SpreadModulation;                                  // 0x0068(0x0010)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FSourceEffectChorusSettings;
 
 // ScriptStruct Synthesis.SourceEffectChorusBaseSettings
 // 0x0018 (0x0018 - 0x0000)
@@ -650,39 +607,6 @@ public:
 	float                                         Spread;                                            // 0x0014(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSourceEffectChorusBaseSettings;
-
-// ScriptStruct Synthesis.SourceEffectChorusSettings
-// 0x0228 (0x0228 - 0x0000)
-struct FSourceEffectChorusSettings final
-{
-public:
-	float                                         Depth;                                             // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Frequency;                                         // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Feedback;                                          // 0x0008(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         WetLevel;                                          // 0x000C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DryLevel;                                          // 0x0010(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         Spread;                                            // 0x0014(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSoundModulationDestinationSettings    DepthModulation;                                   // 0x0018(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSoundModulationDestinationSettings    FrequencyModulation;                               // 0x0070(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSoundModulationDestinationSettings    FeedbackModulation;                                // 0x00C8(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSoundModulationDestinationSettings    WetModulation;                                     // 0x0120(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSoundModulationDestinationSettings    DryModulation;                                     // 0x0178(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSoundModulationDestinationSettings    SpreadModulation;                                  // 0x01D0(0x0058)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSourceEffectChorusSettings;
-
-// ScriptStruct Synthesis.SourceEffectConvolutionReverbSettings
-// 0x0010 (0x0010 - 0x0000)
-struct FSourceEffectConvolutionReverbSettings final
-{
-public:
-	float                                         NormalizationVolumeDb;                             // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         WetVolumeDb;                                       // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DryVolumeDb;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bBypass;                                           // 0x000C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_D[0x3];                                        // 0x000D(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FSourceEffectConvolutionReverbSettings;
 
 // ScriptStruct Synthesis.SourceEffectDynamicsProcessorSettings
 // 0x0028 (0x0028 - 0x0000)
@@ -746,7 +670,7 @@ DUMPER7_ASSERTS_FSourceEffectEQSettings;
 struct FSourceEffectFilterAudioBusModulationSettings final
 {
 public:
-	class UAudioBus*                              AudioBus;                                          // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UAudioBus*                              AudioBus;                                          // 0x0000(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         EnvelopeFollowerAttackTimeMsec;                    // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	int32                                         EnvelopeFollowerReleaseTimeMsec;                   // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         EnvelopeGainMultiplier;                            // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
@@ -798,50 +722,6 @@ public:
 };
 DUMPER7_ASSERTS_FSourceEffectMidSideSpreaderSettings;
 
-// ScriptStruct Synthesis.SourceEffectIndividualFilterSettings
-// 0x000C (0x000C - 0x0000)
-struct FSourceEffectIndividualFilterSettings final
-{
-public:
-	ESourceEffectMotionFilterCircuit              FilterCircuit;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESourceEffectMotionFilterType                 FilterType;                                        // 0x0001(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         CutoffFrequency;                                   // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         FilterQ;                                           // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSourceEffectIndividualFilterSettings;
-
-// ScriptStruct Synthesis.SourceEffectMotionFilterModulationSettings
-// 0x0040 (0x0040 - 0x0000)
-struct FSourceEffectMotionFilterModulationSettings final
-{
-public:
-	ESourceEffectMotionFilterModSource            ModulationSource;                                  // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x7];                                        // 0x0001(0x0007)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FVector2D                              ModulationInputRange;                              // 0x0008(0x0010)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector2D                              ModulationOutputMinimumRange;                      // 0x0018(0x0010)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector2D                              ModulationOutputMaximumRange;                      // 0x0028(0x0010)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         UpdateEaseMS;                                      // 0x0038(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3C[0x4];                                       // 0x003C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FSourceEffectMotionFilterModulationSettings;
-
-// ScriptStruct Synthesis.SourceEffectMotionFilterSettings
-// 0x0078 (0x0078 - 0x0000)
-struct FSourceEffectMotionFilterSettings final
-{
-public:
-	ESourceEffectMotionFilterTopology             MotionFilterTopology;                              // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         MotionFilterMix;                                   // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FSourceEffectIndividualFilterSettings  FilterASettings;                                   // 0x0008(0x000C)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
-	struct FSourceEffectIndividualFilterSettings  FilterBSettings;                                   // 0x0014(0x000C)(Edit, BlueprintVisible, NoDestructor, NativeAccessSpecifierPublic)
-	TMap<ESourceEffectMotionFilterModDestination, struct FSourceEffectMotionFilterModulationSettings> ModulationMappings; // 0x0020(0x0050)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	float                                         DryVolumeDb;                                       // 0x0070(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_74[0x4];                                       // 0x0074(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
-};
-DUMPER7_ASSERTS_FSourceEffectMotionFilterSettings;
-
 // ScriptStruct Synthesis.SourceEffectPannerSettings
 // 0x0008 (0x0008 - 0x0000)
 struct FSourceEffectPannerSettings final
@@ -878,7 +758,7 @@ public:
 	float                                         DryLevel;                                          // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         WetLevel;                                          // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAudioBus*                              AudioBusModulator;                                 // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class UAudioBus*                              AudioBusModulator;                                 // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSourceEffectRingModulationSettings;
 
@@ -893,7 +773,6 @@ public:
 	float                                         WetAmount;                                         // 0x000C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         Feedback;                                          // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	uint8                                         bDelayBasedOnDistance : 1;                         // 0x0014(0x0001)(BitIndex: 0x00, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
-	uint8                                         bUseDistanceOverride : 1;                          // 0x0014(0x0001)(BitIndex: 0x01, PropSize: 0x0001 (Edit, BlueprintVisible, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic))
 	uint8                                         Pad_15[0x3];                                       // 0x0015(0x0003)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FSourceEffectSimpleDelaySettings;
@@ -929,26 +808,24 @@ public:
 DUMPER7_ASSERTS_FSourceEffectWaveShaperSettings;
 
 // ScriptStruct Synthesis.SubmixEffectConvolutionReverbSettings
-// 0x0030 (0x0030 - 0x0000)
+// 0x0028 (0x0028 - 0x0000)
 struct FSubmixEffectConvolutionReverbSettings final
 {
 public:
 	float                                         NormalizationVolumeDb;                             // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         WetVolumeDb;                                       // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         DryVolumeDb;                                       // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bBypass;                                           // 0x000C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bMixInputChannelFormatToImpulseResponseFormat;     // 0x000D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bMixReverbOutputToOutputChannelFormat;             // 0x000E(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_F[0x1];                                        // 0x000F(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         SurroundRearChannelBleedDb;                        // 0x0010(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bInvertRearChannelBleedPhase;                      // 0x0014(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bSurroundRearChannelFlip;                          // 0x0015(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_16[0x2];                                       // 0x0016(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         SurroundRearChannelBleedAmount;                    // 0x0018(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1C[0x4];                                       // 0x001C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAudioImpulseResponse*                  ImpulseResponse;                                   // 0x0020(0x0008)(ZeroConstructor, Deprecated, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          AllowHardwareAcceleration;                         // 0x0028(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_29[0x7];                                       // 0x0029(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	bool                                          bBypass;                                           // 0x0004(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMixInputChannelFormatToImpulseResponseFormat;     // 0x0005(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bMixReverbOutputToOutputChannelFormat;             // 0x0006(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_7[0x1];                                        // 0x0007(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         SurroundRearChannelBleedDb;                        // 0x0008(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bInvertRearChannelBleedPhase;                      // 0x000C(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bSurroundRearChannelFlip;                          // 0x000D(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_E[0x2];                                        // 0x000E(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
+	float                                         SurroundRearChannelBleedAmount;                    // 0x0010(0x0004)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_14[0x4];                                       // 0x0014(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	class UAudioImpulseResponse*                  ImpulseResponse;                                   // 0x0018(0x0008)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          AllowHArdwareAcceleration;                         // 0x0020(0x0001)(ZeroConstructor, Deprecated, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_21[0x7];                                       // 0x0021(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FSubmixEffectConvolutionReverbSettings;
 
@@ -1005,26 +882,19 @@ public:
 DUMPER7_ASSERTS_FDynamicsBandSettings;
 
 // ScriptStruct Synthesis.SubmixEffectMultibandCompressorSettings
-// 0x0038 (0x0038 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct FSubmixEffectMultibandCompressorSettings final
 {
 public:
 	ESubmixEffectDynamicsProcessorType            DynamicsProcessorType;                             // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	ESubmixEffectDynamicsPeakMode                 PeakMode;                                          // 0x0001(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESubmixEffectDynamicsChannelLinkMode          LinkMode;                                          // 0x0002(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_3[0x1];                                        // 0x0003(0x0001)(Fixing Size After Last Property [ Dumper-7 ])
+	uint8                                         Pad_2[0x2];                                        // 0x0002(0x0002)(Fixing Size After Last Property [ Dumper-7 ])
 	float                                         LookAheadMsec;                                     // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bAnalogMode;                                       // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bFourPole;                                         // 0x0009(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bBypass;                                           // 0x000A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESubmixEffectDynamicsKeySource                KeySource;                                         // 0x000B(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
-	class UAudioBus*                              ExternalAudioBus;                                  // 0x0010(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	class USoundSubmix*                           ExternalSubmix;                                    // 0x0018(0x0008)(Edit, BlueprintVisible, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         KeyGainDb;                                         // 0x0020(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	bool                                          bKeyAudition;                                      // 0x0024(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_25[0x3];                                       // 0x0025(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	TArray<struct FDynamicsBandSettings>          Bands;                                             // 0x0028(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
+	bool                                          bLinkChannels;                                     // 0x0008(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bAnalogMode;                                       // 0x0009(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	bool                                          bFourPole;                                         // 0x000A(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_B[0x5];                                        // 0x000B(0x0005)(Fixing Size After Last Property [ Dumper-7 ])
+	TArray<struct FDynamicsBandSettings>          Bands;                                             // 0x0010(0x0010)(Edit, BlueprintVisible, ZeroConstructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSubmixEffectMultibandCompressorSettings;
 
@@ -1047,17 +917,6 @@ public:
 	float                                         FilterQ;                                           // 0x0020(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FSubmixEffectStereoDelaySettings;
-
-// ScriptStruct Synthesis.SubmixEffectStereoToQuadSettings
-// 0x0008 (0x0008 - 0x0000)
-struct FSubmixEffectStereoToQuadSettings final
-{
-public:
-	bool                                          bFlipChannels;                                     // 0x0000(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_1[0x3];                                        // 0x0001(0x0003)(Fixing Size After Last Property [ Dumper-7 ])
-	float                                         RearChannelGain;                                   // 0x0004(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FSubmixEffectStereoToQuadSettings;
 
 // ScriptStruct Synthesis.TapDelayInfo
 // 0x0018 (0x0018 - 0x0000)
@@ -1086,35 +945,33 @@ public:
 DUMPER7_ASSERTS_FSubmixEffectTapDelaySettings;
 
 // ScriptStruct Synthesis.Synth2DSliderStyle
-// 0x0428 (0x0430 - 0x0008)
+// 0x02B0 (0x02B8 - 0x0008)
 struct FSynth2DSliderStyle final : public FSlateWidgetStyle
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSlateBrush                            NormalThumbImage;                                  // 0x0010(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateBrush                            DisabledThumbImage;                                // 0x00E0(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateBrush                            NormalBarImage;                                    // 0x01B0(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateBrush                            DisabledBarImage;                                  // 0x0280(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateBrush                            BackgroundImage;                                   // 0x0350(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	float                                         BarThickness;                                      // 0x0420(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_424[0xC];                                      // 0x0424(0x000C)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FSlateBrush                            NormalThumbImage;                                  // 0x0008(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateBrush                            DisabledThumbImage;                                // 0x0090(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateBrush                            NormalBarImage;                                    // 0x0118(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateBrush                            DisabledBarImage;                                  // 0x01A0(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateBrush                            BackgroundImage;                                   // 0x0228(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	float                                         BarThickness;                                      // 0x02B0(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_2B4[0x4];                                      // 0x02B4(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FSynth2DSliderStyle;
 
 // ScriptStruct Synthesis.SynthKnobStyle
-// 0x0358 (0x0360 - 0x0008)
+// 0x0230 (0x0238 - 0x0008)
 struct FSynthKnobStyle final : public FSlateWidgetStyle
 {
 public:
-	uint8                                         Pad_8[0x8];                                        // 0x0008(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FSlateBrush                            LargeKnob;                                         // 0x0010(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateBrush                            LargeKnobOverlay;                                  // 0x00E0(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateBrush                            MediumKnob;                                        // 0x01B0(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	struct FSlateBrush                            MediumKnobOverlay;                                 // 0x0280(0x00D0)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
-	float                                         MinValueAngle;                                     // 0x0350(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         MaxValueAngle;                                     // 0x0354(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	ESynthKnobSize                                KnobSize;                                          // 0x0358(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_359[0x7];                                      // 0x0359(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FSlateBrush                            LargeKnob;                                         // 0x0008(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateBrush                            LargeKnobOverlay;                                  // 0x0090(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateBrush                            MediumKnob;                                        // 0x0118(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	struct FSlateBrush                            MediumKnobOverlay;                                 // 0x01A0(0x0088)(Edit, BlueprintVisible, NativeAccessSpecifierPublic)
+	float                                         MinValueAngle;                                     // 0x0228(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         MaxValueAngle;                                     // 0x022C(0x0004)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	ESynthKnobSize                                KnobSize;                                          // 0x0230(0x0001)(Edit, BlueprintVisible, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_231[0x7];                                      // 0x0231(0x0007)(Fixing Struct Size After Last Property [ Dumper-7 ])
 };
 DUMPER7_ASSERTS_FSynthKnobStyle;
 

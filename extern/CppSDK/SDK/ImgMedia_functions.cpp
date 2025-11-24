@@ -20,7 +20,7 @@ namespace SDK
 // Function ImgMedia.ImgMediaSource.AddGlobalCamera
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class AActor*                           InActor                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           InActor                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UImgMediaSource::AddGlobalCamera(class AActor* InActor)
 {
@@ -45,9 +45,10 @@ void UImgMediaSource::AddGlobalCamera(class AActor* InActor)
 // Function ImgMedia.ImgMediaSource.AddTargetObject
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class AActor*                           InActor                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           InActor                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// float                                   Width                                                  (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UImgMediaSource::AddTargetObject(class AActor* InActor)
+void UImgMediaSource::AddTargetObject(class AActor* InActor, float Width)
 {
 	static class UFunction* Func = nullptr;
 
@@ -57,6 +58,7 @@ void UImgMediaSource::AddTargetObject(class AActor* InActor)
 	Params::ImgMediaSource_AddTargetObject Parms{};
 
 	Parms.InActor = InActor;
+	Parms.Width = Width;
 
 	auto Flgs = Func->FunctionFlags;
 	Func->FunctionFlags |= 0x400;
@@ -70,7 +72,7 @@ void UImgMediaSource::AddTargetObject(class AActor* InActor)
 // Function ImgMedia.ImgMediaSource.RemoveGlobalCamera
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class AActor*                           InActor                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           InActor                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UImgMediaSource::RemoveGlobalCamera(class AActor* InActor)
 {
@@ -95,7 +97,7 @@ void UImgMediaSource::RemoveGlobalCamera(class AActor* InActor)
 // Function ImgMedia.ImgMediaSource.RemoveTargetObject
 // (Final, Native, Public, BlueprintCallable)
 // Parameters:
-// class AActor*                           InActor                                                (Parm, ZeroConstructor, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// class AActor*                           InActor                                                (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
 void UImgMediaSource::RemoveTargetObject(class AActor* InActor)
 {
@@ -155,31 +157,6 @@ void UImgMediaSource::SetSequencePath(const class FString& Path)
 		Func = Class->GetFunction("ImgMediaSource", "SetSequencePath");
 
 	Params::ImgMediaSource_SetSequencePath Parms{};
-
-	Parms.Path = std::move(Path);
-
-	auto Flgs = Func->FunctionFlags;
-	Func->FunctionFlags |= 0x400;
-
-	UObject::ProcessEvent(Func, &Parms);
-
-	Func->FunctionFlags = Flgs;
-}
-
-
-// Function ImgMedia.ImgMediaSource.SetTokenizedSequencePath
-// (Final, Native, Public, BlueprintCallable)
-// Parameters:
-// const class FString&                    Path                                                   (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-
-void UImgMediaSource::SetTokenizedSequencePath(const class FString& Path)
-{
-	static class UFunction* Func = nullptr;
-
-	if (Func == nullptr)
-		Func = Class->GetFunction("ImgMediaSource", "SetTokenizedSequencePath");
-
-	Params::ImgMediaSource_SetTokenizedSequencePath Parms{};
 
 	Parms.Path = std::move(Path);
 

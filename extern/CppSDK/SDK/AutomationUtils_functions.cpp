@@ -20,12 +20,12 @@ namespace SDK
 // Function AutomationUtils.AutomationUtilsBlueprintLibrary.TakeGameplayAutomationScreenshot
 // (Final, Native, Static, Public, BlueprintCallable)
 // Parameters:
-// const class FString&                    ScreenShotName                                         (ConstParm, Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+// const class FString&                    ScreenshotName                                         (ConstParm, Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   MaxGlobalError                                         (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // float                                   MaxLocalError                                          (Parm, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 // const class FString&                    MapNameOverride                                        (Parm, ZeroConstructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 
-void UAutomationUtilsBlueprintLibrary::TakeGameplayAutomationScreenshot(const class FString& ScreenShotName, float MaxGlobalError, float MaxLocalError, const class FString& MapNameOverride)
+void UAutomationUtilsBlueprintLibrary::TakeGameplayAutomationScreenshot(const class FString& ScreenshotName, float MaxGlobalError, float MaxLocalError, const class FString& MapNameOverride)
 {
 	static class UFunction* Func = nullptr;
 
@@ -34,7 +34,7 @@ void UAutomationUtilsBlueprintLibrary::TakeGameplayAutomationScreenshot(const cl
 
 	Params::AutomationUtilsBlueprintLibrary_TakeGameplayAutomationScreenshot Parms{};
 
-	Parms.ScreenShotName = std::move(ScreenShotName);
+	Parms.ScreenshotName = std::move(ScreenshotName);
 	Parms.MaxGlobalError = MaxGlobalError;
 	Parms.MaxLocalError = MaxLocalError;
 	Parms.MapNameOverride = std::move(MapNameOverride);

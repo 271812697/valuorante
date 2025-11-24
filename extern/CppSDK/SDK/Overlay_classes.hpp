@@ -10,8 +10,8 @@
 
 #include "Basic.hpp"
 
-#include "CoreUObject_classes.hpp"
 #include "Overlay_structs.hpp"
+#include "CoreUObject_classes.hpp"
 
 
 namespace SDK
@@ -65,8 +65,8 @@ DUMPER7_ASSERTS_UBasicOverlays;
 class ULocalizedOverlays final : public UOverlays
 {
 public:
-	class UBasicOverlays*                         DefaultOverlays;                                   // 0x0028(0x0008)(Edit, ZeroConstructor, NoDestructor, UObjectWrapper, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TMap<class FString, class UBasicOverlays*>    LocaleToOverlaysMap;                               // 0x0030(0x0050)(Edit, UObjectWrapper, NativeAccessSpecifierPublic)
+	class UBasicOverlays*                         DefaultOverlays;                                   // 0x0028(0x0008)(Edit, ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TMap<class FString, class UBasicOverlays*>    LocaleToOverlaysMap;                               // 0x0030(0x0050)(Edit, NativeAccessSpecifierPublic)
 
 public:
 	static class UClass* StaticClass()

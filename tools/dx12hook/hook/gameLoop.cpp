@@ -85,13 +85,13 @@ namespace MOON {
                 return;
             SDK::FVector localWorldPos;
             SDK::TArray<SDK::AActor*> actors = persistentLevel->Actors;
-            SDK::AUEDemoCharacter* closestTarget = nullptr;
+            SDK::ACustomCharacter_C* closestTarget = nullptr;
             SDK::FVector2D targetHeadScreen;
             float closestDist2 = FLT_MAX;
             ImVec2 screenCenter = GetScreenCenter();
             for (auto* actor : actors) {
 				if (!actor || !actor->IsA(SDK::EClassCastFlags::Pawn))continue;
-				auto playerChar = static_cast<SDK::AUEDemoCharacter*>(actor);
+				auto playerChar = static_cast<SDK::ACustomCharacter_C*>(actor);
                 if (!playerChar || !playerChar->Mesh || !playerChar->PlayerState) continue;
 
                 // local player

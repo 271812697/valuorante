@@ -17,13 +17,13 @@ namespace SDK
 {
 
 // ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_Sphere
-// 0x0020 (0x0020 - 0x0000)
+// 0x0014 (0x0014 - 0x0000)
 struct FClothCollisionPrim_Sphere final
 {
 public:
 	int32                                         BoneIndex;                                         // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 	float                                         Radius;                                            // 0x0004(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                LocalPosition;                                     // 0x0008(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	struct FVector                                LocalPosition;                                     // 0x0008(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FClothCollisionPrim_Sphere;
 
@@ -37,12 +37,12 @@ public:
 DUMPER7_ASSERTS_FClothCollisionPrim_SphereConnection;
 
 // ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_ConvexFace
-// 0x0030 (0x0030 - 0x0000)
+// 0x0020 (0x0020 - 0x0000)
 struct FClothCollisionPrim_ConvexFace final
 {
 public:
-	struct FPlane                                 Plane;                                             // 0x0000(0x0020)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	TArray<int32>                                 Indices;                                           // 0x0020(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
+	struct FPlane                                 Plane;                                             // 0x0000(0x0010)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	TArray<int32>                                 Indices;                                           // 0x0010(0x0010)(ZeroConstructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FClothCollisionPrim_ConvexFace;
 
@@ -59,29 +59,17 @@ public:
 DUMPER7_ASSERTS_FClothCollisionPrim_Convex;
 
 // ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionPrim_Box
-// 0x0060 (0x0060 - 0x0000)
+// 0x0030 (0x0030 - 0x0000)
 struct FClothCollisionPrim_Box final
 {
 public:
-	struct FVector                                LocalPosition;                                     // 0x0000(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_18[0x8];                                       // 0x0018(0x0008)(Fixing Size After Last Property [ Dumper-7 ])
-	struct FQuat                                  LocalRotation;                                     // 0x0020(0x0020)(IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	struct FVector                                HalfExtents;                                       // 0x0040(0x0018)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	int32                                         BoneIndex;                                         // 0x0058(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint8                                         Pad_5C[0x4];                                       // 0x005C(0x0004)(Fixing Struct Size After Last Property [ Dumper-7 ])
+	struct FVector                                LocalPosition;                                     // 0x0000(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint8                                         Pad_C[0x4];                                        // 0x000C(0x0004)(Fixing Size After Last Property [ Dumper-7 ])
+	struct FQuat                                  LocalRotation;                                     // 0x0010(0x0010)(IsPlainOldData, NoDestructor, NativeAccessSpecifierPublic)
+	struct FVector                                HalfExtents;                                       // 0x0020(0x000C)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	int32                                         BoneIndex;                                         // 0x002C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FClothCollisionPrim_Box;
-
-// ScriptStruct ClothingSystemRuntimeInterface.ClothVertBoneData
-// 0x004C (0x004C - 0x0000)
-struct FClothVertBoneData final
-{
-public:
-	int32                                         NumInfluences;                                     // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	uint16                                        BoneIndices[0xC];                                  // 0x0004(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-	float                                         BoneWeights[0xC];                                  // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
-};
-DUMPER7_ASSERTS_FClothVertBoneData;
 
 // ScriptStruct ClothingSystemRuntimeInterface.ClothCollisionData
 // 0x0040 (0x0040 - 0x0000)
@@ -94,6 +82,17 @@ public:
 	TArray<struct FClothCollisionPrim_Box>        Boxes;                                             // 0x0030(0x0010)(Edit, ZeroConstructor, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_FClothCollisionData;
+
+// ScriptStruct ClothingSystemRuntimeInterface.ClothVertBoneData
+// 0x004C (0x004C - 0x0000)
+struct FClothVertBoneData final
+{
+public:
+	int32                                         NumInfluences;                                     // 0x0000(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	uint16                                        BoneIndices[0xC];                                  // 0x0004(0x0002)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	float                                         BoneWeights[0xC];                                  // 0x001C(0x0004)(ZeroConstructor, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+};
+DUMPER7_ASSERTS_FClothVertBoneData;
 
 }
 

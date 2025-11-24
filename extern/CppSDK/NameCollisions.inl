@@ -9,7 +9,7 @@
 // FORWARD DECLARATIONS
 
 
-namespace ABP_Manny { struct FAnimBlueprintGeneratedConstantData; }
+namespace CommonFunction { class UCommonFunction_C; }
 
-namespace ABP_Quinn { struct FAnimBlueprintGeneratedConstantData; }
+namespace CommonFunction_0 { class UCommonFunction_C; }
 

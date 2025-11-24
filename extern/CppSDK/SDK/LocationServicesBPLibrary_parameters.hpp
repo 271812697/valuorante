@@ -39,7 +39,7 @@ DUMPER7_ASSERTS_LocationServices_GetLastKnownLocation;
 struct LocationServices_GetLocationServicesImpl final
 {
 public:
-	class ULocationServicesImpl*                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
+	class ULocationServicesImpl*                  ReturnValue;                                       // 0x0000(0x0008)(Parm, OutParm, ZeroConstructor, ReturnParm, IsPlainOldData, NoDestructor, HasGetValueTypeHash, NativeAccessSpecifierPublic)
 };
 DUMPER7_ASSERTS_LocationServices_GetLocationServicesImpl;
 
